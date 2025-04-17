@@ -1,13 +1,57 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
 @theme {
-    --text-tiny: 1.625rem;
+    --font-roboto: "Roboto", sans-serif;
+    --font-nunito: "Nunito", sans-serif;
 }
 
 @theme {
-    --color-mint-500: oklch(0.72 0.11 178);
+    --color-*: initial;
+    --color-white: #fff;
+    --color-black: #000;
+    --color-light-grey: #bfcfd7;
+    --color-yellow: #fcaf3e;
+    --color-orange: #ff913a;
+    --color-teal: #1698ae;
+    --color-lightblue: #38d1df;
+    --color-blue: #5db9d9;
+
+    --font-sans: "Nunito", sans-serif;
+
     --text-h-lg: 100px;
     --text-h-lg--line-height: 110px;
-
     --text-h-lg--font-weight: 700;
+
+    --text-h-lg: 70px;
+    --text-h-lg--line-height: 86px;
+    --text-h-lg--font-weight: 700;
+
+    --text-h-l: 56px;
+    --text-h-l--line-height: 64px;
+    --text-h-l--font-weight: 700;
+
+    --text-h-md: 35px;
+    --text-h-md--line-height: 45px;
+    --text-h-md--font-weight: 700;
+
+    --text-h-sm: 30px;
+    --text-h-sm--line-height: 35px;
+    --text-h-sm--font-weight: 700;
+
+    --text-h-xs: 25px;
+    --text-h-xs--line-height: 35px;
+    --text-h-xs--font-weight: 400;
+
+    --text-b-md: 25px;
+    --text-b-md--line-height: 45px;
+    --text-b-md--font-weight: 700;
+
+    --text-p-lg: 20px;
+    --text-p-lg--line-height: 26px;
+    --text-p-lg--font-weight: 400;
+
+    --text-p-sm: 18px;
+    --text-p-lg--line-height: 24px;
+    --text-p-lg--font-weight: 400;
 }
