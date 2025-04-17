@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@theme {
+    --text-tiny: 1.625rem;
+}
+
+@theme {
+    --color-mint-500: oklch(0.72 0.11 178);
+    --text-h-lg: 100px;
+    --text-h-lg--line-height: 110px;
+
+    --text-h-lg--font-weight: 700;
+}
