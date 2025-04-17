@@ -1,8 +1,8 @@
 @import "tailwindcss";
-@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
 
 @theme {
-    --font-roboto: "Roboto", sans-serif;
+    --font-inter: "Inter", sans-serif;
     --font-nunito: "Nunito", sans-serif;
 }
 
@@ -10,11 +10,11 @@
     --color-*: initial;
     --color-white: #fff;
     --color-black: #000;
-    --color-light-grey: #bfcfd7;
+    --color-lightGray: #bfcfd7;
     --color-yellow: #fcaf3e;
     --color-orange: #ff913a;
     --color-teal: #1698ae;
-    --color-lightblue: #38d1df;
+    --color-lightBlue: #38d1df;
     --color-blue: #5db9d9;
 
     --font-sans: "Nunito", sans-serif;
