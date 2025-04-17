@@ -1,6 +1,7 @@
 import { useState } from "react";
 import crossIcon from "../assets/icons/cross_icon.svg";
 import TabsNavigation from "./feedbackOverlay/tabsNavigation.jsx";
+import SortOptions from "./feedbackOverlay/sortOptions.jsx";
 
 export default function FeedbackOverlay({ returnToRegularMode }) {
   const [activeTab, setActiveTab] = useState("All");
@@ -21,6 +22,9 @@ export default function FeedbackOverlay({ returnToRegularMode }) {
           className="w-8 cursor-pointer absolute top-4 right-4"
           onClick={returnToRegularMode}
         />
+      </div>
+      <div className="pt-6 pl-8">
+        <SortOptions />
       </div>
       <div className="mt-4 text-sm text-gray-700">
         {activeTab === "All" && <p>Showing all items.</p>}
