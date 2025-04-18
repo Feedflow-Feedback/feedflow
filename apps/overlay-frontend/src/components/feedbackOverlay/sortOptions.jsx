@@ -1,18 +1,21 @@
+import chevron from "../../assets/icons/chevron_icon.svg";
+
 export default function SortOptions() {
   return (
     <div className="">
-      <span className="font-semibold text-sm">Sort</span>
-      <div className="flex items-center space-x-4">
-        <button className="border border-black rounded-md px-3 py-1 text-sm hover:bg-gray-100">
-          Newest
+      <span className="font-bold  text-p-lg font-inter">Sort</span>
+      <div className="flex items-center space-x-4 mt-2">
+        <button className=" border-black border-[1.75px] font-semibold rounded-md px-3 py-1 text-sm ">
+          <p className="mt-0.5"> Newest</p>
         </button>
 
-        <button className="border border-black rounded-md px-3 py-1 text-sm hover:bg-gray-100">
-          Oldest
+        <button className="border-[1.75px] border-black font-semibold rounded-md px-3 py-1  text-sm  ">
+          <p className="mt-0.5">Oldest</p>
         </button>
 
-        <button className="border border-black rounded-md px-3 py-1 text-sm flex items-center space-x-1 hover:bg-gray-100">
-          <span>Typ</span>
+        <button className="border-[1.75px] border-black font-semibold rounded-md px-3 py-1  text-sm flex items-center space-x-1 ">
+          <span className="mt-0.5">Typ</span>
+          <img src={chevron} alt="Chevron" className="w-4 h-4" />
           {/* <ChevronLeft size={14} /> */}
         </button>
       </div>

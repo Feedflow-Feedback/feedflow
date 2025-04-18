@@ -5,7 +5,7 @@ import feedbackListIcon from "../assets/icons/feedback_list_icon.svg";
 export default function Overlay({ setMode }) {
   return (
     <>
-      <div className="absolute top-1/2 right-0 -translate-y-1/2 bg-white shadow-2xl border-[1.5px] border-gray-300 rounded-bl-2xl rounded-tl-2xl ">
+      <div className="absolute top-1/2 right-0 -translate-y-1/2 bg-white shadow-2xl border-[0.5px] border-lightGray rounded-bl-2xl rounded-tl-2xl ">
         <div className="grid grid-cols-1 gap-4 p-4">
           <div
             className="aspect-square w-12 cursor-pointer"

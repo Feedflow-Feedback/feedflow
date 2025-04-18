@@ -51,7 +51,11 @@
     --text-p-lg--line-height: 26px;
     --text-p-lg--font-weight: 400;
 
-    --text-p-sm: 18px;
-    --text-p-lg--line-height: 24px;
+    --text-p-sm: 16px;
+    --text-p-lg--line-height: 22px;
+    --text-p-lg--font-weight: 400;
+
+    --text-p-xs: 12px;
+    --text-p-lg--line-height: 16px;
     --text-p-lg--font-weight: 400;
 }
