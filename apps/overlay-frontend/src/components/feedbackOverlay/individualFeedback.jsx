@@ -37,7 +37,7 @@ export default function IndividualFeedback() {
           <div className="aspect-square w-4 cursor-pointer absolute top-0 right-0 ">
             <img
               src={crossIcon}
-              alt="Add Icon"
+              alt="Close Icon"
               className=" w-full"
               onClick={() => setOpenComment(!openComment)}
             />

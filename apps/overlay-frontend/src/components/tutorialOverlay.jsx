@@ -3,7 +3,10 @@ import crossIcon from "../assets/icons/cross_icon.svg";
 export default function TutorialOverlay({ returnToRegularMode }) {
   return (
     <>
-      <div className="absolute right-0 h-screen w-96 bg-white shadow-2xl border-[0.5px] border-lightGray rounded-bl-2xl rounded-tl-2xl ">
+      <div
+        id="tutorialOverlay"
+        className="absolute right-0 h-screen w-96 bg-white shadow-2xl border-[0.5px] border-lightGray rounded-bl-2xl rounded-tl-2xl "
+      >
         <p>Tutomode</p>
         <p onClick={returnToRegularMode}>Close</p>
         <img

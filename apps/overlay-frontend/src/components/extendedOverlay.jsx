@@ -10,25 +10,25 @@ export default function ExtendedOverlay({ returnToRegularMode }) {
   return (
     <>
       <div className="absolute top-1/2 right-0 -translate-y-1/2 bg-white shadow-2xl border-[0.5px] border-lightGray rounded-bl-2xl rounded-tl-2xl">
-        <div className="grid grid-cols-1 gap-4 p-4">
+        <div className="grid grid-cols-1 gap-4 p-4" id="extendedOverlay">
           <div className="aspect-square w-12 cursor-pointer">
             <img
               src={crossIcon}
-              alt="Add Icon"
+              alt="Close Icon"
               className=" w-full"
               onClick={returnToRegularMode}
             />
           </div>
 
-          <div className="aspect-square w-12 cursor-pointer">
+          {/* <div className="aspect-square w-12 cursor-pointer">
             <img src={penIcon} alt="Feedback List Icon" className=" w-full" />
           </div>
           <div className="aspect-square w-12 cursor-pointer">
             <img src={arrowIcon} alt="Feedback List Icon" className=" w-full" />
-          </div>
+          </div> 
           <div className="aspect-square w-12 cursor-pointer">
             <img src={squareIcon} alt="Question Icon" className=" w-full" />
-          </div>
+          </div>*/}
           <div className="aspect-square w-12 cursor-pointer">
             <img src={commentIocn} alt="Question Icon" className=" w-full" />
           </div>
