@@ -7,7 +7,7 @@ import {
   ManyToOne,
   JoinColumn,
 } from 'typeorm';
-import { Feedback } from './feedback';
+//import { Feedback } from './feedback';
 import { Admin } from './admin';
 import { forwardRef, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -26,11 +26,11 @@ export class FeedbackStatusHistory {
   @PrimaryColumn('uuid')
   id: string;
 
-  @ManyToOne(() => Feedback, (feedback) => feedback.statusHistory, {
+  /*@ManyToOne(() => Feedback, (feedback) => feedback.statusHistory, {
     onDelete: 'CASCADE',
-  })
-  @JoinColumn({ name: 'feedback_id' })
-  feedback: Feedback;
+  })*/
+  /*@JoinColumn({ name: 'feedback_id' })
+  feedback: Feedback;*/
 
   @ManyToOne(() => Admin, (admin) => admin.statusChanges)
   @JoinColumn({ name: 'changed_by' })

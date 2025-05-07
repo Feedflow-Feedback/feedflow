@@ -7,18 +7,18 @@ import {
   ManyToOne,
   JoinColumn,
 } from 'typeorm';
-import { Project } from './project';
+//import { Project } from './project';
 
 @Entity('integration_configs')
 export class IntegrationConfig {
   @PrimaryColumn('uuid')
   id: string;
 
-  @ManyToOne(() => Project, (project) => project.integrationConfigs, {
+  /*@ManyToOne(() => Project, (project) => project.integrationConfigs, {
     onDelete: 'CASCADE',
   })
   @JoinColumn({ name: 'project_id' })
-  project: Project;
+  project: Project;*/
 
   @Column({
     type: 'enum',

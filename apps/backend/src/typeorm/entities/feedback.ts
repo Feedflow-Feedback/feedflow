@@ -9,8 +9,6 @@ import {
   JoinColumn,
 } from 'typeorm';
 import { Project } from './project';
-import { MediaFile } from './media-file';
-import { FeedbackStatusHistory } from './feedback-status-history';
 
 @Entity('feedback')
 export class Feedback {
@@ -45,9 +43,9 @@ export class Feedback {
   @Column({ default: false })
   integration_sent: boolean;
 
-  @OneToMany(() => MediaFile, (media) => media.feedback)
-  mediaFiles: MediaFile[];
+  /*@OneToMany(() => MediaFile, (media) => media.feedback)
+  mediaFiles: MediaFile[];*/
 
-  @OneToMany(() => FeedbackStatusHistory, (history) => history.feedback)
-  statusHistory: FeedbackStatusHistory[];
+  /*@OneToMany(() => FeedbackStatusHistory, (history) => history.feedback)
+  statusHistory: FeedbackStatusHistory[];*/
 }

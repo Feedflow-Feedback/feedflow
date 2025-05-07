@@ -1,17 +1,17 @@
 // project.entity.ts
 import {
   Entity,
-  PrimaryColumn,
   Column,
   CreateDateColumn,
   OneToMany,
+  PrimaryGeneratedColumn,
 } from 'typeorm';
+
 import { Feedback } from './feedback';
-import { IntegrationConfig } from './integration-config';
 
 @Entity('projects')
 export class Project {
-  @PrimaryColumn('uuid')
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column({ length: 255 })
@@ -26,6 +26,6 @@ export class Project {
   @OneToMany(() => Feedback, (feedback) => feedback.project)
   feedbacks: Feedback[];
 
-  @OneToMany(() => IntegrationConfig, (config) => config.project)
-  integrationConfigs: IntegrationConfig[];
+  /*@OneToMany(() => IntegrationConfig, (config) => config.project)
+  integrationConfigs: IntegrationConfig[];*/
 }
