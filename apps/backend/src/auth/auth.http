@@ -1,0 +1,9 @@
+POST http://localhost:3300/auth/login
+content-type: application/json
+
+{
+    "email": "Alice",
+    "password": "123"
+}
+
+https://www.youtube.com/watch?v=i-howKMrtCM&t=75s
