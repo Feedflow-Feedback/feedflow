@@ -21,6 +21,12 @@ export class AuthController {
     return this.authService.authenticate(input);
   }
 
+  @HttpCode(HttpStatus.OK)
+  @Post('register')
+  register(@Body() input: { email: string; password: string }) {
+    return this.authService.register(input);
+  }
+
   @UseGuards(AuthGuard)
   @Get('me')
   getUserInfo(@Request() request) {

@@ -4,12 +4,15 @@ import Products from "./pages/products";
 import Projects from "./pages/projects";
 import Register from "./pages/register";
 import SignIn from "./pages/signIn";
+import Home from "./pages/home";
 
 const App = () => {
   return (
     <>
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<SignIn />} />
+
         <Route path="/register" element={<Register />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/products" element={<Products />} />

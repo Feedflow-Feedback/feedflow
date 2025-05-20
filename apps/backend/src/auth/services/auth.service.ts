@@ -1,6 +1,13 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UsersService } from 'src/users/services/users.service';
+import * as bcrypt from 'bcrypt';
+
+import { User } from 'src/typeorm/entities/user';
 
 type AuthInput = {
   email: string;
@@ -30,6 +37,28 @@ export class AuthService {
     }
 
     return this.signIn(user);
+  }
+
+  async register(input: AuthInput): Promise<User | string> {
+    // Check if user already exists
+    const existingUser = await this.usersService.findUserByEMail(input.email);
+    if (existingUser) {
+      throw new BadRequestException('User with this email already exists');
+    }
+
+    // Create new user with hashed password
+    const newUser = await this.usersService.createUser({
+      email: input.email,
+      password: await this.hashPassword(input.password),
+    });
+
+    // Sign in the new user
+    return newUser;
+  }
+
+  private async hashPassword(password: string): Promise<string> {
+    const saltRounds = 10;
+    return await bcrypt.hash(password, saltRounds);
   }
 
   async validateUser(input: AuthInput): Promise<SignInData | null> {

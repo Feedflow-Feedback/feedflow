@@ -104,12 +104,12 @@ export default function signIn() {
                 </div>
               </div>
 
-              <div>
+              <div className="flex w-full justify-center">
                 <button
                   type="submit"
-                  className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-black shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="flex cursor-pointer w-min items-center text-base justify-center rounded-md  px-8 py-1.5 text-p-sm font-semibold text-white shadow-xs bg-teal hover:bg-teal/80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal/90"
                 >
-                  Sign in
+                  Login
                 </button>
               </div>
             </form>

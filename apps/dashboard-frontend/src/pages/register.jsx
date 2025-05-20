@@ -1,4 +1,40 @@
+import { useState } from "react";
+import axios from "axios";
+
 export default function register() {
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const [form, setForm] = useState({ email: "", password: "", password2: "" });
+  const [error, setError] = useState("");
+
+  function handleChange(e) {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setError("");
+    if (form.password.length < 8) {
+      setError("Password must be at least 8 characters.");
+      return;
+    }
+    if (form.password !== form.password2) {
+      setError("Passwords do not match.");
+      return;
+    }
+    try {
+      await axios.post(`${backendUrl}/auth/register`, {
+        email: form.email,
+        password: form.password,
+      });
+    } catch (err) {
+      if (
+        err.response?.data.message === "User with this email already exists"
+      ) {
+        setError("User with this email already exists");
+      }
+    }
+  }
+
   return (
     <>
       <div className="flex min-h-screen flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -15,7 +51,7 @@ export default function register() {
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
           <div className="bg-white px-6 py-12 shadow-sm sm:rounded-lg sm:px-12">
-            <form action="#" method="POST" className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label
                   htmlFor="email"
@@ -30,6 +66,8 @@ export default function register() {
                     type="email"
                     required
                     autoComplete="email"
+                    value={form.email}
+                    onChange={handleChange}
                     className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                   />
                 </div>
@@ -49,38 +87,47 @@ export default function register() {
                     type="password"
                     required
                     autoComplete="current-password"
+                    value={form.password}
+                    onChange={handleChange}
                     className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                   />
                 </div>
               </div>
               <div>
                 <label
-                  htmlFor="password"
+                  htmlFor="password2"
                   className="block text-sm/6 font-medium text-gray-900"
                 >
                   Password Repeat
                 </label>
                 <div className="mt-2">
                   <input
-                    id="password"
-                    name="password"
+                    id="password2"
+                    name="password2"
                     type="password"
                     required
                     autoComplete="current-password"
+                    value={form.password2}
+                    onChange={handleChange}
                     className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                   />
                 </div>
               </div>
-
-              <div>
+              {error && <p className="text-center text-orange">{error}</p>}
+              <div className="flex w-full justify-center">
                 <button
                   type="submit"
-                  className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-black shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="flex cursor-pointer w-min items-center text-base justify-center rounded-md  px-8 py-1.5 text-p-sm font-semibold text-white shadow-xs bg-teal hover:bg-teal/80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal/90"
                 >
                   Register
                 </button>
               </div>
             </form>
+            <div className="text-center mt-8">
+              <a href="/login" className="underline">
+                Login?
+              </a>
+            </div>
           </div>
         </div>
       </div>

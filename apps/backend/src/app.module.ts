@@ -7,6 +7,7 @@ import { ProjectsModule } from './projects/projects.module';
 import { Feedback } from './typeorm/entities/feedback';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
+import { User } from './typeorm/entities/user';
 
 @Module({
   imports: [
@@ -19,9 +20,9 @@ import { AuthModule } from './auth/auth.module';
       database: 'feedflow',
       autoLoadEntities: true,
       synchronize: true, // set to false in production!
-      entities: [Project, Feedback],
+      entities: [Project, Feedback, User],
     }),
-    TypeOrmModule.forFeature([Project, Feedback]),
+    TypeOrmModule.forFeature([Project, User]),
 
     ProjectsModule,
 

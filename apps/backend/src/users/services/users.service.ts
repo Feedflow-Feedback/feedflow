@@ -13,4 +13,9 @@ export class UsersService {
   async findUserByEMail(email: string): Promise<User | null> {
     return this.userRepo.findOne({ where: { email } });
   }
+
+  async createUser(data: Partial<User>): Promise<User> {
+    const user = this.userRepo.create(data);
+    return await this.userRepo.save(user);
+  }
 }
