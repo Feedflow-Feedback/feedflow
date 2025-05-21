@@ -1,10 +1,16 @@
 "use client";
 
-import { Bars3Icon } from "@heroicons/react/24/outline";
+import logoutIcon from "@/assets/icons/logoutIcon.png";
 
-const navigation = [{ name: "Docs", href: "/documentation" }];
+import { useAuthStore } from "@/stores/authStore";
 
 export default function Navbar() {
+  const clearToken = useAuthStore((state) => state.clearToken);
+
+  function handleLogout() {
+    clearToken();
+    window.location.href = "/";
+  }
   return (
     <header className="bg-white">
       <nav
@@ -25,6 +31,13 @@ export default function Navbar() {
           <p className="rounded-full aspect-square w-8 bg-lightBlue flex justify-center items-center">
             {/* User initial or avatar could go here */}Y
           </p>
+          <div className="cursor-pointer" onClick={handleLogout}>
+            <img
+              src={logoutIcon}
+              alt="logout"
+              className="inline-block ml-2 h-4 "
+            />
+          </div>
         </div>
       </nav>
     </header>
