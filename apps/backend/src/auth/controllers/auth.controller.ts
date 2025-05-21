@@ -20,7 +20,9 @@ export class AuthController {
   @Post('login')
   login(@Body() input: { email: string; password: string }) {
     const result = this.authService.authenticate(input);
+
     if (!result) {
+      console.log('result', result);
       throw new UnauthorizedException('Invalid credentials');
     }
     return result;

@@ -72,7 +72,11 @@ export class AuthService {
           userId: user.userId,
           email: user.email,
         };
+      } else {
+        throw new BadRequestException('Invalid credentials');
       }
+    } else {
+      throw new BadRequestException('User not found');
     }
     return null;
   }
