@@ -1,4 +1,43 @@
+import { useState } from "react";
+import axios from "axios";
+import { useAuthStore } from "@/stores/authStore";
+
 export default function signIn() {
+  const token = useAuthStore((state) => state.token);
+  const setToken = useAuthStore((state) => state.setToken);
+
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const [form, setForm] = useState({ email: "", password: "" });
+  const [error, setError] = useState("");
+
+  function handleChange(e) {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setError("");
+    if (!form.email || !form.password) {
+      setError("Please enter both email and password.");
+      return;
+    }
+    try {
+      const response = await axios.post(`${backendUrl}/auth/login`, {
+        email: form.email,
+        password: form.password,
+      });
+
+      if (response.status === 200) {
+        setToken(response.data.accessToken);
+        window.location.href = "/projects";
+      }
+    } catch (err) {
+      console.error("Login failed, error:", err);
+      setError(
+        err.response?.data?.message || "Login failed. Please try again."
+      );
+    }
+  }
   return (
     <>
       <div className="flex min-h-screen flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -15,7 +54,7 @@ export default function signIn() {
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
           <div className="bg-white px-6 py-12 shadow-sm sm:rounded-lg sm:px-12">
-            <form action="#" method="POST" className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label
                   htmlFor="email"
@@ -30,6 +69,8 @@ export default function signIn() {
                     type="email"
                     required
                     autoComplete="email"
+                    value={form.email}
+                    onChange={handleChange}
                     className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                   />
                 </div>
@@ -49,6 +90,8 @@ export default function signIn() {
                     type="password"
                     required
                     autoComplete="current-password"
+                    value={form.password}
+                    onChange={handleChange}
                     className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                   />
                 </div>

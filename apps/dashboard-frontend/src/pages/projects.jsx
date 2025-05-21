@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Breadcrums from "../components/breadcrums/breadcrums";
-import Navbar from "../components/navbar/navbar";
-import TabsNavigation from "../components/tabsNavigation/tabsNavigation";
-import FeedbacksTable from "../components/feedbacksOverview/feedbacksTable/feedbacksTable";
-import SearchBar from "../components/feedbacksOverview/searchBar/searchBar";
+import Breadcrums from "@/components/breadcrums/breadcrums";
+import Navbar from "@/components/navbar/navbar";
+import TabsNavigation from "@/components/tabsNavigation/tabsNavigation";
+import FeedbacksTable from "@/components/feedbacksOverview/feedbacksTable/feedbacksTable";
+import SearchBar from "@/components/feedbacksOverview/searchBar/searchBar";
 
 export default function Projects() {
   const [activeTab, setActiveTab] = useState("Feedbacks");
