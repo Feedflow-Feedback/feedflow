@@ -28,6 +28,12 @@ export class ProjectsController {
   create(@Body() data) {
     return this.projectsService.create(data);
   }
+  // get all projects of multiple users
+
+  @Post('getMyProjects')
+  getMyProjects(@Body('projectIds') projectIds: string[]) {
+    return this.projectsService.findAllByIds(projectIds);
+  }
 
   @Delete(':id')
   delete(@Param('id') id: string) {

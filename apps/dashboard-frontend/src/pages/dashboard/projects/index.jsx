@@ -15,7 +15,7 @@ export default function Projects() {
         <div className="container mx-auto md:py-12 py-6 px-8 lg:px-4">
           <Breadcrums />
           <div className="mt-8">
-            <h2 className="text-h-md">Dashboard</h2>
+            <h2 className="text-h-md">Project xyz</h2>
             <p>
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
               nonumy eirmod tempor invidunt ut labore et

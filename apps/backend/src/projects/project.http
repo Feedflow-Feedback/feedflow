@@ -3,7 +3,17 @@ POST http://localhost:3300/projects/create
 Content-Type: application/json
 
 {
-    "name": "New Project 2",
+    "name": "New Project 5",
     "description": "Description of the new project",
-    "userId": "c201445e-bef7-4737-8ba0-e97a3e762152"
+    "userId": "22065788-a196-4aab-a0e0-ee483e85a6a5"
+}
+
+### 
+Post http://localhost:3300/projects/getMyProjects
+Content-Type: application/json
+
+{
+    "projectIds": [
+       "27cad7f3-b440-4e72-8c8a-3ebff48e5237","7e70b99e-68ec-4791-aca4-154fec45ebb7"
+    ]
 }

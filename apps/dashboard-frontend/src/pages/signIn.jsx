@@ -35,7 +35,7 @@ export default function signIn() {
 
       if (response.status === 200) {
         setToken(response.data.accessToken);
-        window.location.href = "/projects";
+        window.location.href = "/dashboard";
       } else if (response.status === 400) {
         switch (response.data.message) {
           case "User not found":

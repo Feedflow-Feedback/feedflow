@@ -45,6 +45,18 @@ export class ProjectsService {
     return savedProject;
   }
 
+  async findAllByIds(projectIds: string[]) {
+    const projects: Project[] = [];
+    for (const id of projectIds) {
+      const project = await this.projectRepo.findOne({ where: { id } });
+      if (project) {
+        projects.push(project);
+      }
+    }
+
+    return projects;
+  }
+
   async delete(id: string) {
     return this.projectRepo.delete(id);
   }
