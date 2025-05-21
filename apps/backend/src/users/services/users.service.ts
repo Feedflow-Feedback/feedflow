@@ -13,6 +13,13 @@ export class UsersService {
   async findUserByEMail(email: string): Promise<User | null> {
     return this.userRepo.findOne({ where: { email } });
   }
+  async findUserByEMailwithPassword(email: string): Promise<User | null> {
+    return await this.userRepo
+      .createQueryBuilder('user')
+      .addSelect('user.password')
+      .where('user.email = :email', { email: email })
+      .getOne();
+  }
 
   async createUser(data: Partial<User>): Promise<User> {
     const user = this.userRepo.create(data);

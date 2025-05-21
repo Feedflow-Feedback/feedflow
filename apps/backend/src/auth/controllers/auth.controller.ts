@@ -8,6 +8,7 @@ import {
   UseGuards,
   Get,
   Request,
+  UnauthorizedException,
 } from '@nestjs/common';
 import { AuthService } from '../services/auth.service';
 import { AuthGuard } from '../guards/auth.guard';
@@ -18,7 +19,11 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   @Post('login')
   login(@Body() input: { email: string; password: string }) {
-    return this.authService.authenticate(input);
+    const result = this.authService.authenticate(input);
+    if (!result) {
+      throw new UnauthorizedException('Invalid credentials');
+    }
+    return result;
   }
 
   @HttpCode(HttpStatus.OK)

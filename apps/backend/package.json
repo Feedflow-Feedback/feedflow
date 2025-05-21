@@ -6,7 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "start:dev": "nest start --watch",
+    "start:dev": "nest start --env-file .env --watch",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@nestjs/common": "^11.1.1",
+    "@nestjs/config": "^4.0.2",
     "@nestjs/core": "^11.1.1",
     "@nestjs/jwt": "^11.0.0",
     "@nestjs/platform-express": "^11.1.1",

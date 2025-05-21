@@ -2,8 +2,10 @@ POST http://localhost:3300/auth/login
 content-type: application/json
 
 {
-    "email": "Alice",
-    "password": "123"
+    "email": "yannic.reust@bluewin.ch",
+    "password": "12345678"
 }
+### 
 
-https://www.youtube.com/watch?v=i-howKMrtCM&t=75s
+GET http://localhost:3300/auth/me
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjMjAxNDQ1ZS1iZWY3LTQ3MzctOGJhMC1lOTdhM2U3NjIxNTIiLCJlbWFpbCI6Inlhbm5pYy5yZXVzdEBibHVld2luLmNoIiwiaWF0IjoxNzQ3ODE2MzgyLCJleHAiOjE3NDc5MDI3ODJ9.jsh0K4SeKxweoinQ4eW5IVab4mfdxCxe4VhN1SVoSng
