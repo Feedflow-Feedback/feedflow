@@ -8,33 +8,27 @@ import {
   JoinColumn,
 } from 'typeorm';
 //import { Feedback } from './feedback';
-import { Admin } from './admin';
+
 import { forwardRef, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { Feedback } from './feedback';
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([Admin]),
-    forwardRef(() => FeedbackStatusHistory),
-  ],
+  imports: [forwardRef(() => FeedbackStatusHistory)],
   /*providers: [FeedbackService],
-    controllers: [FeedbackController],
-    exports: [FeedbackService],*/
+  controllers: [FeedbackController],
+  exports: [FeedbackService],*/
 })
 @Entity('feedback_status_history')
 export class FeedbackStatusHistory {
   @PrimaryColumn('uuid')
   id: string;
 
-  /*@ManyToOne(() => Feedback, (feedback) => feedback.statusHistory, {
+  @ManyToOne(() => Feedback, (feedback) => feedback.feedbackStatusHistories, {
     onDelete: 'CASCADE',
-  })*/
-  /*@JoinColumn({ name: 'feedback_id' })
-  feedback: Feedback;*/
-
-  @ManyToOne(() => Admin, (admin) => admin.statusChanges)
-  @JoinColumn({ name: 'changed_by' })
-  changed_by: Admin;
+  })
+  @JoinColumn({ name: 'feedback_id' })
+  feedback: Feedback;
 
   @Column({
     type: 'enum',

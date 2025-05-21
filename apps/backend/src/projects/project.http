@@ -1,0 +1,9 @@
+### Create a new project
+POST http://localhost:3300/projects/create
+Content-Type: application/json
+
+{
+    "name": "New Project 2",
+    "description": "Description of the new project",
+    "userId": "c201445e-bef7-4737-8ba0-e97a3e762152"
+}

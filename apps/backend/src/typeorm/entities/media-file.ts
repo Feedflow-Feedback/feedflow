@@ -7,19 +7,18 @@ import {
   ManyToOne,
   JoinColumn,
 } from 'typeorm';
-//import { Feedback } from './feedback';
+import { Feedback } from './feedback';
 
 @Entity('media_files')
 export class MediaFile {
   @PrimaryColumn('uuid')
   id: string;
-  /*
+
   @ManyToOne(() => Feedback, (feedback) => feedback.mediaFiles, {
     onDelete: 'CASCADE',
-  })*/
-  /*
+  })
   @JoinColumn({ name: 'feedback_id' })
-  feedback: Feedback;*/
+  feedback: Feedback;
 
   @Column('text')
   file_url: string;

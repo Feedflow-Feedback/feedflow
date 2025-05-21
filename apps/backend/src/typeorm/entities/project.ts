@@ -25,7 +25,4 @@ export class Project {
 
   @OneToMany(() => Feedback, (feedback) => feedback.project)
   feedbacks: Feedback[];
-
-  /*@OneToMany(() => IntegrationConfig, (config) => config.project)
-  integrationConfigs: IntegrationConfig[];*/
 }

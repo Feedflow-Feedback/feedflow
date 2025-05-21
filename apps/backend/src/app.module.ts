@@ -2,13 +2,14 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { Project } from './typeorm/entities/project';
-
+import { MediaFile } from './typeorm/entities/media-file';
 import { ProjectsModule } from './projects/projects.module';
 import { Feedback } from './typeorm/entities/feedback';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { User } from './typeorm/entities/user';
 import { ConfigModule } from '@nestjs/config';
+import { FeedbackStatusHistory } from './typeorm/entities/feedback-status-history';
 
 @Module({
   imports: [
@@ -24,7 +25,13 @@ import { ConfigModule } from '@nestjs/config';
       synchronize: true, // set to false in production!
       entities: [Project, Feedback, User],
     }),
-    TypeOrmModule.forFeature([Project, User]),
+    TypeOrmModule.forFeature([
+      Project,
+      User,
+      Feedback,
+      MediaFile,
+      FeedbackStatusHistory,
+    ]),
 
     ProjectsModule,
 

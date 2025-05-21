@@ -11,4 +11,7 @@ export class User {
 
   @Column({ select: false })
   password: string;
+
+  @Column('simple-array', { nullable: true })
+  projectIds: string[];
 }
