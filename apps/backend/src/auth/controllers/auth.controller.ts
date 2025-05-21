@@ -8,7 +8,7 @@ import {
   UseGuards,
   Get,
   Request,
-  UnauthorizedException,
+  BadRequestException,
 } from '@nestjs/common';
 import { AuthService } from '../services/auth.service';
 import { AuthGuard } from '../guards/auth.guard';
@@ -22,8 +22,8 @@ export class AuthController {
     const result = this.authService.authenticate(input);
 
     if (!result) {
-      console.log('result', result);
-      throw new UnauthorizedException('Invalid credentials');
+      // console.log('result', result);
+      throw new BadRequestException('Invalid credentials');
     }
     return result;
   }
