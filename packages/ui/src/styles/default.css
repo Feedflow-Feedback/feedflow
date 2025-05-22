@@ -51,8 +51,12 @@
     --text-p-lg--line-height: 26px;
     --text-p-lg--font-weight: 400;
 
-    --text-p-sm: 16px;
+    --text-p-md: 16px;
     --text-p-lg--line-height: 22px;
+    --text-p-lg--font-weight: 400;
+
+    --text-p-sm: 14px;
+    --text-p-lg--line-height: 18px;
     --text-p-lg--font-weight: 400;
 
     --text-p-xs: 12px;

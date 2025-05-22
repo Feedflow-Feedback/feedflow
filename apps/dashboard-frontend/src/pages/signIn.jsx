@@ -4,8 +4,8 @@ import { useAuthStore } from "@/stores/authStore";
 import logo from "@/assets/logo.svg";
 
 export default function signIn() {
-  const token = useAuthStore((state) => state.token);
   const setToken = useAuthStore((state) => state.setToken);
+  const setUserId = useAuthStore((state) => state.setUserId);
 
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const [form, setForm] = useState({ email: "", password: "" });
@@ -34,7 +34,9 @@ export default function signIn() {
       });
 
       if (response.status === 200) {
+        console.log("Login successful, response:", response);
         setToken(response.data.accessToken);
+        setUserId(response.data.userId);
         window.location.href = "/dashboard";
       } else if (response.status === 400) {
         switch (response.data.message) {

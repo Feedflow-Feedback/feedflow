@@ -1,4 +1,3 @@
-// media-file.entity.ts
 import {
   Entity,
   PrimaryColumn,
@@ -20,14 +19,20 @@ export class MediaFile {
   @JoinColumn({ name: 'feedback_id' })
   feedback: Feedback;
 
-  @Column('text')
-  file_url: string;
+  @Column()
+  filename: string;
+
+  @Column()
+  mimetype: string;
+
+  @Column({ type: 'longblob' })
+  file_data: Buffer;
 
   @Column({
     type: 'enum',
-    enum: ['image', 'video'],
+    enum: ['image'], // restrict to images only
   })
-  file_type: 'image' | 'video';
+  file_type: 'image';
 
   @CreateDateColumn()
   uploaded_at: Date;

@@ -1,7 +1,7 @@
 export default function TabsNavigation({ activeTab, setActiveTab }) {
   const tabs = [
     { label: "Feedbacks" },
-    { label: "Integrations" },
+    /* { label: "Integrations" },*/
     { label: "Settings" },
   ];
 

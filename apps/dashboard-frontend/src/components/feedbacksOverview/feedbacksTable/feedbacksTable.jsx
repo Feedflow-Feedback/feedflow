@@ -7,7 +7,7 @@ const people = [
   {
     name: "Lindsay Walton",
     title: "28.05.2025",
-    email: "open",
+    email: "open2",
   },
   // More people...
 ];

@@ -13,6 +13,9 @@ export class UsersService {
   async findUserByEMail(email: string): Promise<User | null> {
     return this.userRepo.findOne({ where: { email } });
   }
+  async findUserByUserId(userId: string): Promise<User | null> {
+    return this.userRepo.findOne({ where: { userId } });
+  }
   async findUserByEMailwithPassword(email: string): Promise<User | null> {
     return await this.userRepo
       .createQueryBuilder('user')

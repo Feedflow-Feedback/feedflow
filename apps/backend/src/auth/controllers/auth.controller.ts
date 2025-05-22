@@ -22,7 +22,6 @@ export class AuthController {
     const result = this.authService.authenticate(input);
 
     if (!result) {
-      // console.log('result', result);
       throw new BadRequestException('Invalid credentials');
     }
     return result;
@@ -32,11 +31,5 @@ export class AuthController {
   @Post('register')
   register(@Body() input: { email: string; password: string }) {
     return this.authService.register(input);
-  }
-
-  @UseGuards(AuthGuard)
-  @Get('me')
-  getUserInfo(@Request() request) {
-    return request.user;
   }
 }

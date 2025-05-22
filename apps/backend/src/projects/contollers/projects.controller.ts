@@ -7,8 +7,12 @@ import {
   Delete,
   HttpStatus,
   HttpCode,
+  Query,
+  UseGuards,
 } from '@nestjs/common';
 import { ProjectsService } from '../services/projects.service';
+
+import { AuthGuard } from './../../auth/guards/auth.guard';
 
 @Controller('projects')
 export class ProjectsController {
@@ -23,16 +27,17 @@ export class ProjectsController {
   getOne(@Param('id') id: string) {
     return this.projectsService.findOne(id);
   }
+
+  @UseGuards(AuthGuard)
   @HttpCode(HttpStatus.OK)
   @Post('create')
   create(@Body() data) {
     return this.projectsService.create(data);
   }
-  // get all projects of multiple users
 
   @Post('getMyProjects')
-  getMyProjects(@Body('projectIds') projectIds: string[]) {
-    return this.projectsService.findAllByIds(projectIds);
+  getMyProjects(@Body() data) {
+    return this.projectsService.findAllByIds(data.projectIds);
   }
 
   @Delete(':id')

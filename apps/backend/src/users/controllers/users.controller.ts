@@ -5,6 +5,8 @@ import {
   Body,
   Query,
   BadRequestException,
+  HttpCode,
+  HttpStatus,
 } from '@nestjs/common';
 import { UsersService } from '../services/users.service';
 import { User } from '../../typeorm/entities/user';
@@ -38,5 +40,16 @@ export class UsersController {
       throw new BadRequestException('Email query param is required');
     }
     return this.usersService.findUserByEMailwithPassword(email);
+  }
+
+  @HttpCode(HttpStatus.OK)
+  @Post('getProjectIds')
+  async getProjectIds(@Body() data) {
+    if (!data.userId) {
+      throw new BadRequestException('Email query param is required');
+    }
+    const user = await this.usersService.findUserByUserId(data.userId);
+    const projectIds = user?.projectIds || [];
+    return projectIds;
   }
 }
