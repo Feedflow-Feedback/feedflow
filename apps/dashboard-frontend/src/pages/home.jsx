@@ -1,10 +1,14 @@
 import HeroSection from "@/components/landingPage/heroSection";
+import KeyFeatures from "@/components/landingPage/keyFeatures";
+import Navbar from "../components/landingPage/navbar";
 
 export default function Home() {
   return (
     <>
       <div>
+        <Navbar />
         <HeroSection />
+        <KeyFeatures />
         {/* <p className="flex justify-center ">Home</p>
         <a href="/login">Login</a>
         <a href="/register">Register</a> */}

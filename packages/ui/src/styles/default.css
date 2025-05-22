@@ -48,18 +48,18 @@
     --text-b-md--font-weight: 700;
 
     --text-p-lg: 20px;
-    --text-p-lg--line-height: 26px;
+    --text-p-lg--line-height: 28px;
     --text-p-lg--font-weight: 400;
 
     --text-p-md: 16px;
-    --text-p-lg--line-height: 22px;
-    --text-p-lg--font-weight: 400;
+    --text-p-md--line-height: 22px;
+    --text-p-md--font-weight: 400;
 
     --text-p-sm: 14px;
-    --text-p-lg--line-height: 18px;
-    --text-p-lg--font-weight: 400;
+    --text-p-sm--line-height: 18px;
+    --text-p-sm--font-weight: 400;
 
     --text-p-xs: 12px;
-    --text-p-lg--line-height: 16px;
-    --text-p-lg--font-weight: 400;
+    --text-p-xs--line-height: 16px;
+    --text-p-xs--font-weight: 400;
 }
