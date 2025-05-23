@@ -60,4 +60,7 @@ export class ProjectsService {
   async delete(id: string) {
     return this.projectRepo.delete(id);
   }
+  async update(id: string, updateData: Partial<Project>) {
+    return this.projectRepo.update(id, updateData);
+  }
 }

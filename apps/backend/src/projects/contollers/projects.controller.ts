@@ -7,26 +7,15 @@ import {
   Delete,
   HttpStatus,
   HttpCode,
-  Query,
+  Patch,
   UseGuards,
 } from '@nestjs/common';
 import { ProjectsService } from '../services/projects.service';
-
 import { AuthGuard } from './../../auth/guards/auth.guard';
 
 @Controller('projects')
 export class ProjectsController {
   constructor(private readonly projectsService: ProjectsService) {}
-
-  @Get()
-  getAll() {
-    return this.projectsService.findAll();
-  }
-
-  @Get(':id')
-  getOne(@Param('id') id: string) {
-    return this.projectsService.findOne(id);
-  }
 
   @UseGuards(AuthGuard)
   @HttpCode(HttpStatus.OK)
@@ -35,13 +24,34 @@ export class ProjectsController {
     return this.projectsService.create(data);
   }
 
+  @UseGuards(AuthGuard)
+  @HttpCode(HttpStatus.OK)
   @Post('getMyProjects')
   getMyProjects(@Body() data) {
     return this.projectsService.findAllByIds(data.projectIds);
   }
 
+  @UseGuards(AuthGuard)
+  @HttpCode(HttpStatus.OK)
+  @Post('getProjectDetails')
+  getProjectDetails(@Body() data) {
+    return this.projectsService.findOne(data.projectId);
+  }
+
+  @UseGuards(AuthGuard)
+  @HttpCode(HttpStatus.OK)
   @Delete(':id')
   delete(@Param('id') id: string) {
     return this.projectsService.delete(id);
+  }
+
+  @UseGuards(AuthGuard)
+  @HttpCode(HttpStatus.OK)
+  @Patch(':id')
+  updateProject(
+    @Param('id') id: string,
+    @Body() updateData: { name?: string; url?: string; description?: string },
+  ) {
+    return this.projectsService.update(id, updateData);
   }
 }

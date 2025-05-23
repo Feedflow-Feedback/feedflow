@@ -17,6 +17,9 @@ export class Project {
   @Column({ length: 255 })
   name: string;
 
+  @Column({ length: 255 })
+  url: string;
+
   @Column('text', { nullable: true })
   description?: string;
 

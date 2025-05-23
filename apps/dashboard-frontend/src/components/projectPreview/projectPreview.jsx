@@ -42,9 +42,7 @@ export default function projectPreview({ project }) {
               />
             </svg>
 
-            <a className="text-p-sm ml-1" href="https://blackbox-mit.ch">
-              https://blackbox-mit.ch
-            </a>
+            <p className="text-p-sm ml-1">{project.url}</p>
           </div>
         </div>
       </div>

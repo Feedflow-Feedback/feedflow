@@ -19,7 +19,7 @@ export default function addProjectModal({
   const token = useAuthStore((state) => state.token);
   const userId = useAuthStore((state) => state.userId);
 
-  const [form, setForm] = useState({ title: "", description: "" });
+  const [form, setForm] = useState({ title: "", description: "", url: "" });
   const [error, setError] = useState("");
 
   function handleChange(e) {
@@ -30,7 +30,7 @@ export default function addProjectModal({
     e.preventDefault();
     setError("");
 
-    if (!form.title || !form.description) {
+    if (!form.title || !form.description || !form.url) {
       setError("Please enter both title and description.");
       return;
     }
@@ -41,6 +41,7 @@ export default function addProjectModal({
         {
           name: form.title,
           description: form.description,
+          url: form.url,
           userId: userId,
         },
         { headers: { Authorization: `Bearer ${token}` } }
@@ -94,6 +95,26 @@ export default function addProjectModal({
                           type="title"
                           placeholder="new Project"
                           value={form.title}
+                          onChange={handleChange}
+                          required
+                          className="block w-full rounded-md bg-white px-3 py-1.5 text-base outline-1 -outline-offset-1 placeholder:text-p-sm "
+                        />
+                      </div>
+                    </div>
+                    <div className="mt-4">
+                      <label
+                        htmlFor="title"
+                        className="block text-p-md font-regular text-left"
+                      >
+                        Project Url
+                      </label>
+                      <div className="mt-1">
+                        <input
+                          id="url"
+                          name="url"
+                          type="url"
+                          placeholder="httsp://example.com"
+                          value={form.url}
                           onChange={handleChange}
                           required
                           className="block w-full rounded-md bg-white px-3 py-1.5 text-base outline-1 -outline-offset-1 placeholder:text-p-sm "

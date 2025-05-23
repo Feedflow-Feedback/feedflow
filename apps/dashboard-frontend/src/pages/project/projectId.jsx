@@ -2,15 +2,42 @@ import React, { useState } from "react";
 
 import Navbar from "@/components/navbar/navbar";
 import TabsNavigation from "@/components/tabsNavigation/tabsNavigation";
-import FeedbacksTable from "@/components/feedbacksOverview/feedbacksTable/feedbacksTable";
-import SearchBar from "@/components/feedbacksOverview/searchBar/searchBar";
+import FeedbacksTable from "@/components/detailsProject/feedbacksOverview/feedbacksTable/feedbacksTable";
+import SearchBar from "@/components/detailsProject/feedbacksOverview/searchBar/searchBar";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
+import { useAuthStore } from "@/stores/authStore";
+import axios from "axios";
+import Installation from "../../components/detailsProject/installation/installation";
+import Settings from "../../components/detailsProject/settings/settings";
 
 export default function Project() {
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const token = useAuthStore((state) => state.token);
+
   const { id } = useParams();
+
+  const [project, setProject] = useState({});
+
+  const getProjects = async () => {
+    try {
+      const response = await axios.post(
+        `${backendUrl}/projects/getProjectDetails`,
+
+        {
+          projectId: id,
+        },
+
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      setProject(response.data);
+    } catch (err) {
+      console.error("Create Project failed, error:", err);
+    }
+  };
+
   useEffect(() => {
-    console.log("Project ID:", id);
+    getProjects();
   }, [id]);
 
   const [activeTab, setActiveTab] = useState("Feedbacks");
@@ -40,11 +67,8 @@ export default function Project() {
         </a>
         <div className="container mx-auto  md:pb-12 pb-6 px-8 lg:px-4">
           <div className="mt-8">
-            <h2 className="text-h-md">Project xyz</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-              nonumy eirmod tempor invidunt ut labore et
-            </p>
+            <h2 className="text-h-md">{project.name}</h2>
+            <p>{project.description}</p>
             <div className="mt-8">
               <TabsNavigation
                 activeTab={activeTab}
@@ -62,7 +86,21 @@ export default function Project() {
               </div>
             )}
             {/* {activeTab === "Integrations" && <p>Showing resolved items.</p>} */}
-            {activeTab === "Settings" && <p>Showing settings</p>}
+            {activeTab === "Installation" && (
+              <div>
+                <Installation />
+              </div>
+            )}
+            {activeTab === "Settings" && (
+              <div>
+                <Settings
+                  id={id}
+                  name={project.name}
+                  description={project.description}
+                  url={project.url}
+                />
+              </div>
+            )}
           </div>
         </div>
       </div>

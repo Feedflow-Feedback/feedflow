@@ -82,7 +82,7 @@ export default function Dashboard() {
           </div>
         </div>
         <div
-          className="absolute bottom-10 right-10 w-18 h-18 rounded-full bg-orange z-10 hover:scale-105 transition-all duration-100"
+          className="fixed bottom-10 right-10 w-14 h-14 rounded-full bg-orange z-10 hover:scale-105 transition-all duration-100"
           onClick={() => setIsAddProjectModalOpen(true)}
         >
           <div className="flex items-center justify-center h-full cursor-pointer">
@@ -92,7 +92,7 @@ export default function Dashboard() {
               viewBox="0 0 24 24"
               strokeWidth={2.5}
               stroke="currentColor"
-              className="size-14 text-white "
+              className="size-9 text-white "
             >
               <path
                 strokeLinecap="round"
