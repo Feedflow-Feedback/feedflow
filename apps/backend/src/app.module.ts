@@ -10,6 +10,7 @@ import { AuthModule } from './auth/auth.module';
 import { User } from './typeorm/entities/user';
 import { ConfigModule } from '@nestjs/config';
 import { FeedbackStatusHistory } from './typeorm/entities/feedback-status-history';
+import { FeedbackModule } from './feedback/feedback.module';
 
 @Module({
   imports: [
@@ -38,6 +39,8 @@ import { FeedbackStatusHistory } from './typeorm/entities/feedback-status-histor
     UsersModule,
 
     AuthModule,
+
+    FeedbackModule,
   ],
 })
 export class AppModule {}

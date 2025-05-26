@@ -1,0 +1,13 @@
+### Create a new project
+POST http://localhost:3300/feedback
+Content-Type: application/json
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjMjAxNDQ1ZS1iZWY3LTQ3MzctOGJhMC1lOTdhM2U3NjIxNTIiLCJlbWFpbCI6Inlhbm5pYy5yZXVzdEBibHVld2luLmNoIiwiaWF0IjoxNzQ4MjA3Mzc3LCJleHAiOjE3NDgyOTM3Nzd9.pd99Q6YGvLmfQTXjlMqRekZJU-h6RdekWmhfi2puuo4
+
+
+{
+  "projectId": "963ce530-8cb1-4853-90b8-24000a9067fa",
+  "message": "Great work!",
+  "metadata": "{\"browser\": \"Chrome\"}",
+  "created_by_ip": "192.168.1.1"
+}
+

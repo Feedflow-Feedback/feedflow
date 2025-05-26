@@ -1,7 +1,7 @@
 // feedback.entity.ts
 import {
   Entity,
-  PrimaryColumn,
+  PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
   ManyToOne,
@@ -14,7 +14,7 @@ import { FeedbackStatusHistory } from './feedback-status-history';
 
 @Entity('feedback')
 export class Feedback {
-  @PrimaryColumn('uuid')
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @ManyToOne(() => Project, (project) => project.feedbacks, {
@@ -23,8 +23,11 @@ export class Feedback {
   @JoinColumn({ name: 'project_id' })
   project: Project;
 
-  @Column('text', { nullable: true })
-  message: string;
+  @Column('text')
+  title: string;
+
+  @Column('text')
+  description: string;
 
   @Column('text', { nullable: true })
   metadata: string;
@@ -38,9 +41,9 @@ export class Feedback {
 
   @CreateDateColumn()
   submitted_at: Date;
-
+  /*
   @Column({ type: 'varchar', length: 45, nullable: true })
-  created_by_ip: string;
+  created_by_ip: string;*/
 
   @Column({ default: false })
   integration_sent: boolean;

@@ -202,6 +202,9 @@ importers:
       '@feedflow/ui':
         specifier: workspace:*
         version: link:../../packages/ui
+      '@headlessui/react':
+        specifier: ^2.2.3
+        version: 2.2.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@tailwindcss/postcss':
         specifier: ^4.1.7
         version: 4.1.7

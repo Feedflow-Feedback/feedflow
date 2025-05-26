@@ -1,21 +1,22 @@
-import commentIocn from "../assets/icons/comment_icon.svg";
+import commentIcon from "../assets/icons/comment_icon.svg";
 import crossIcon from "../assets/icons/cross_icon.svg";
-import penIcon from "../assets/icons/pen_icon.svg";
-import arrowIcon from "../assets/icons/arrow_icon.svg";
-import squareIcon from "../assets/icons/square_icon.svg";
 import photoIcon from "../assets/icons/photo_icon.svg";
 import videoIcon from "../assets/icons/camera_icon.svg";
 
-export default function ExtendedOverlay({ returnToRegularMode }) {
+export default function ExtendedOverlay({
+  returnToRegularMode,
+  setMode,
+  mode,
+}) {
   return (
     <>
-      <div className="absolute top-1/2 right-0 -translate-y-1/2 bg-white shadow-2xl border-[0.5px] border-lightGray rounded-bl-2xl rounded-tl-2xl">
+      <div className="absolute top-1/2 right-0 -translate-y-1/2 bg-white shadow-2xl border-[0.5px] border-lightGray rounded-bl-2xl rounded-tl-2xl no-click">
         <div className="grid grid-cols-1 gap-4 p-4" id="extendedOverlay">
           <div className="aspect-square w-12 cursor-pointer">
             <img
               src={crossIcon}
               alt="Close Icon"
-              className=" w-full"
+              className=" w-full close"
               onClick={returnToRegularMode}
             />
           </div>
@@ -30,13 +31,34 @@ export default function ExtendedOverlay({ returnToRegularMode }) {
             <img src={squareIcon} alt="Question Icon" className=" w-full" />
           </div>*/}
           <div className="aspect-square w-12 cursor-pointer">
-            <img src={commentIocn} alt="Question Icon" className=" w-full" />
+            <img
+              src={commentIcon}
+              alt="Feedback Text Icon"
+              style={
+                mode === "textFeedback"
+                  ? {
+                      filter:
+                        "invert(82%) sepia(32%) saturate(6019%) hue-rotate(330deg) brightness(100%) contrast(104%)",
+                    }
+                  : {}
+              }
+              className=" w-full no-click"
+              onClick={() => setMode("textFeedback")}
+            />
           </div>
           <div className="aspect-square w-12 cursor-pointer">
-            <img src={photoIcon} alt="Question Icon" className=" w-full" />
+            <img
+              src={photoIcon}
+              alt="Question Icon"
+              className=" w-full no-click"
+            />
           </div>
           <div className="aspect-square w-12 cursor-pointer">
-            <img src={videoIcon} alt="Question Icon" className=" w-full" />
+            <img
+              src={videoIcon}
+              alt="Question Icon"
+              className=" w-full no-click"
+            />
           </div>
         </div>
       </div>
