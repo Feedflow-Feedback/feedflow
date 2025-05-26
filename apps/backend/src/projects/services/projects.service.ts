@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Project } from '../../typeorm/entities/project';
 import { Repository } from 'typeorm';
-import { User } from 'src/typeorm/entities/user';
+import { User } from '../../typeorm/entities/user';
 
 type ProjectAndUser = {
   name: string;

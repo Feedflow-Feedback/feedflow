@@ -10,28 +10,29 @@ import {
 } from '@nestjs/common';
 import { UsersService } from '../services/users.service';
 import { User } from '../../typeorm/entities/user';
+import { CreateUserDto } from '../dto/createUser.dto';
 
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Post()
-  async createUser(@Body() data: Partial<User>): Promise<User> {
-    if (!data.email) {
-      throw new BadRequestException('Email is required');
+  async createUser(@Body() data: CreateUserDto): Promise<User> {
+    if (!data.email || !data.password) {
+      throw new BadRequestException('Email is required & password is required');
     }
     return this.usersService.createUser(data);
   }
 
-  @Get()
+  /* @Get()
   async findUserByEmail(@Query('email') email: string): Promise<User | null> {
     if (!email) {
       throw new BadRequestException('Email query param is required');
     }
     return this.usersService.findUserByEMail(email);
-  }
+  }*/
 
-  // ⚠️ For internal use only — avoid exposing passwords in public APIs
+  /* // ⚠️ For internal use only — avoid exposing passwords in public APIs
   @Get('with-password')
   async findUserWithPassword(
     @Query('email') email: string,
@@ -40,7 +41,7 @@ export class UsersController {
       throw new BadRequestException('Email query param is required');
     }
     return this.usersService.findUserByEMailwithPassword(email);
-  }
+  }*/
 
   @HttpCode(HttpStatus.OK)
   @Post('getProjectIds')

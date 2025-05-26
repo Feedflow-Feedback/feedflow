@@ -1,10 +1,10 @@
 // feedback.service.ts
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Feedback } from 'src/typeorm/entities/feedback';
+import { Feedback } from '../../typeorm/entities/feedback';
 import { Repository } from 'typeorm';
 
-import { Project } from 'src/typeorm/entities/project';
+import { Project } from '../../typeorm/entities/project';
 
 @Injectable()
 export class FeedbackService {
@@ -25,7 +25,6 @@ export class FeedbackService {
       title: createDto.title,
       metadata: createDto.metadata,
       status: createDto.status ?? 'open',
-
       project,
     });
 

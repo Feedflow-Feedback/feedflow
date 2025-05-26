@@ -6,6 +6,7 @@ import {
   HttpCode,
   UseGuards,
   HttpStatus,
+  BadRequestException,
 } from '@nestjs/common';
 
 import { FeedbackService } from '../services/feedback.service';
@@ -19,6 +20,11 @@ export class FeedbackController {
   @HttpCode(HttpStatus.OK)
   @Post('create')
   async create(@Body() dto: any): Promise<Feedback> {
+    if (!dto.description || !dto.title || !dto.projectId) {
+      throw new BadRequestException(
+        'title, description, and projectId are required',
+      );
+    }
     return this.feedbackService.create(dto);
   }
 }

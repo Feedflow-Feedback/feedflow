@@ -30,7 +30,7 @@ export class Feedback {
   description: string;
 
   @Column('text', { nullable: true })
-  metadata: string;
+  metadata: object;
 
   @Column({
     type: 'enum',
