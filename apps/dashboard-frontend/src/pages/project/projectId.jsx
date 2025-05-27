@@ -56,7 +56,7 @@ export default function Project() {
   const [activeTab, setActiveTab] = useState("Feedbacks");
   return (
     <>
-      <div>
+      <div className="bg-black/5 min-h-screen">
         <Navbar />
         <a
           className="container mx-auto pt-8 px-8 lg:px-4 flex items-center"
@@ -92,7 +92,7 @@ export default function Project() {
           <div className="mt-4 text-sm text-gray-700">
             {activeTab === "Feedbacks" && (
               <div>
-                <SearchBar />
+                {/* <SearchBar /> */}
                 <div className="mt-4">
                   <FeedbacksTable feedbacks={feedbacks} />
                 </div>

@@ -1,6 +1,3 @@
-"use client";
-
-import { useState } from "react";
 import {
   Dialog,
   DialogBackdrop,
@@ -9,11 +6,14 @@ import {
 } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/24/outline";
 
-export default function feedbackDetailsModal() {
-  const [open, setOpen] = useState(true);
-
+export default function feedbackDetailsModal({
+  open,
+  close,
+  feedback,
+  closeAndUpdate,
+}) {
   return (
-    <Dialog open={open} onClose={setOpen} className="relative z-10">
+    <Dialog open={open} onClose={close} className="relative z-10">
       <DialogBackdrop
         transition
         className="fixed inset-0 bg-gray-500/75 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in"
@@ -23,37 +23,34 @@ export default function feedbackDetailsModal() {
         <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
           <DialogPanel
             transition
-            className="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in sm:my-8 sm:w-full sm:max-w-sm sm:p-6 data-closed:sm:translate-y-0 data-closed:sm:scale-95"
+            className="relative min-w-xl transform overflow-hidden rounded-lg bg-white text-black text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in sm:my-8 sm:w-full sm:max-w-sm sm:p-6 data-closed:sm:translate-y-0 data-closed:sm:scale-95"
           >
             <div>
-              <div className="mx-auto flex size-12 items-center justify-center rounded-full bg-green-100">
-                <CheckIcon
-                  aria-hidden="true"
-                  className="size-6 text-green-600"
-                />
-              </div>
-              <div className="mt-3 text-center sm:mt-5">
-                <DialogTitle
-                  as="h3"
-                  className="text-base font-semibold text-gray-900"
-                >
-                  Payment successful
+              <div className="">
+                <DialogTitle as="h3" className=" font-semibold  text-h-xs">
+                  {feedback.title}
                 </DialogTitle>
                 <div className="mt-2">
                   <p className="text-sm text-gray-500">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Consequatur amet labore.
+                    {feedback.description}
                   </p>
+                </div>
+                <div>
+                  <img
+                    src="https://placehold.co/600x400/EEE/31343C"
+                    alt="Feedback"
+                    className="mt-4 max-w-72 h-auto rounded-md"
+                  />
                 </div>
               </div>
             </div>
-            <div className="mt-5 sm:mt-6">
+            <div className="mt-5 sm:mt-6 flex justify-end">
               <button
                 type="button"
-                onClick={() => setOpen(false)}
-                className="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                onClick={closeAndUpdate}
+                className="inline-flex px-6 justify-center rounded-md bg-orange  py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                Go back to dashboard
+                Update
               </button>
             </div>
           </DialogPanel>

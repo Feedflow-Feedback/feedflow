@@ -1,12 +1,31 @@
 import FeedbackDetailsModal from "../feedbackDetailsModal/feedbackDetailsModal";
+import { act, useState } from "react";
 
 export default function FeedbacksTable({ feedbacks }) {
+  const [open, setOpen] = useState(false);
+  const [selectedFeedback, setSelectedFeedback] = useState(null);
+
+  const handleOpen = (e) => {
+    setOpen(true);
+
+    setSelectedFeedback(e);
+  };
+  const handleClose = () => {
+    setOpen(false);
+    setSelectedFeedback(null);
+  };
+
+  const closeAndUpdate = () => {
+    console.log("closeAndUpdate called");
+    setOpen(false);
+    setSelectedFeedback(null);
+  };
   return (
     <div className="flow-root">
       <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
           <div className="overflow-hidden shadow-sm ring-1 ring-black/5 sm:rounded-lg">
-            <table className="min-w-full divide-y divide-black/20">
+            <table className="min-w-full divide-y divide-black/20 bg-white">
               <thead className="bg-gray-50">
                 <tr>
                   <th
@@ -31,8 +50,11 @@ export default function FeedbacksTable({ feedbacks }) {
               </thead>
               <tbody className="divide-y divide-black/20 bg-white">
                 {feedbacks.map((feedback) => (
-                  <tr key={feedback.id} className="cursor-pointer">
-                    <FeedbackDetailsModal open={true} />
+                  <tr
+                    key={feedback.id}
+                    className="cursor-pointer"
+                    onClick={() => handleOpen(feedback)}
+                  >
                     <td className="py-4 pr-3 pl-4 text-sm font-medium whitespace-nowrap text-gray-900 sm:pl-6 w-full">
                       {feedback.title}
                     </td>
@@ -46,6 +68,14 @@ export default function FeedbacksTable({ feedbacks }) {
                 ))}
               </tbody>
             </table>
+            {selectedFeedback && (
+              <FeedbackDetailsModal
+                open={open}
+                close={handleClose}
+                feedback={selectedFeedback}
+                closeAndUpdate={() => closeAndUpdate()}
+              />
+            )}
           </div>
         </div>
       </div>
