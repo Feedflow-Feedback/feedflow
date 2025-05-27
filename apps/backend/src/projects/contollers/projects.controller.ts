@@ -26,9 +26,10 @@ export class ProjectsController {
   @UseGuards(AuthGuard)
   @HttpCode(HttpStatus.OK)
   @Post('getMyProjects')
-  getMyProjects(@Body() userId: string) {
-    const projects = this.projectsService.findAllUserProjects(userId);
-    return projects ?? [];
+  getMyProjects(@Body() userId: { userId: string }) {
+    const projects = this.projectsService.findAllUserProjects(userId.userId);
+
+    return projects;
   }
 
   @UseGuards(AuthGuard)

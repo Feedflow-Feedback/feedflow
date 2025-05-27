@@ -29,7 +29,10 @@ export class Feedback {
   @Column('text')
   description: string;
 
-  @Column('text', { nullable: true })
+  @Column('text')
+  htmlElement: string;
+
+  @Column('json', { nullable: true })
   metadata: object;
 
   @Column({

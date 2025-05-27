@@ -34,12 +34,15 @@ export default function Dashboard() {
       try {
         const response = await axios.post(
           `${backendUrl}/projects/getMyProjects`,
-          userId,
+          {
+            userId: userId,
+          },
 
           { headers: { Authorization: `Bearer ${token}` } }
         );
-
-        setProjects(response.data);
+        if (response.data !== null && response.data.length > 0) {
+          setProjects(response.data);
+        }
       } catch (err) {
         console.error("Get Project Ids failed, error:", err);
       }
@@ -54,7 +57,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     getProjects();
-  }, [projects]);
+  }, []);
 
   return (
     <>
@@ -77,6 +80,14 @@ export default function Dashboard() {
               </div>
             ))}
           </div>
+          {projects.length === 0 && (
+            <div>
+              <p className="text-center text-gray-500">
+                No projects found. Click the button below to create a new
+                project.
+              </p>
+            </div>
+          )}
         </div>
         <div
           className="fixed bottom-10 right-10 w-14 h-14 rounded-full bg-orange z-10 hover:scale-105 transition-all duration-100"

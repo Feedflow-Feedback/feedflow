@@ -21,7 +21,6 @@ export default function TabsNavigation({ activeTab, setActiveTab }) {
               }`}
             >
               <span className="px-2">
-                {" "}
                 {tab.label} ({tab.count})
               </span>
             </button>

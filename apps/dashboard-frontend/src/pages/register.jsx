@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import logo from "@/assets/logo.svg";
 
 export default function register() {
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
@@ -22,10 +23,13 @@ export default function register() {
       return;
     }
     try {
-      await axios.post(`${backendUrl}/auth/register`, {
+      const response = await axios.post(`${backendUrl}/auth/register`, {
         email: form.email,
         password: form.password,
       });
+      if (response.status === 200) {
+        window.location.href = "/login";
+      }
     } catch (err) {
       if (
         err.response?.data.message === "User with this email already exists"
@@ -39,19 +43,15 @@ export default function register() {
     <>
       <div className="flex min-h-screen flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
-          <img
-            alt="Your Company"
-            src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
-            className="mx-auto h-10 w-auto"
-          />
+          <img alt="Feedflow Logo" src={logo} className="mx-auto h-20 w-auto" />
           <h2 className="mt-6 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
-            Register a new account
+            Register a new Account
           </h2>
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
-          <div className="bg-white px-6 py-12 shadow-sm sm:rounded-lg sm:px-12">
-            <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="bg-white px-6 py-8 shadow-sm sm:rounded-lg sm:px-10">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label
                   htmlFor="email"
@@ -117,7 +117,7 @@ export default function register() {
               <div className="flex w-full justify-center">
                 <button
                   type="submit"
-                  className="flex cursor-pointer w-min items-center text-base justify-center rounded-md  px-8 py-1.5 text-p-sm font-semibold text-white shadow-xs bg-teal hover:bg-teal/80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal/90"
+                  className="flex cursor-pointer w-min items-center text-base justify-center rounded-md  px-8 py-1.5 text-p-sm font-semibold text-white shadow-xs bg-orange hover:bg-orange/80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange/90"
                 >
                   Register
                 </button>

@@ -23,11 +23,19 @@ export class FeedbackService {
     const feedback = this.feedbackRepo.create({
       description: createDto.description,
       title: createDto.title,
-      metadata: createDto.metadata,
-      status: createDto.status ?? 'open',
+      //metadata: createDto.metadata,
+      status: 'open',
+      htmlElement: createDto.htmlElement,
       project,
     });
 
     return this.feedbackRepo.save(feedback);
+  }
+
+  async findByProjectId(projectId: string): Promise<Feedback[]> {
+    return this.feedbackRepo.find({
+      where: { project: { id: projectId } },
+      relations: ['project'],
+    });
   }
 }

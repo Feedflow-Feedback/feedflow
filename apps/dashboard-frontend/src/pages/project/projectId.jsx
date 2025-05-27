@@ -18,6 +18,18 @@ export default function Project() {
   const { id } = useParams();
 
   const [project, setProject] = useState({});
+  const [feedbacks, setFeedbacks] = useState([]);
+  const getFeedbacks = async () => {
+    const response = await axios.post(
+      `${backendUrl}/feedback/getAllByProject`,
+      {
+        projectId: id,
+      }
+    );
+    console.log("Fetch feedbacks for project:", id);
+    console.log("Feedbacks:", response.data);
+    setFeedbacks(response.data);
+  };
 
   const getProjects = async () => {
     try {
@@ -38,6 +50,7 @@ export default function Project() {
 
   useEffect(() => {
     getProjects();
+    getFeedbacks();
   }, [id]);
 
   const [activeTab, setActiveTab] = useState("Feedbacks");
@@ -81,7 +94,7 @@ export default function Project() {
               <div>
                 <SearchBar />
                 <div className="mt-4">
-                  <FeedbacksTable />
+                  <FeedbacksTable feedbacks={feedbacks} />
                 </div>
               </div>
             )}

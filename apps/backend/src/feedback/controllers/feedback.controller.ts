@@ -20,11 +20,24 @@ export class FeedbackController {
   @HttpCode(HttpStatus.OK)
   @Post('create')
   async create(@Body() dto: any): Promise<Feedback> {
-    if (!dto.description || !dto.title || !dto.projectId) {
+    if (!dto.description || !dto.title || !dto.projectId || !dto.htmlElement) {
       throw new BadRequestException(
         'title, description, and projectId are required',
       );
     }
+
     return this.feedbackService.create(dto);
+  }
+
+  @HttpCode(HttpStatus.OK)
+  @Post('getAllByProject')
+  async getByProject(
+    @Body('projectId') projectId: string,
+  ): Promise<Feedback[]> {
+    if (!projectId) {
+      throw new BadRequestException('projectId is required');
+    }
+
+    return this.feedbackService.findByProjectId(projectId);
   }
 }

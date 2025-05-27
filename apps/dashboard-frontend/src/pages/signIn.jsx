@@ -53,7 +53,7 @@ export default function signIn() {
         setErrorAndClearPassword("Invalid email or password.");
       }
     } catch (err) {
-      console.error("Login failed, error:", err);
+      // console.error("Login failed, error:", err);
       setErrorAndClearPassword(
         err.response?.data?.message || "Login failed. Please try again."
       );

@@ -9,7 +9,7 @@ import {
 } from "@headlessui/react";
 import axios from "axios";
 
-export default function extendedOverlayModal({ open, close }) {
+export default function extendedOverlayModal({ open, close, htmlElement }) {
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const projectId = window.PROJECT_ID;
   const [form, setForm] = useState({
@@ -23,12 +23,14 @@ export default function extendedOverlayModal({ open, close }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    console.log(htmlElement);
 
     try {
       await axios.post(`${backendUrl}/feedback/create`, {
         title: form.feedback_Title,
         description: form.feedback_Description,
         projectId: projectId,
+        htmlElement: htmlElement,
       });
       //console.log("Project updated successfully");
     } catch (err) {

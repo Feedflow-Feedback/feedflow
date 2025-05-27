@@ -59,10 +59,10 @@ export class ProjectsService {
     });
 
     if (!user) {
-      throw new Error(`User with ID ${userId} not found`);
+      throw new Error('User not found');
     }
 
-    return user.projects ?? []; // Always return an array
+    return user.projects;
   }
 
   async delete(id: string) {

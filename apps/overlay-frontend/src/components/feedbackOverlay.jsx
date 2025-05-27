@@ -5,12 +5,12 @@ import SortOptions from "./feedbackOverlay/sortOptions.jsx";
 import IndividualFeedback from "./feedbackOverlay/individualFeedback.jsx";
 
 export default function FeedbackOverlay({ returnToRegularMode }) {
-  const [activeTab, setActiveTab] = useState("All");
+  const [activeTab, setActiveTab] = useState("Unresolved");
 
   return (
     <div
       id="feedbackOverlay"
-      className="absolute right-0 h-[calc(100vh-60px)] mt-[30px] w-xl bg-white shadow-2xl border-[0.5px] border-lightGray rounded-bl-2xl rounded-tl-2xl"
+      className="absolute top-0 right-0 h-[calc(100vh-60px)] mt-[30px] w-xl bg-white shadow-2xl border-[0.5px] border-lightGray rounded-bl-2xl rounded-tl-2xl"
     >
       <div className="relative">
         <div className="pt-6  px-8">

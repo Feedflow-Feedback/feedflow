@@ -1,18 +1,6 @@
-const people = [
-  {
-    name: "Lindsay Walton",
-    title: "28.06.2025",
-    email: "open",
-  },
-  {
-    name: "Lindsay Walton",
-    title: "28.05.2025",
-    email: "open2",
-  },
-  // More people...
-];
+import FeedbackDetailsModal from "../feedbackDetailsModal/feedbackDetailsModal";
 
-export default function FeedbacksTable() {
+export default function FeedbacksTable({ feedbacks }) {
   return (
     <div className="flow-root">
       <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -42,16 +30,17 @@ export default function FeedbacksTable() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-black/20 bg-white">
-                {people.map((person) => (
-                  <tr key={person.email}>
+                {feedbacks.map((feedback) => (
+                  <tr key={feedback.id} className="cursor-pointer">
+                    <FeedbackDetailsModal open={true} />
                     <td className="py-4 pr-3 pl-4 text-sm font-medium whitespace-nowrap text-gray-900 sm:pl-6 w-full">
-                      {person.name}
+                      {feedback.title}
                     </td>
                     <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">
-                      {person.title}
+                      wip
                     </td>
                     <td className="px-6 py-4 text-sm whitespace-nowrap text-gray-500">
-                      {person.email}
+                      {feedback.status}
                     </td>
                   </tr>
                 ))}
