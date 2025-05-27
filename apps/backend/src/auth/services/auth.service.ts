@@ -39,7 +39,7 @@ export class AuthService {
     return this.signIn(user);
   }
 
-  async register(input: AuthInput): Promise<User | string> {
+  async register(input: AuthInput): Promise<Partial<User>> {
     // Check if user already exists
     const existingUser = await this.usersService.findUserByEMail(input.email);
     if (existingUser) {

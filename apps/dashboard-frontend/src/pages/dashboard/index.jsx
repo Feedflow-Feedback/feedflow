@@ -34,10 +34,7 @@ export default function Dashboard() {
       try {
         const response = await axios.post(
           `${backendUrl}/projects/getMyProjects`,
-
-          {
-            projectIds,
-          },
+          userId,
 
           { headers: { Authorization: `Bearer ${token}` } }
         );

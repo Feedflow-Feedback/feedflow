@@ -8,6 +8,7 @@ type ProjectAndUser = {
   name: string;
   description?: string;
   userId: string;
+  url?: string;
 };
 
 @Injectable()
@@ -28,33 +29,40 @@ export class ProjectsService {
   }
 
   async create(data: ProjectAndUser) {
-    const project = this.projectRepo.create(data);
+    const { name, description, url, userId } = data;
+
+    const user = await this.usersRepo.findOne({
+      where: { userId },
+      relations: ['projects'], // Load current projects
+    });
+
+    if (!user) {
+      throw new Error('User not found');
+    }
+
+    const project = this.projectRepo.create({ name, description, url });
 
     const savedProject = await this.projectRepo.save(project);
 
-    if (data.userId) {
-      const user = await this.usersRepo.findOne({
-        where: { userId: data.userId },
-      });
-      if (user) {
-        user.projectIds = [...(user.projectIds || []), savedProject.id];
-        await this.usersRepo.save(user);
-      }
-    }
+    // Add the project to the user's projects
+    user.projects = [...(user.projects || []), savedProject];
+
+    await this.usersRepo.save(user);
 
     return savedProject;
   }
 
-  async findAllByIds(projectIds: string[]) {
-    const projects: Project[] = [];
-    for (const id of projectIds) {
-      const project = await this.projectRepo.findOne({ where: { id } });
-      if (project) {
-        projects.push(project);
-      }
+  async findAllUserProjects(userId: string) {
+    const user = await this.usersRepo.findOne({
+      where: { userId },
+      relations: ['projects'],
+    });
+
+    if (!user) {
+      throw new Error(`User with ID ${userId} not found`);
     }
 
-    return projects;
+    return user.projects ?? []; // Always return an array
   }
 
   async delete(id: string) {

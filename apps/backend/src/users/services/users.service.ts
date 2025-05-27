@@ -25,9 +25,10 @@ export class UsersService {
       .getOne();
   }
 
-  async createUser(data: CreateUserDto): Promise<User> {
+  async createUser(data: CreateUserDto): Promise<Partial<User>> {
     const user = this.userRepo.create(data);
+    await this.userRepo.save(user);
     const returnUser = { userId: user.userId, email: user.email };
-    return await this.userRepo.save(returnUser);
+    return returnUser;
   }
 }

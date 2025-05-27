@@ -5,9 +5,11 @@ import {
   CreateDateColumn,
   OneToMany,
   PrimaryGeneratedColumn,
+  ManyToOne,
 } from 'typeorm';
 
 import { Feedback } from './feedback';
+import { User } from './user';
 
 @Entity('projects')
 export class Project {
@@ -28,4 +30,7 @@ export class Project {
 
   @OneToMany(() => Feedback, (feedback) => feedback.project)
   feedbacks: Feedback[];
+
+  @ManyToOne(() => User, (user) => user.projects)
+  user: User;
 }

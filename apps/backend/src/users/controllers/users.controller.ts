@@ -17,10 +17,11 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Post()
-  async createUser(@Body() data: CreateUserDto): Promise<User> {
+  async createUser(@Body() data: CreateUserDto): Promise<Partial<User>> {
     if (!data.email || !data.password) {
       throw new BadRequestException('Email is required & password is required');
     }
+    console.log('Creating user with data:', data);
     return this.usersService.createUser(data);
   }
 
@@ -50,7 +51,7 @@ export class UsersController {
       throw new BadRequestException('Email query param is required');
     }
     const user = await this.usersService.findUserByUserId(data.userId);
-    const projectIds = user?.projectIds || [];
+    const projectIds = user?.projects || [];
     return projectIds;
   }
 }
