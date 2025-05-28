@@ -119,9 +119,9 @@ export default function Settings({ id, name, description, url }) {
             </button>
           </form>
         </div>
-        <div className="mt-6">
-          <p className="text-p-lg font-bold">Notifications - Comming Soon</p>
-          <div className="mt-2">
+        <div className="mt-6 relative">
+          <p className="text-p-lg font-bold">Notifications - Coming Soon</p>
+          <div className="mt-2 select-none pointer-events-none opacity-50">
             <label
               htmlFor="description"
               className="block text-p-md font-regular text-left"
@@ -134,10 +134,13 @@ export default function Settings({ id, name, description, url }) {
                 name="title"
                 type="title"
                 placeholder="new Project"
-                className="block w-full rounded-md bg-white px-3 py-1.5 text-base outline-1 -outline-offset-1 placeholder:text-p-sm "
+                className="block w-full rounded-md bg-white px-3 py-1.5 "
+                disabled
               />
             </div>
           </div>
+          {/* Overlay haze */}
+          <div className="absolute inset-0 bg-gray-200 opacity-60 pointer-events-none rounded-md"></div>
         </div>
         <div className="mt-6">
           <ConfirmDeleteModal

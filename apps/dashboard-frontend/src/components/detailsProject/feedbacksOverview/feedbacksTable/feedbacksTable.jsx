@@ -69,6 +69,16 @@ export default function FeedbacksTable({ feedbacks, update }) {
                     </td>
                   </tr>
                 ))}
+                {feedbacks.length === 0 && (
+                  <tr>
+                    <td
+                      colSpan="3"
+                      className="py-4 text-center text-sm text-gray-500"
+                    >
+                      No feedbacks available.
+                    </td>
+                  </tr>
+                )}
               </tbody>
             </table>
             {selectedFeedback && (
