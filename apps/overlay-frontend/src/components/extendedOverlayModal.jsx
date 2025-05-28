@@ -77,6 +77,11 @@ export default function extendedOverlayModal({ open, close, htmlElement }) {
               </div>
               <div className="mt-5 sm:mt-6 flex justify-between ">
                 <div className="flex items-center">
+                  <input
+                    type="file"
+                    accept="image/*"
+                    //  onChange={handleFileChange}
+                  />
                   <img
                     src={uploadIcon}
                     alt="Feedback Icon"
