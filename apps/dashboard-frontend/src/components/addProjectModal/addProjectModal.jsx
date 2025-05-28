@@ -113,7 +113,7 @@ export default function addProjectModal({
                           id="url"
                           name="url"
                           type="url"
-                          placeholder="httsp://example.com"
+                          placeholder="https://example.com"
                           value={form.url}
                           onChange={handleChange}
                           required

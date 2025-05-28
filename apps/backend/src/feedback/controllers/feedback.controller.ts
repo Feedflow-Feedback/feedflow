@@ -6,6 +6,7 @@ import {
   HttpCode,
   UseGuards,
   HttpStatus,
+  Patch,
   BadRequestException,
 } from '@nestjs/common';
 
@@ -40,4 +41,15 @@ export class FeedbackController {
 
     return this.feedbackService.findByProjectId(projectId);
   }
+
+  @HttpCode(HttpStatus.OK)
+  @Patch('updateFeedback')
+  async updateFeedback(@Body() data: any) {
+    if (!data.feedbackId) {
+      throw new BadRequestException('feedbackId is required');
+    }
+
+    return this.feedbackService.updateStatus(data.feedbackId, data.status);
+  }
+  $;
 }

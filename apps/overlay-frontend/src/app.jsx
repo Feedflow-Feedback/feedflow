@@ -7,7 +7,7 @@ import ExtendedOverlayModal from "./components/extendedOverlayModal.jsx";
 import axios from "axios";
 
 export function App() {
-  window.PROJECT_ID = "7ac760a6-6020-4c19-b99d-d03ad8103e6e";
+  window.PROJECT_ID = "5c300cf3-322a-4f14-974c-05b9fdf34576";
   const projectId = window.PROJECT_ID;
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
@@ -140,11 +140,14 @@ export function App() {
           </>
         )}
 
-        {feedbacks.map((feedback, index) => (
+        {/* {feedbacks.map((feedback, index) => (
           <p>{feedback.htmlElement}</p>
-        ))}
+        ))} */}
         {mode === "showFeedback" && (
-          <FeedbackOverlay returnToRegularMode={returnToRegularMode} />
+          <FeedbackOverlay
+            returnToRegularMode={returnToRegularMode}
+            feedbacks={feedbacks}
+          />
         )}
         {mode === "showTutorial" && (
           <TutorialOverlay returnToRegularMode={returnToRegularMode} />

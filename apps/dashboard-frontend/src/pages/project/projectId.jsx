@@ -26,12 +26,12 @@ export default function Project() {
         projectId: id,
       }
     );
-    console.log("Fetch feedbacks for project:", id);
-    console.log("Feedbacks:", response.data);
+
     setFeedbacks(response.data);
   };
 
   const getProjects = async () => {
+    console.log("getProjects called with id:", id);
     try {
       const response = await axios.post(
         `${backendUrl}/projects/getProjectDetails`,
@@ -94,7 +94,10 @@ export default function Project() {
               <div>
                 {/* <SearchBar /> */}
                 <div className="mt-4">
-                  <FeedbacksTable feedbacks={feedbacks} />
+                  <FeedbacksTable
+                    feedbacks={feedbacks}
+                    update={() => getFeedbacks()}
+                  />
                 </div>
               </div>
             )}

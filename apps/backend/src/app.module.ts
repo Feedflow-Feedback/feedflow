@@ -11,6 +11,7 @@ import { User } from './typeorm/entities/user';
 import { ConfigModule } from '@nestjs/config';
 import { FeedbackStatusHistory } from './typeorm/entities/feedback-status-history';
 import { FeedbackModule } from './feedback/feedback.module';
+import { Comment } from './typeorm/entities/comment';
 
 @Module({
   imports: [
@@ -24,12 +25,13 @@ import { FeedbackModule } from './feedback/feedback.module';
       database: 'feedflow',
       autoLoadEntities: true,
       synchronize: true, // set to false in production!
-      entities: [Project, Feedback, User],
+      entities: [Project, Feedback, User, Comment, MediaFile],
     }),
     TypeOrmModule.forFeature([
       Project,
       User,
       Feedback,
+      Comment,
       MediaFile,
       FeedbackStatusHistory,
     ]),

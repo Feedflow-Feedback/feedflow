@@ -15,7 +15,7 @@ export default function Dashboard() {
   const userId = useAuthStore((state) => state.userId);
 
   const refreshData = () => {
-    console.log("refreshData");
+    getProjects();
   };
 
   const getProjects = async () => {

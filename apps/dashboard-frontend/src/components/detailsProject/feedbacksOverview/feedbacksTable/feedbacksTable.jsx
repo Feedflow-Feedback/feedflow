@@ -1,7 +1,7 @@
 import FeedbackDetailsModal from "../feedbackDetailsModal/feedbackDetailsModal";
 import { act, useState } from "react";
 
-export default function FeedbacksTable({ feedbacks }) {
+export default function FeedbacksTable({ feedbacks, update }) {
   const [open, setOpen] = useState(false);
   const [selectedFeedback, setSelectedFeedback] = useState(null);
 
@@ -16,9 +16,12 @@ export default function FeedbacksTable({ feedbacks }) {
   };
 
   const closeAndUpdate = () => {
-    console.log("closeAndUpdate called");
     setOpen(false);
     setSelectedFeedback(null);
+  };
+
+  const updateData = () => {
+    update();
   };
   return (
     <div className="flow-root">
@@ -74,6 +77,7 @@ export default function FeedbacksTable({ feedbacks }) {
                 close={handleClose}
                 feedback={selectedFeedback}
                 closeAndUpdate={() => closeAndUpdate()}
+                update={() => updateData()}
               />
             )}
           </div>

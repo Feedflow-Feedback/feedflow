@@ -38,4 +38,8 @@ export class FeedbackService {
       relations: ['project'],
     });
   }
+
+  async updateStatus(id: string, status: any) {
+    return this.feedbackRepo.update(id, { status });
+  }
 }

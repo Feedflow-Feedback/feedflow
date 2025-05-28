@@ -24,9 +24,9 @@ export class FeedbackStatusHistory {
   @PrimaryColumn('uuid')
   id: string;
 
-  @ManyToOne(() => Feedback, (feedback) => feedback.feedbackStatusHistories, {
+  /*@ManyToOne(() => Feedback, (feedback) => feedback.feedbackStatusHistories, {
     onDelete: 'CASCADE',
-  })
+  })*/
   @JoinColumn({ name: 'feedback_id' })
   feedback: Feedback;
 

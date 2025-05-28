@@ -1,10 +1,10 @@
 import { useState } from "preact/hooks";
 import crossIcon from "../../assets/icons/cross_icon.svg";
-export default function IndividualFeedback() {
+export default function IndividualFeedback({ feedback }) {
   const [openComment, setOpenComment] = useState(false);
 
   return (
-    <div>
+    <div className="bg-white shadow-md px-4 py-4 rounded-md border-[0.5px] border-lightGray">
       <div className="flex ">
         <div>
           <div className="aspect-square w-12 rounded-full bg-black/60"></div>
@@ -14,10 +14,10 @@ export default function IndividualFeedback() {
             <p className="font-bold">James Martin</p>
             <p className="ml-2 text-black/70 text-p-xs">24.04.2025</p>
           </div>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor padro amaranco incididunt ut labore 
-          </p>
+          <div className="mt-2">
+            <p className="font-bold"> {feedback.title}</p>
+            <p>{feedback.description}</p>
+          </div>
         </div>
       </div>
 

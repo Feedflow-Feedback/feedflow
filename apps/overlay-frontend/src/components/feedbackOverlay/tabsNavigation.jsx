@@ -1,9 +1,20 @@
-export default function TabsNavigation({ activeTab, setActiveTab }) {
-  const tabs = [
-    { label: "Unresolved", count: 3 },
-    { label: "Resolved", count: 2 },
-    { label: "All", count: 10 },
-  ];
+import { useEffect, useState } from "react";
+
+export default function TabsNavigation({
+  activeTab,
+  setActiveTab,
+  openAmount,
+  resolvedAmount,
+}) {
+  const [tabs, setTabs] = useState([]);
+
+  useEffect(() => {
+    setTabs([
+      { label: "Unresolved", count: openAmount },
+      { label: "Resolved", count: resolvedAmount },
+      { label: "All", count: openAmount + resolvedAmount },
+    ]);
+  }, [openAmount, resolvedAmount]);
 
   return (
     <div className="border-b-[1.75px] border-black/60 px-2">

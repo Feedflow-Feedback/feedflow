@@ -4,13 +4,14 @@ import {
   PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
+  UpdateDateColumn,
   ManyToOne,
   OneToMany,
   JoinColumn,
 } from 'typeorm';
 import { Project } from './project';
 import { MediaFile } from './media-file';
-import { FeedbackStatusHistory } from './feedback-status-history';
+import { Comment } from './comment';
 
 @Entity('feedback')
 export class Feedback {
@@ -30,6 +31,12 @@ export class Feedback {
   description: string;
 
   @Column('text')
+  autor: string;
+
+  @Column('text')
+  autorEmail: string;
+
+  @Column('text')
   htmlElement: string;
 
   @Column('json', { nullable: true })
@@ -44,16 +51,19 @@ export class Feedback {
 
   @CreateDateColumn()
   submitted_at: Date;
+
+  @UpdateDateColumn()
+  updated_at: Date;
+
+  @OneToMany(() => MediaFile, (media) => media.feedback)
+  mediaFiles: MediaFile[];
   /*
   @Column({ type: 'varchar', length: 45, nullable: true })
   created_by_ip: string;*/
 
-  @Column({ default: false })
-  integration_sent: boolean;
+  /*@Column({ default: false })
+  integration_sent: boolean;*/
 
-  @OneToMany(() => MediaFile, (media) => media.feedback)
-  mediaFiles: MediaFile[];
-
-  @OneToMany(() => FeedbackStatusHistory, (history) => history.feedback)
-  feedbackStatusHistories: FeedbackStatusHistory[];
+  @OneToMany(() => Comment, (comment) => comment.feedback)
+  comments: Comment[];
 }
