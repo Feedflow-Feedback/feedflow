@@ -15,9 +15,14 @@ export default function extendedOverlayModal({ open, close, htmlElement }) {
   const [form, setForm] = useState({
     feedback_Title: "",
     feedback_Description: "",
+    feedback_AuthorEmail: "",
     feedback_Author: "",
-    feedback_File: null,
+    feedback_File: "",
   });
+
+  function handleChange(e) {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  }
 
   const toBase64 = (file) =>
     new Promise((resolve, reject) => {
@@ -37,10 +42,6 @@ export default function extendedOverlayModal({ open, close, htmlElement }) {
     setForm({ ...form, feedback_File: base64 });
   };
 
-  function handleChange(e) {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  }
-
   async function handleSubmit(e) {
     e.preventDefault();
     //console.log(htmlElement);
@@ -49,9 +50,11 @@ export default function extendedOverlayModal({ open, close, htmlElement }) {
       await axios.post(`${backendUrl}/feedback/create`, {
         title: form.feedback_Title,
         description: form.feedback_Description,
+        author: form.feedback_Author,
+        authorEmail: form.feedback_AuthorEmail,
         projectId: projectId,
         htmlElement: htmlElement,
-        image_data: form.feedback_File,
+        imageData: form.feedback_File,
       });
       //console.log("Project updated successfully");
     } catch (err) {
@@ -74,6 +77,26 @@ export default function extendedOverlayModal({ open, close, htmlElement }) {
           >
             <form onSubmit={handleSubmit}>
               <div className="space-y-4">
+                <input
+                  id="feedback_Author"
+                  name="feedback_Author"
+                  type="text"
+                  required
+                  placeholder="Your Name"
+                  onChange={handleChange}
+                  value={form.Author}
+                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                />
+                <input
+                  id="feedback_AuthorEmail"
+                  name="feedback_AuthorEmail"
+                  type="text"
+                  required
+                  placeholder="Your Email"
+                  onChange={handleChange}
+                  value={form.feedback_AuthorEmail}
+                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                />
                 <input
                   id="feedback_Title"
                   name="feedback_Title"
@@ -98,16 +121,15 @@ export default function extendedOverlayModal({ open, close, htmlElement }) {
               </div>
               <div className="mt-5 sm:mt-6 flex justify-between ">
                 <div className="flex items-center">
-                  <img
-                    src={uploadIcon}
-                    alt="Feedback Icon"
-                    className="w-6 h-6 inline-block mr-2"
-                  />
                   <input
                     type="file"
                     accept="image/*"
                     onChange={handleFileChange}
-                    //  onChange={handleFileChange}
+                  />
+                  <img
+                    src={uploadIcon}
+                    alt="Feedback Icon"
+                    className="w-6 h-6 inline-block mr-2"
                   />
                 </div>
                 <div className="flex gap-4">

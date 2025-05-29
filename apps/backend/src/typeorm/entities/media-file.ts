@@ -13,9 +13,9 @@ export class MediaFile {
   @PrimaryColumn('uuid')
   id: string;
 
-  @ManyToOne(() => Feedback, (feedback) => feedback.mediaFiles, {
+  /*@ManyToOne(() => Feedback, (feedback) => feedback.mediaFiles, {
     onDelete: 'CASCADE',
-  })
+  })*/
   @JoinColumn({ name: 'feedback_id' })
   feedback: Feedback;
 

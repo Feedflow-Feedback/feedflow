@@ -21,7 +21,14 @@ export class FeedbackController {
   @HttpCode(HttpStatus.OK)
   @Post('create')
   async create(@Body() dto: any): Promise<Feedback> {
-    if (!dto.description || !dto.title || !dto.projectId || !dto.htmlElement) {
+    if (
+      !dto.description ||
+      !dto.title ||
+      !dto.projectId ||
+      !dto.htmlElement ||
+      !dto.author ||
+      !dto.authorEmail
+    ) {
       throw new BadRequestException(
         'title, description, and projectId are required',
       );

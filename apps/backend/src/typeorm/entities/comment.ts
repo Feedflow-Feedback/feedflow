@@ -28,8 +28,8 @@ export class Comment {
   description: string;
 
   @Column('text')
-  autor: string;
+  author: string;
 
   @Column('text')
-  autorEmail: string;
+  authorEmail: string;
 }

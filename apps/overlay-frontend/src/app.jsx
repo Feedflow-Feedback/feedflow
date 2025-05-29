@@ -7,7 +7,7 @@ import ExtendedOverlayModal from "./components/extendedOverlayModal.jsx";
 import axios from "axios";
 
 export function App() {
-  window.PROJECT_ID = "5c300cf3-322a-4f14-974c-05b9fdf34576";
+  window.PROJECT_ID = "bc40efbc-c042-4c4d-9685-ae1a2348849d";
   const projectId = window.PROJECT_ID;
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
 

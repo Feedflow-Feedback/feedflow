@@ -23,6 +23,9 @@ export class FeedbackService {
     const feedback = this.feedbackRepo.create({
       description: createDto.description,
       title: createDto.title,
+      author: createDto.author,
+      authorEmail: createDto.authorEmail,
+      imageData: createDto.imageData, // Assuming imageData is a Buffer
       //metadata: createDto.metadata,
       status: 'open',
       htmlElement: createDto.htmlElement,

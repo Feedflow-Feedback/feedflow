@@ -10,7 +10,7 @@ import {
   JoinColumn,
 } from 'typeorm';
 import { Project } from './project';
-import { MediaFile } from './media-file';
+
 import { Comment } from './comment';
 
 @Entity('feedback')
@@ -31,10 +31,10 @@ export class Feedback {
   description: string;
 
   @Column('text')
-  autor: string;
+  author: string;
 
   @Column('text')
-  autorEmail: string;
+  authorEmail: string;
 
   @Column('text')
   htmlElement: string;
@@ -55,8 +55,8 @@ export class Feedback {
   @UpdateDateColumn()
   updated_at: Date;
 
-  @OneToMany(() => MediaFile, (media) => media.feedback)
-  mediaFiles: MediaFile[];
+  @Column({ type: 'longblob', nullable: true })
+  imageData: Buffer;
   /*
   @Column({ type: 'varchar', length: 45, nullable: true })
   created_by_ip: string;*/
