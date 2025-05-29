@@ -164,16 +164,7 @@ export default function signIn() {
                   </a>
                 </div>
               </div>
-
-              <div className="flex w-full justify-center">
-                <button
-                  type="submit"
-                  className="flex cursor-pointer w-min items-center text-base justify-center rounded-md  px-8 py-1.5 text-p-sm font-semibold text-white shadow-xs bg-orange hover:bg-orange/80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange/90"
-                >
-                  Login
-                </button>
-              </div>
-              <div className="h-8  ">
+              <div className="h-8 mb-0">
                 <p
                   className={` text-center text-sm font-medium text-black ${
                     error ? "block" : "hidden"
@@ -182,7 +173,20 @@ export default function signIn() {
                   {error}
                 </p>
               </div>
+              <div className="flex w-full justify-center">
+                <button
+                  type="submit"
+                  className="flex cursor-pointer w-min items-center text-base justify-center rounded-md  px-8 py-1.5 text-p-sm font-semibold text-white shadow-xs bg-orange hover:bg-orange/80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange/90"
+                >
+                  Login
+                </button>
+              </div>
             </form>
+            <div className="text-center mt-8">
+              <a href="/register" className="underline">
+                Register?
+              </a>
+            </div>
           </div>
         </div>
       </div>

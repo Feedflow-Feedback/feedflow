@@ -113,7 +113,15 @@ export default function register() {
                   />
                 </div>
               </div>
-              {error && <p className="text-center text-orange">{error}</p>}
+              <div className="h-8 mb-0">
+                <p
+                  className={` text-center text-sm font-medium text-black ${
+                    error ? "block" : "hidden"
+                  }`}
+                >
+                  {error}
+                </p>
+              </div>
               <div className="flex w-full justify-center">
                 <button
                   type="submit"
