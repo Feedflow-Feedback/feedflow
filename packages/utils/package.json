@@ -1,0 +1,13 @@
+{
+  "name": "@feedflow/utils",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json --watch"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
