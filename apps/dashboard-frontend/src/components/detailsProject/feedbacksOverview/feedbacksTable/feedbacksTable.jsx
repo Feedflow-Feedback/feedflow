@@ -1,5 +1,6 @@
 import FeedbackDetailsModal from "../feedbackDetailsModal/feedbackDetailsModal";
-import { act, useState } from "react";
+import { useState } from "react";
+import { formatDateReadable } from "@feedflow/utils";
 
 export default function FeedbacksTable({ feedbacks, update }) {
   const [open, setOpen] = useState(false);
@@ -61,20 +62,17 @@ export default function FeedbacksTable({ feedbacks, update }) {
                     <td className="py-4 pr-3 pl-4 text-sm font-medium whitespace-nowrap text-gray-900 sm:pl-6 w-full">
                       {feedback.title}
                     </td>
-                    <td className="px-3 py-4 text-sm whitespace-nowrap text-gray-500">
-                      wip
+                    <td className="px-3 py-4 text-sm whitespace-nowrap ">
+                      {formatDateReadable(feedback.updated_at)}
                     </td>
-                    <td className="px-6 py-4 text-sm whitespace-nowrap text-gray-500">
+                    <td className="px-6 py-4 text-sm whitespace-nowrap min-w-28">
                       {feedback.status}
                     </td>
                   </tr>
                 ))}
                 {feedbacks.length === 0 && (
                   <tr>
-                    <td
-                      colSpan="3"
-                      className="py-4 text-center text-sm text-gray-500"
-                    >
+                    <td colSpan="3" className="py-4 text-center text-sm ">
                       No feedbacks available.
                     </td>
                   </tr>

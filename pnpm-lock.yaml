@@ -141,6 +141,9 @@ importers:
       '@feedflow/ui':
         specifier: workspace:*
         version: link:../../packages/ui
+      '@feedflow/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
       '@headlessui/react':
         specifier: ^2.2.3
         version: 2.2.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -208,6 +211,9 @@ importers:
       '@feedflow/ui':
         specifier: workspace:*
         version: link:../../packages/ui
+      '@feedflow/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
       '@headlessui/react':
         specifier: ^2.2.3
         version: 2.2.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -312,6 +318,12 @@ importers:
         version: 4.1.7
       typescript:
         specifier: ^5.8.3
+        version: 5.8.3
+
+  packages/utils:
+    devDependencies:
+      typescript:
+        specifier: ^5.0.0
         version: 5.8.3
 
 packages:

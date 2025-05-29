@@ -7,6 +7,7 @@ import {
 import { useAuthStore } from "@/stores/authStore";
 import FeedbackStatusDropdown from "../feedbackStatusDropdown/feedbackStatusDropdown";
 import axios from "axios";
+import { blobToImageUrl } from "@feedflow/utils";
 export default function feedbackDetailsModal({
   open,
   close,
@@ -14,6 +15,7 @@ export default function feedbackDetailsModal({
   closeAndUpdate,
   update,
 }) {
+  //console.log("Feedback Details Modal", feedback.imageData);
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const token = useAuthStore((state) => state.token);
   const handleChangeStatus = async (newStatus, feedbackId) => {
@@ -64,11 +66,13 @@ export default function feedbackDetailsModal({
                   </p>
                 </div>
                 <div>
-                  <img
-                    src="https://placehold.co/600x400/EEE/31343C"
-                    alt="Feedback"
-                    className="mt-4 max-w-72 h-auto rounded-md"
-                  />
+                  {feedback.imageData !== null && (
+                    <img
+                      src={blobToImageUrl(feedback.imageData)}
+                      alt="Feedback"
+                      className="mt-4 max-w-72 h-auto rounded-md"
+                    />
+                  )}
                 </div>
               </div>
               <FeedbackStatusDropdown

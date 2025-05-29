@@ -21,37 +21,18 @@ export default function Dashboard() {
   const getProjects = async () => {
     try {
       const response = await axios.post(
-        `${backendUrl}/users/getProjectIds`,
-
+        `${backendUrl}/projects/getMyProjects`,
         {
           userId: userId,
         },
 
         { headers: { Authorization: `Bearer ${token}` } }
       );
-      const projectIds = response.data;
-
-      try {
-        const response = await axios.post(
-          `${backendUrl}/projects/getMyProjects`,
-          {
-            userId: userId,
-          },
-
-          { headers: { Authorization: `Bearer ${token}` } }
-        );
-        if (response.data !== null && response.data.length > 0) {
-          setProjects(response.data);
-        }
-      } catch (err) {
-        console.error("Get Project Ids failed, error:", err);
-      }
-
-      if (response.status === 200) {
-      } else if (response.status === 400) {
+      if (response.data !== null && response.data.length > 0) {
+        setProjects(response.data);
       }
     } catch (err) {
-      console.error("Create Project failed, error:", err);
+      console.error("Get Project Ids failed, error:", err);
     }
   };
 

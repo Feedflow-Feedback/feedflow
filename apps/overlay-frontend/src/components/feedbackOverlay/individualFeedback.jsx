@@ -1,36 +1,43 @@
 import { useState } from "preact/hooks";
 import crossIcon from "../../assets/icons/cross_icon.svg";
+import { formatDateReadable } from "@feedflow/utils";
+
 export default function IndividualFeedback({ feedback }) {
   const [openComment, setOpenComment] = useState(false);
 
   return (
     <div className="bg-white shadow-md px-4 py-4 rounded-md border-[0.5px] border-lightGray">
       <div className="flex ">
-        <div>
-          <div className="aspect-square w-12 rounded-full bg-black/60"></div>
-        </div>
-        <div className="ml-6">
-          <div className="flex items-end">
-            <p className="font-bold">James Martin</p>
-            <p className="ml-2 text-black/70 text-p-xs">24.04.2025</p>
-          </div>
-          <div className="mt-2">
-            <p className="font-bold"> {feedback.title}</p>
-            <p>{feedback.description}</p>
-          </div>
+        <div className="">
+          <p className="font-bold"> {feedback.title}</p>
+          <p>{feedback.description}</p>
         </div>
       </div>
 
-      {!openComment && (
-        <div className="flex justify-end mt-6">
-          <button
-            className="bg-blue text-nowrap py-1 px-6 text-white rounded-md cursor-pointer"
-            onClick={() => setOpenComment(!openComment)}
-          >
-            Add Comment
-          </button>
+      <div className="flex justify-between items-end mt-4">
+        <div>
+          <div className="text-p-xs">
+            <p>{feedback.author}</p>
+            <p>{feedback.authorEmail}</p>
+          </div>
+          <div className="text-p-xs">
+            {formatDateReadable(feedback.updated_at)}
+          </div>
         </div>
-      )}
+
+        <div>
+          {!openComment && (
+            <div className="flex justify-end mt-6">
+              <button
+                className="bg-blue text-nowrap py-1 px-6 text-white rounded-md cursor-pointer"
+                onClick={() => setOpenComment(!openComment)}
+              >
+                Add Comment
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
 
       {openComment && (
         <div className="relative mt-4">

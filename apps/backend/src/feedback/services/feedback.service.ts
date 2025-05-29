@@ -20,12 +20,16 @@ export class FeedbackService {
       id: createDto.projectId,
     });
 
+    const imageBuffer = createDto.imageData
+      ? Buffer.from(createDto.imageData)
+      : undefined;
+
     const feedback = this.feedbackRepo.create({
       description: createDto.description,
       title: createDto.title,
       author: createDto.author,
       authorEmail: createDto.authorEmail,
-      imageData: createDto.imageData, // Assuming imageData is a Buffer
+      imageData: imageBuffer, // Assuming imageData is a Buffer
       //metadata: createDto.metadata,
       status: 'open',
       htmlElement: createDto.htmlElement,

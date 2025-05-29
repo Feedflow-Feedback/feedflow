@@ -24,22 +24,16 @@ export default function extendedOverlayModal({ open, close, htmlElement }) {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
-  const toBase64 = (file) =>
-    new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result.split(",")[1]); // Remove `data:mime/type;base64,`
-      reader.onerror = (error) => reject(error);
-    });
-
   const handleFileChange = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
 
-    // Convert file to base64
-    const base64 = await toBase64(file);
+    const arrayBuffer = await file.arrayBuffer();
+    const uint8Array = new Uint8Array(arrayBuffer);
 
-    setForm({ ...form, feedback_File: base64 });
+    const fileData = Array.from(uint8Array);
+
+    setForm({ ...form, feedback_File: fileData });
   };
 
   async function handleSubmit(e) {
@@ -56,7 +50,13 @@ export default function extendedOverlayModal({ open, close, htmlElement }) {
         htmlElement: htmlElement,
         imageData: form.feedback_File,
       });
-      //console.log("Project updated successfully");
+      setForm({
+        feedback_Title: "",
+        feedback_Description: "",
+        feedback_AuthorEmail: "",
+        feedback_Author: "",
+        feedback_File: "",
+      });
     } catch (err) {
       console.error("Create Project failed, error:", err);
     }
