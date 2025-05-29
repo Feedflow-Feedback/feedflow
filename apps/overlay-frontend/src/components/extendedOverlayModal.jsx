@@ -15,7 +15,27 @@ export default function extendedOverlayModal({ open, close, htmlElement }) {
   const [form, setForm] = useState({
     feedback_Title: "",
     feedback_Description: "",
+    feedback_Author: "",
+    feedback_File: null,
   });
+
+  const toBase64 = (file) =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result.split(",")[1]); // Remove `data:mime/type;base64,`
+      reader.onerror = (error) => reject(error);
+    });
+
+  const handleFileChange = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    // Convert file to base64
+    const base64 = await toBase64(file);
+
+    setForm({ ...form, feedback_File: base64 });
+  };
 
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -23,7 +43,7 @@ export default function extendedOverlayModal({ open, close, htmlElement }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log(htmlElement);
+    //console.log(htmlElement);
 
     try {
       await axios.post(`${backendUrl}/feedback/create`, {
@@ -31,6 +51,7 @@ export default function extendedOverlayModal({ open, close, htmlElement }) {
         description: form.feedback_Description,
         projectId: projectId,
         htmlElement: htmlElement,
+        image_data: form.feedback_File,
       });
       //console.log("Project updated successfully");
     } catch (err) {
@@ -77,15 +98,16 @@ export default function extendedOverlayModal({ open, close, htmlElement }) {
               </div>
               <div className="mt-5 sm:mt-6 flex justify-between ">
                 <div className="flex items-center">
-                  <input
-                    type="file"
-                    accept="image/*"
-                    //  onChange={handleFileChange}
-                  />
                   <img
                     src={uploadIcon}
                     alt="Feedback Icon"
                     className="w-6 h-6 inline-block mr-2"
+                  />
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleFileChange}
+                    //  onChange={handleFileChange}
                   />
                 </div>
                 <div className="flex gap-4">
