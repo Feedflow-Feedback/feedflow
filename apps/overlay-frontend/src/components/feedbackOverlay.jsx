@@ -3,7 +3,7 @@ import crossIcon from "../assets/icons/cross_icon.svg";
 import TabsNavigation from "./feedbackOverlay/tabsNavigation.jsx";
 import SortOptions from "./feedbackOverlay/sortOptions.jsx";
 import IndividualFeedback from "./feedbackOverlay/individualFeedback.jsx";
-import OpenFeedbacks from "./feedbackOverlay/openFeedbacks.jsx";
+import Feedbacks from "./feedbackOverlay/feedbacks.jsx";
 
 export default function FeedbackOverlay({ returnToRegularMode, feedbacks }) {
   const [activeTab, setActiveTab] = useState("Unresolved");
@@ -29,7 +29,7 @@ export default function FeedbackOverlay({ returnToRegularMode, feedbacks }) {
   return (
     <div
       id="feedbackOverlay"
-      className="absolute top-0 right-0 h-[calc(100vh-60px)] mt-[30px] w-xl bg-white shadow-2xl border-[0.5px] border-lightGray rounded-bl-2xl rounded-tl-2xl"
+      className="absolute top-0 right-0 overflow-y-scroll h-[calc(100vh-60px)] mt-[30px] w-xl bg-white shadow-2xl border-[0.5px] border-lightGray rounded-bl-2xl rounded-tl-2xl"
     >
       <div className="relative">
         <div className="pt-6  px-8">
@@ -60,11 +60,11 @@ export default function FeedbackOverlay({ returnToRegularMode, feedbacks }) {
         <IndividualFeedback />
       </div> */}
       <div className="mt-4 text-sm text-gray-700">
-        {activeTab === "Unresolved" && (
-          <OpenFeedbacks feedbacks={openFeedbacks} />
+        {activeTab === "Unresolved" && <Feedbacks feedbacks={openFeedbacks} />}
+        {activeTab === "Resolved" && (
+          <Feedbacks feedbacks={resolvedFeedbacks} />
         )}
-        {activeTab === "Resolved" && <p>Showing resolved items.</p>}
-        {activeTab === "All" && <p>Showing all items.</p>}
+        {activeTab === "All" && <Feedbacks feedbacks={feedbacks} />}
       </div>
     </div>
   );

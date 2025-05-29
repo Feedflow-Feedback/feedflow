@@ -1,21 +1,30 @@
 import { useState } from "preact/hooks";
 import crossIcon from "../../assets/icons/cross_icon.svg";
-import { formatDateReadable } from "@feedflow/utils";
+import { formatDateReadable, blobToImageUrl } from "@feedflow/utils";
 
 export default function IndividualFeedback({ feedback }) {
   const [openComment, setOpenComment] = useState(false);
 
   return (
     <div className="bg-white shadow-md px-4 py-4 rounded-md border-[0.5px] border-lightGray">
-      <div className="flex ">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="">
           <p className="font-bold"> {feedback.title}</p>
           <p>{feedback.description}</p>
         </div>
+        <div className="flex flex-col items-center justify-center">
+          {feedback.imageData !== null && (
+            <img
+              src={blobToImageUrl(feedback.imageData)}
+              alt="Feedback"
+              className="mt-4 max-w-64 max-h-36 h-auto rounded-md"
+            />
+          )}
+        </div>
       </div>
 
       <div className="flex justify-between items-end mt-4">
-        <div>
+        <div className="flex items-end space-x-4">
           <div className="text-p-xs">
             <p>{feedback.author}</p>
             <p>{feedback.authorEmail}</p>

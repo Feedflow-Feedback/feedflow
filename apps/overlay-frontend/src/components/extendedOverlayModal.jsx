@@ -38,7 +38,6 @@ export default function extendedOverlayModal({ open, close, htmlElement }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    //console.log(htmlElement);
 
     try {
       await axios.post(`${backendUrl}/feedback/create`, {
@@ -122,15 +121,22 @@ export default function extendedOverlayModal({ open, close, htmlElement }) {
               <div className="mt-5 sm:mt-6 flex justify-between ">
                 <div className="flex items-center">
                   <input
+                    id="file-upload"
                     type="file"
                     accept="image/*"
                     onChange={handleFileChange}
+                    className="hidden" // hide the input
                   />
-                  <img
-                    src={uploadIcon}
-                    alt="Feedback Icon"
-                    className="w-6 h-6 inline-block mr-2"
-                  />
+                  <label
+                    htmlFor="file-upload"
+                    className="cursor-pointer flex items-center"
+                  >
+                    <img
+                      src={uploadIcon}
+                      alt="Upload"
+                      className="w-6 h-6 inline-block mr-2"
+                    />
+                  </label>
                 </div>
                 <div className="flex gap-4">
                   <button

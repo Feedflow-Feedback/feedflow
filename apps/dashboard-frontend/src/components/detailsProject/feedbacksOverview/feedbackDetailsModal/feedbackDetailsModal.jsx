@@ -33,7 +33,7 @@ export default function feedbackDetailsModal({
         }
       );
       if (response.status === 200) {
-        console.log("Feedback status updated successfully");
+        //console.log("Feedback status updated successfully");
         update();
       }
 

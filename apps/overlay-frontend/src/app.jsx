@@ -4,7 +4,10 @@ import FeedbackOverlay from "./components/feedbackOverlay.jsx";
 import TutorialOverlay from "./components/tutorialOverlay.jsx";
 import ExtendedOverlay from "./components/extendedOverlay.jsx";
 import ExtendedOverlayModal from "./components/extendedOverlayModal.jsx";
-import axios from "axios";
+import { findMatchingDomElements } from "./utils/feedbackDomUtils.js";
+import { createBorder, deleteBorder } from "./utils/borderHelper.js";
+import { fetchFeedbacksByProject } from "./services/feedbackService";
+import { Modes } from "./constants/modes";
 
 export function App() {
   window.PROJECT_ID = "bc40efbc-c042-4c4d-9685-ae1a2348849d";
@@ -17,49 +20,23 @@ export function App() {
   const [feedbacks, setFeedbacks] = useState([]);
 
   const returnToRegularMode = () => {
-    setMode("regular");
+    setMode(Modes.REGULAR);
   };
   const handleModeChange = (newMode) => {
     setMode(newMode);
   };
 
-  const deleteBorder = () => {
-    const existingBorder = document.getElementById("orange-screen-border");
-
-    if (existingBorder) {
-      existingBorder.remove();
-    }
-  };
-  const createBorder = () => {
-    const border = document.createElement("div");
-    border.style.position = "fixed";
-    border.style.top = "0";
-    border.style.left = "0";
-    border.style.width = "100vw";
-    border.style.height = "100vh";
-    border.style.pointerEvents = "none";
-    border.style.border = "5px solid #ff913a";
-    border.style.zIndex = "9999";
-    border.id = "orange-screen-border";
-
-    document.body.appendChild(border);
-  };
-
   const closeAndModeSwitch = () => {
     setIsOpenModalAddFeedback(false);
-    setMode("addFeedback");
+    setMode(Modes.ADD_FEEDBACK);
     deleteBorder();
     fetchAllFeedbacks();
   };
 
   const fetchAllFeedbacks = async () => {
-    const response = await axios.post(
-      `${backendUrl}/feedback/getAllByProject`,
-      {
-        projectId: projectId,
-      }
-    );
-    setFeedbacks(response.data);
+    const feedbacks = await fetchFeedbacksByProject(projectId, backendUrl);
+    setFeedbacks(feedbacks);
+    findMatchingDomElements(feedbacks);
   };
 
   useEffect(() => {
@@ -96,7 +73,7 @@ export function App() {
       ) {
         event.preventDefault();
         event.stopPropagation();
-        setMode("regular");
+        setMode(Modes.REGULAR);
         deleteBorder();
 
         return false;
@@ -114,6 +91,22 @@ export function App() {
       document.removeEventListener("click", handleClick, true);
     };
   }, [mode]);
+
+  const renderOverlay = () => {
+    switch (mode) {
+      case Modes.SHOW_FEEDBACK:
+        return (
+          <FeedbackOverlay
+            returnToRegularMode={returnToRegularMode}
+            feedbacks={feedbacks}
+          />
+        );
+      case Modes.SHOW_TUTORIAL:
+        return <TutorialOverlay returnToRegularMode={returnToRegularMode} />;
+      default:
+        return null;
+    }
+  };
 
   return (
     <>
@@ -140,18 +133,7 @@ export function App() {
           </>
         )}
 
-        {/* {feedbacks.map((feedback, index) => (
-          <p>{feedback.htmlElement}</p>
-        ))} */}
-        {mode === "showFeedback" && (
-          <FeedbackOverlay
-            returnToRegularMode={returnToRegularMode}
-            feedbacks={feedbacks}
-          />
-        )}
-        {mode === "showTutorial" && (
-          <TutorialOverlay returnToRegularMode={returnToRegularMode} />
-        )}
+        {renderOverlay()}
       </div>
     </>
   );

@@ -1,7 +1,7 @@
 import { useState } from "preact/hooks";
 import IndividualFeedback from "./individualFeedback";
 
-export default function openFeedbacks({ feedbacks }) {
+export default function feedbacks({ feedbacks }) {
   return (
     <div>
       {feedbacks.map((feedback, index) => {
