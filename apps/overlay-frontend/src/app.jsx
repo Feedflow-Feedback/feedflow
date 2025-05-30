@@ -8,6 +8,8 @@ import { findMatchingDomElements } from "./utils/feedbackDomUtils.js";
 import { createBorder, deleteBorder } from "./utils/borderHelper.js";
 import { fetchFeedbacksByProject } from "./services/feedbackService";
 import { Modes } from "./constants/modes";
+import { highlightDomElement } from "./utils/highlightDomElement.js";
+import { takeScreenshot } from "./utils/takeScreenshot.js";
 
 export function App() {
   window.PROJECT_ID = "bc40efbc-c042-4c4d-9685-ae1a2348849d";
@@ -47,13 +49,17 @@ export function App() {
     fetchAllFeedbacks();
   }, []);
   useEffect(() => {
-    if (mode !== "textFeedback") return;
+    if (mode !== "textFeedback" && mode !== "photoFeedback") return;
 
     if (mode === "textFeedback") {
       createBorder();
     }
 
-    const handleClick = (event) => {
+    if (mode === "photoFeedback") {
+      createBorder();
+    }
+
+    const handleClick = async (event) => {
       event.preventDefault();
       event.stopPropagation();
 
@@ -82,9 +88,26 @@ export function App() {
 
         return false;
       }
-
-      setIsOpenModalAddFeedback(true);
       setHtmlElement(el.outerHTML);
+      if (mode === "photoFeedback") {
+        console.log("Photo feedback mode active");
+        highlightDomElement(el);
+
+        const imageDataUrl = await takeScreenshot();
+
+        // Convert data URL to Blob
+        const res = await fetch(imageDataUrl);
+        const arrayBuffer = await res.arrayBuffer();
+        const uint8Array = new Uint8Array(arrayBuffer);
+
+        const fileData = Array.from(uint8Array);
+
+        console.log("Image data URL:", fileData);
+      }
+      if (mode === "textFeedback") {
+        console.log("Text feedback mode active");
+        setIsOpenModalAddFeedback(true);
+      }
 
       document.removeEventListener("click", handleClick, true);
     };
@@ -117,12 +140,41 @@ export function App() {
     <>
       <div>
         <p>Example Text</p>
-        <img
-          src="https://kartbahnlyss.ch/media/ca7bca87f7afbff765ab3f10ce6a175e89367e1e-245x51.png"
-          alt="Placeholder"
-        />
+        <div>
+          <img src="./src/assets/preact.svg" alt="Placeholder" />
+          <img src="./src/assets/preact.svg" alt="Placeholder" />
+          <img src="./src/assets/preact.svg" alt="Placeholder" />
+          <img src="./src/assets/preact.svg" alt="Placeholder" />
+          <img src="./src/assets/preact.svg" alt="Placeholder" />
+          <img src="./src/assets/preact.svg" alt="Placeholder" />
+          <img src="./src/assets/preact.svg" alt="Placeholder" />
+          <img src="./src/assets/preact.svg" alt="Placeholder" />
+          <img src="./src/assets/preact.svg" alt="Placeholder" />
+          <img src="./src/assets/preact.svg" alt="Placeholder" />
+          <img src="./src/assets/preact.svg" alt="Placeholder" />
+          <img src="./src/assets/preact.svg" alt="Placeholder" />
+          <img src="./src/assets/preact.svg" alt="Placeholder" />
+          <img src="./src/assets/preact.svg" alt="Placeholder" />
+          <img src="./src/assets/preact.svg" alt="Placeholder" />
+          <img src="./src/assets/preact.svg" alt="Placeholder" />
+          <img src="./src/assets/preact.svg" alt="Placeholder" />
+          <img src="./src/assets/preact.svg" alt="Placeholder" />
+          <img src="./src/assets/preact.svg" alt="Placeholder" />
+          <img src="./src/assets/preact.svg" alt="Placeholder" />
+          <img src="./src/assets/preact.svg" alt="Placeholder" />
+          <img src="./src/assets/preact.svg" alt="Placeholder" />
+          <img src="./src/assets/preact.svg" alt="Placeholder" />
+          <img src="./src/assets/preact.svg" alt="Placeholder" />
+          <img src="./src/assets/preact.svg" alt="Placeholder" />
+          <img src="./src/assets/preact.svg" alt="Placeholder" />
+          <img src="./src/assets/preact.svg" alt="Placeholder" />
+          <img src="./src/assets/preact.svg" alt="Placeholder" />
+        </div>
+
         <BasicOverlay mode={mode} setMode={setMode} />
-        {(mode === "addFeedback" || mode === "textFeedback") && (
+        {(mode === "addFeedback" ||
+          mode === "textFeedback" ||
+          mode === "photoFeedback") && (
           <>
             <ExtendedOverlay
               returnToRegularMode={returnToRegularMode}

@@ -21,15 +21,6 @@ export default function ExtendedOverlay({
             />
           </div>
 
-          {/* <div className="aspect-square w-12 cursor-pointer">
-            <img src={penIcon} alt="Feedback List Icon" className=" w-full" />
-          </div>
-          <div className="aspect-square w-12 cursor-pointer">
-            <img src={arrowIcon} alt="Feedback List Icon" className=" w-full" />
-          </div> 
-          <div className="aspect-square w-12 cursor-pointer">
-            <img src={squareIcon} alt="Question Icon" className=" w-full" />
-          </div>*/}
           <div className="aspect-square w-12 cursor-pointer">
             <img
               src={commentIcon}
@@ -42,15 +33,24 @@ export default function ExtendedOverlay({
                     }
                   : {}
               }
-              className=" w-full no-click"
+              className=" w-full "
               onClick={() => setMode("textFeedback")}
             />
           </div>
           <div className="aspect-square w-12 cursor-pointer">
             <img
               src={photoIcon}
-              alt="Question Icon"
-              className=" w-full no-click"
+              alt="Photo Icon"
+              style={
+                mode === "photoFeedback"
+                  ? {
+                      filter:
+                        "invert(82%) sepia(32%) saturate(6019%) hue-rotate(330deg) brightness(100%) contrast(104%)",
+                    }
+                  : {}
+              }
+              onClick={() => setMode("photoFeedback")}
+              className=" w-full "
             />
           </div>
           <div className="aspect-square w-12 cursor-pointer">
