@@ -5,7 +5,11 @@ import SortOptions from "./feedbackOverlay/sortOptions.jsx";
 import IndividualFeedback from "./feedbackOverlay/individualFeedback.jsx";
 import Feedbacks from "./feedbackOverlay/feedbacks.jsx";
 
-export default function FeedbackOverlay({ returnToRegularMode, feedbacks }) {
+export default function FeedbackOverlay({
+  returnToRegularMode,
+  feedbacks,
+  update,
+}) {
   const [activeTab, setActiveTab] = useState("Unresolved");
   const projectId = window.PROJECT_ID;
 
@@ -52,19 +56,16 @@ export default function FeedbackOverlay({ returnToRegularMode, feedbacks }) {
         />
       </div>
 
-      {/* <div className="pt-6  px-8">
-        <SortOptions />
-      </div> */}
-
-      {/* <div className="pt-6 px-8">
-        <IndividualFeedback />
-      </div> */}
-      <div className="mt-4 text-sm text-gray-700">
-        {activeTab === "Unresolved" && <Feedbacks feedbacks={openFeedbacks} />}
-        {activeTab === "Resolved" && (
-          <Feedbacks feedbacks={resolvedFeedbacks} />
+      <div className="mt-4">
+        {activeTab === "Unresolved" && (
+          <Feedbacks feedbacks={openFeedbacks} update={update} />
         )}
-        {activeTab === "All" && <Feedbacks feedbacks={feedbacks} />}
+        {activeTab === "Resolved" && (
+          <Feedbacks feedbacks={resolvedFeedbacks} update={update} />
+        )}
+        {activeTab === "All" && (
+          <Feedbacks feedbacks={feedbacks} update={update} />
+        )}
       </div>
     </div>
   );

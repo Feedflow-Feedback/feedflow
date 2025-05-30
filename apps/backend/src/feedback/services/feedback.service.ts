@@ -42,7 +42,7 @@ export class FeedbackService {
   async findByProjectId(projectId: string): Promise<Feedback[]> {
     return this.feedbackRepo.find({
       where: { project: { id: projectId } },
-      relations: ['project'],
+      relations: ['project', 'comments'], // Assumes Feedback entity has a 'comments' relation
     });
   }
 

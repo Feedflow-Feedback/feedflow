@@ -13,6 +13,8 @@ import { FeedbackStatusHistory } from './typeorm/entities/feedback-status-histor
 import { FeedbackModule } from './feedback/feedback.module';
 import { Comment } from './typeorm/entities/comment';
 
+import { CommentModule } from './comment/comment.module';
+
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
@@ -43,6 +45,8 @@ import { Comment } from './typeorm/entities/comment';
     AuthModule,
 
     FeedbackModule,
+
+    CommentModule,
   ],
 })
 export class AppModule {}

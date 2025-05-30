@@ -4,26 +4,28 @@ import { formatDateReadable } from "@feedflow/utils";
 
 export default function FeedbacksTable({ feedbacks, update }) {
   const [open, setOpen] = useState(false);
-  const [selectedFeedback, setSelectedFeedback] = useState(null);
 
-  const handleOpen = (e) => {
+  const [selectedFeedbackIndex, setSelectedFeedbackIndex] = useState(null);
+
+  const handleOpen = (i) => {
     setOpen(true);
-
-    setSelectedFeedback(e);
+    setSelectedFeedbackIndex(i);
   };
   const handleClose = () => {
     setOpen(false);
-    setSelectedFeedback(null);
+    setSelectedFeedbackIndex(null);
   };
 
   const closeAndUpdate = () => {
     setOpen(false);
-    setSelectedFeedback(null);
+    setSelectedFeedbackIndex(null);
   };
 
   const updateData = () => {
+    console.log("Update Data called");
     update();
   };
+
   return (
     <div className="flow-root">
       <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -53,11 +55,11 @@ export default function FeedbacksTable({ feedbacks, update }) {
                 </tr>
               </thead>
               <tbody className="divide-y divide-black/20 bg-white">
-                {feedbacks.map((feedback) => (
+                {feedbacks.map((feedback, index) => (
                   <tr
                     key={feedback.id}
                     className="cursor-pointer"
-                    onClick={() => handleOpen(feedback)}
+                    onClick={() => handleOpen(index)}
                   >
                     <td className="py-4 pr-3 pl-4 text-sm font-medium whitespace-nowrap text-gray-900 sm:pl-6 w-full">
                       {feedback.title}
@@ -79,11 +81,11 @@ export default function FeedbacksTable({ feedbacks, update }) {
                 )}
               </tbody>
             </table>
-            {selectedFeedback && (
+            {selectedFeedbackIndex && (
               <FeedbackDetailsModal
                 open={open}
                 close={handleClose}
-                feedback={selectedFeedback}
+                feedback={feedbacks[selectedFeedbackIndex]}
                 closeAndUpdate={() => closeAndUpdate()}
                 update={() => updateData()}
               />

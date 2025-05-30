@@ -4,12 +4,12 @@ import { persist } from "zustand/middleware";
 type UserState = {
   email: string | null;
   projectIds: string[] | null;
-  setEmail: (token: string | null) => void;
+  setEmail: (email: string | null) => void;
   setProjectIds: (projectIds: string[] | null) => void;
   clearUser: () => void;
 };
 
-export const useAuthStore = create<UserState>()(
+export const useUserStore = create<UserState>()(
   persist(
     (set) => ({
       email: null,

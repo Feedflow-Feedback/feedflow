@@ -1,10 +1,47 @@
 import { useState } from "preact/hooks";
 import crossIcon from "../../assets/icons/cross_icon.svg";
 import { formatDateReadable, blobToImageUrl } from "@feedflow/utils";
+import axios from "axios";
 
-export default function IndividualFeedback({ feedback }) {
+export default function IndividualFeedback({ feedback, update }) {
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
   const [openComment, setOpenComment] = useState(false);
+  const [form, setForm] = useState({ name: "", email: "", comment: "" });
 
+  function handleChange(e) {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  }
+
+  async function createComment(e) {
+    e.preventDefault();
+
+    if (!form.name || !form.comment) {
+      console.error("Please enter both name and comment.");
+
+      return;
+    }
+
+    try {
+      const response = await axios.post(`${backendUrl}/comment/create`, {
+        author: form.name,
+        authorEmail: form.name,
+        comment: form.comment,
+        feedbackId: feedback.id,
+      });
+
+      if (response.status === 200) {
+        setForm({ name: "", email: "", comment: "" });
+        setOpenComment(false);
+
+        update();
+      } else if (response.status === 400) {
+        //setError("Try again later and Error aqcured");
+      }
+    } catch (err) {
+      console.error("Create Project failed, error:", err);
+    }
+  }
   return (
     <div className="bg-white shadow-md px-4 py-4 rounded-md border-[0.5px] border-lightGray">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -49,7 +86,12 @@ export default function IndividualFeedback({ feedback }) {
       </div>
 
       {openComment && (
-        <div className="relative mt-4">
+        <form
+          onSubmit={(e) => {
+            createComment(e);
+          }}
+          className="relative mt-4 w-full"
+        >
           <div className="aspect-square w-4 cursor-pointer absolute top-0 right-0 ">
             <img
               src={crossIcon}
@@ -58,25 +100,83 @@ export default function IndividualFeedback({ feedback }) {
               onClick={() => setOpenComment(!openComment)}
             />
           </div>
-          <label for="message" class="block mb-1 text-sm font-medium  ">
+          <label
+            htmlFor="name"
+            className="block text-p-sm font-regular text-left"
+          >
+            Name
+          </label>
+          <div className="mt-2">
+            <input
+              id="name"
+              name="name"
+              type="name"
+              placeholder="your Name"
+              value={form.name}
+              onChange={handleChange}
+              required
+              className="block w-full rounded-md bg-white px-3 py-1.5 text-base outline-1 -outline-offset-1 placeholder:text-p-sm "
+            />
+          </div>
+          <label
+            htmlFor="email"
+            className="block text-p-sm font-regular text-left mt-2"
+          >
+            Email
+          </label>
+          <div className="mt-1">
+            <input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="your email"
+              value={form.email}
+              onChange={handleChange}
+              required
+              className="block w-full rounded-md bg-white px-3 py-1.5 text-base outline-1 -outline-offset-1 placeholder:text-p-sm "
+            />
+          </div>
+          <label
+            htmlFor="comment"
+            className="block mb-1 text-p-sm font-medium  mt-2"
+          >
             Comment
           </label>
           <textarea
-            id="message"
+            id="comment"
+            name="comment"
             rows="4"
-            class="block p-2.5 w-full text-sm rounded-lg border border-black/60 resize-none"
+            className="block p-2.5 w-full text-sm rounded-lg border border-black/60 resize-none"
+            value={form.comment}
+            onChange={handleChange}
+            required
             placeholder="Write your thoughts here..."
           ></textarea>
           <div className="flex justify-end mt-6 space-x-4">
-            <button className="text-nowrap py-1 px-6  rounded-md border-[1.75px] border-black">
-              Icon
-            </button>
             <button className="bg-blue text-nowrap py-1 px-6 text-white rounded-md">
               Save
             </button>
           </div>
-        </div>
+        </form>
       )}
+      <div className="mt-6 max-h-108 overflow-y-scroll">
+        {feedback.comments.map((comment) => (
+          <div
+            key={comment.id}
+            className="mt-2 p-4 bg-white shadow-lg rounded-md border-[0.5px] border-lightGray"
+          >
+            <div className="flex items-center gap-1">
+              <p className="text-p-xs font-semibold">{comment.author}</p>
+              <p className="mb-1">-</p>
+              <p className="text-p-xs text-gray-700">
+                {formatDateReadable(comment.submitted_at)}
+              </p>
+            </div>
+
+            <p className="mt-1">{comment.comment}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

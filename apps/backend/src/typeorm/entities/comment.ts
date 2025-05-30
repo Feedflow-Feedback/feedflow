@@ -21,11 +21,9 @@ export class Comment {
 
   @CreateDateColumn()
   submitted_at: Date;
-  @Column('text')
-  title: string;
 
   @Column('text')
-  description: string;
+  comment: string;
 
   @Column('text')
   author: string;

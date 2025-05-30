@@ -1,11 +1,13 @@
 import { useState } from "react";
 import axios from "axios";
 import { useAuthStore } from "@/stores/authStore";
+import { useUserStore } from "@/stores/userStore";
 import logo from "@/assets/logo.svg";
 
 export default function signIn() {
   const setToken = useAuthStore((state) => state.setToken);
   const setUserId = useAuthStore((state) => state.setUserId);
+  const setEmail = useUserStore((state) => state.setEmail);
 
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const [form, setForm] = useState({ email: "", password: "" });
@@ -37,6 +39,8 @@ export default function signIn() {
         console.log("Login successful, response:", response);
         setToken(response.data.accessToken);
         setUserId(response.data.userId);
+        setEmail(response.data.email);
+
         window.location.href = "/dashboard";
       } else if (response.status === 400) {
         switch (response.data.message) {

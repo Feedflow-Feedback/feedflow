@@ -31,7 +31,6 @@ export default function Project() {
   };
 
   const getProjects = async () => {
-    console.log("getProjects called with id:", id);
     try {
       const response = await axios.post(
         `${backendUrl}/projects/getProjectDetails`,

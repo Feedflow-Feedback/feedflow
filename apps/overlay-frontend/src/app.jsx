@@ -19,6 +19,10 @@ export function App() {
   const [htmlElement, setHtmlElement] = useState(null);
   const [feedbacks, setFeedbacks] = useState([]);
 
+  const update = () => {
+    fetchAllFeedbacks();
+  };
+
   const returnToRegularMode = () => {
     setMode(Modes.REGULAR);
   };
@@ -99,6 +103,7 @@ export function App() {
           <FeedbackOverlay
             returnToRegularMode={returnToRegularMode}
             feedbacks={feedbacks}
+            update={update}
           />
         );
       case Modes.SHOW_TUTORIAL:
