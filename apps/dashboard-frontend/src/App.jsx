@@ -11,6 +11,7 @@ import Pricing from "./pages/pricing";
 import About from "./pages/about";
 import Features from "./pages/features";
 import Docs from "./pages/docs";
+import PageNotFound from "./404Page";
 
 const ProtectedRoute = ({ children }) => {
   const token = useAuthStore((state) => state.token);
@@ -26,8 +27,9 @@ const App = () => {
   return (
     <>
       <Routes>
+        <Route path="*" element={<PageNotFound />} />{" "}
+        {/* Catch-all route for 404 */}
         <Route path="/" element={<Home />} />
-
         <Route
           path="/dashboard"
           element={
@@ -36,7 +38,6 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-
         <Route
           path="/project/:id"
           element={
