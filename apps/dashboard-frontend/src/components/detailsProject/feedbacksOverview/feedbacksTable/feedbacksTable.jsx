@@ -81,15 +81,17 @@ export default function FeedbacksTable({ feedbacks, update }) {
                 )}
               </tbody>
             </table>
-            {selectedFeedbackIndex && (
-              <FeedbackDetailsModal
-                open={open}
-                close={handleClose}
-                feedback={feedbacks[selectedFeedbackIndex]}
-                closeAndUpdate={() => closeAndUpdate()}
-                update={() => updateData()}
-              />
-            )}
+            <div>
+              {open && (
+                <FeedbackDetailsModal
+                  open={open}
+                  close={handleClose}
+                  feedback={feedbacks[selectedFeedbackIndex]}
+                  closeAndUpdate={() => closeAndUpdate()}
+                  update={() => updateData()}
+                />
+              )}
+            </div>
           </div>
         </div>
       </div>

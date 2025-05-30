@@ -9,6 +9,8 @@ export default function IndividualFeedback({ feedback, update }) {
   const [openComment, setOpenComment] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", comment: "" });
 
+  const [showComments, setShowComments] = useState(false);
+
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
@@ -159,24 +161,32 @@ export default function IndividualFeedback({ feedback, update }) {
           </div>
         </form>
       )}
-      <div className="mt-6 max-h-108 overflow-y-scroll">
-        {feedback.comments.map((comment) => (
-          <div
-            key={comment.id}
-            className="mt-2 p-4 bg-white shadow-lg rounded-md border-[0.5px] border-lightGray"
-          >
-            <div className="flex items-center gap-1">
-              <p className="text-p-xs font-semibold">{comment.author}</p>
-              <p className="mb-1">-</p>
-              <p className="text-p-xs text-gray-700">
-                {formatDateReadable(comment.submitted_at)}
-              </p>
-            </div>
+      <p
+        className="mt-2 text-p-sm underline cursor-pointer"
+        onClick={() => setShowComments(!showComments)}
+      >
+        Show Comments
+      </p>
+      {showComments && (
+        <div className="mt-6 max-h-108 overflow-y-scroll">
+          {feedback.comments.map((comment) => (
+            <div
+              key={comment.id}
+              className="mt-2 p-4 bg-white shadow-lg rounded-md border-[0.5px] border-lightGray"
+            >
+              <div className="flex items-center gap-1">
+                <p className="text-p-xs font-semibold">{comment.author}</p>
+                <p className="mb-1">-</p>
+                <p className="text-p-xs text-gray-700">
+                  {formatDateReadable(comment.submitted_at)}
+                </p>
+              </div>
 
-            <p className="mt-1">{comment.comment}</p>
-          </div>
-        ))}
-      </div>
+              <p className="mt-1">{comment.comment}</p>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
