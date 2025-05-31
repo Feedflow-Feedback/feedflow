@@ -7,6 +7,7 @@ import ExtendedOverlayModal from "./components/extendedOverlayModal.jsx";
 import { findMatchingDomElements } from "./utils/feedbackDomUtils.js";
 import { createBorder, deleteBorder } from "./utils/borderHelper.js";
 import { fetchFeedbacksByProject } from "./services/feedbackService";
+import ExtendedOverlayModalPhoto from "./components/extendedOverlayModalPhoto.jsx";
 import { Modes } from "./constants/modes";
 import { highlightDomElement } from "./utils/highlightDomElement.js";
 import { takeScreenshot } from "./utils/takeScreenshot.js";
@@ -18,7 +19,11 @@ export function App() {
 
   const [mode, setMode] = useState("regular");
   const [isOpenModalAddFeedback, setIsOpenModalAddFeedback] = useState(false);
+  const [isOpenModalAddFeedbackPhoto, setIsOpenModalAddFeedbackPhoto] =
+    useState(false);
+
   const [htmlElement, setHtmlElement] = useState(null);
+  const [photoElement, setPhotoElement] = useState(null);
   const [feedbacks, setFeedbacks] = useState([]);
 
   const update = () => {
@@ -27,6 +32,7 @@ export function App() {
 
   const returnToRegularMode = () => {
     setMode(Modes.REGULAR);
+    deleteBorder();
   };
   const handleModeChange = (newMode) => {
     setMode(newMode);
@@ -34,6 +40,12 @@ export function App() {
 
   const closeAndModeSwitch = () => {
     setIsOpenModalAddFeedback(false);
+    setMode(Modes.ADD_FEEDBACK);
+    deleteBorder();
+    fetchAllFeedbacks();
+  };
+  const closeAndModeSwitchPhoto = () => {
+    setIsOpenModalAddFeedbackPhoto(false);
     setMode(Modes.ADD_FEEDBACK);
     deleteBorder();
     fetchAllFeedbacks();
@@ -54,7 +66,6 @@ export function App() {
     if (mode === "textFeedback") {
       createBorder();
     }
-
     if (mode === "photoFeedback") {
       createBorder();
     }
@@ -90,7 +101,8 @@ export function App() {
       }
       setHtmlElement(el.outerHTML);
       if (mode === "photoFeedback") {
-        console.log("Photo feedback mode active");
+        createBorder();
+
         highlightDomElement(el);
 
         const imageDataUrl = await takeScreenshot();
@@ -102,10 +114,12 @@ export function App() {
 
         const fileData = Array.from(uint8Array);
 
-        console.log("Image data URL:", fileData);
+        setPhotoElement(fileData);
+        setIsOpenModalAddFeedbackPhoto(true);
       }
       if (mode === "textFeedback") {
-        console.log("Text feedback mode active");
+        createBorder();
+
         setIsOpenModalAddFeedback(true);
       }
 
@@ -186,6 +200,13 @@ export function App() {
               open={isOpenModalAddFeedback}
               close={() => closeAndModeSwitch()}
               htmlElement={htmlElement}
+            />
+
+            <ExtendedOverlayModalPhoto
+              open={isOpenModalAddFeedbackPhoto}
+              close={() => closeAndModeSwitchPhoto()}
+              htmlElement={htmlElement}
+              photoElement={photoElement}
             />
           </>
         )}
