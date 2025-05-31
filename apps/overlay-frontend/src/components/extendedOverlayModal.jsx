@@ -7,6 +7,7 @@ import {
   DialogPanel,
   DialogTitle,
 } from "@headlessui/react";
+import crossIcon from "../assets/icons/cross_icon.svg";
 import axios from "axios";
 
 export default function extendedOverlayModal({ open, close, htmlElement }) {
@@ -72,8 +73,16 @@ export default function extendedOverlayModal({ open, close, htmlElement }) {
         <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0 ">
           <DialogPanel
             transition
-            className="relative transform overflow-hidden min-w-lg rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in sm:my-8 sm:w-full sm:max-w-sm sm:p-6 data-closed:sm:translate-y-0 data-closed:sm:scale-95"
+            className="relative transform overflow-hidden min-w-lg rounded-lg bg-white p-10 text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in  sm:w-full sm:max-w-sm data-closed:sm:translate-y-0 data-closed:sm:scale-95"
           >
+            <div className="absolute top-2 right-2">
+              <img
+                src={crossIcon}
+                alt="Close Icon"
+                className="w-6 h-6 cursor-pointer"
+                onClick={() => close()}
+              />
+            </div>
             <form onSubmit={handleSubmit}>
               <div className="space-y-4">
                 <input
