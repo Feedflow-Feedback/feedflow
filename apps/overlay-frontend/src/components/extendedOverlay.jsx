@@ -33,7 +33,7 @@ export default function ExtendedOverlay({
                     }
                   : {}
               }
-              className=" w-full "
+              className=" w-full no-click"
               onClick={() => setMode("textFeedback")}
             />
           </div>
@@ -50,7 +50,7 @@ export default function ExtendedOverlay({
                   : {}
               }
               onClick={() => setMode("photoFeedback")}
-              className=" w-full "
+              className=" w-full no-click"
             />
           </div>
           <div className="aspect-square w-12 cursor-pointer">

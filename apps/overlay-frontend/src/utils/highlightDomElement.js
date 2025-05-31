@@ -20,10 +20,10 @@ export const highlightDomElement = (el, feedbackId = "temp") => {
   circle.style.left = `${elRect.right}px`;
   circle.style.width = "16px";
   circle.style.height = "16px";
-  circle.style.background = "red";
+  circle.style.background = "#ff913a";
   circle.style.borderRadius = "50%";
   circle.style.zIndex = "10000";
-  circle.style.border = "2px solid white";
+  circle.style.border = "2px solid #ff913a";
   circle.style.transform = "translate(-50%, 50%)";
 
   if (Math.abs(elRect.top) < 2) {
@@ -62,7 +62,7 @@ export const highlightDomElement = (el, feedbackId = "temp") => {
 
   borderDiv.style.height = `${elRect.height + 4}px`;
   borderDiv.style.pointerEvents = "none";
-  borderDiv.style.border = "0.5px solid red";
+  borderDiv.style.border = "0.5px solid  #ff913a";
   borderDiv.style.zIndex = "9999";
   borderDiv.style.boxSizing = "border-box";
 

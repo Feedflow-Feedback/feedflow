@@ -11,6 +11,7 @@ import ExtendedOverlayModalPhoto from "./components/extendedOverlayModalPhoto.js
 import { Modes } from "./constants/modes";
 import { highlightDomElement } from "./utils/highlightDomElement.js";
 import { takeScreenshot } from "./utils/takeScreenshot.js";
+import { unHighlightDomElement } from "./utils/unHighlightDomElement";
 
 export function App() {
   window.PROJECT_ID = "bc40efbc-c042-4c4d-9685-ae1a2348849d";
@@ -48,6 +49,9 @@ export function App() {
     setIsOpenModalAddFeedbackPhoto(false);
     setMode(Modes.ADD_FEEDBACK);
     deleteBorder();
+    //here
+    //unHighlightDomElement(htmlElement);
+    unHighlightDomElement();
     fetchAllFeedbacks();
   };
 
@@ -115,6 +119,7 @@ export function App() {
         const fileData = Array.from(uint8Array);
 
         setPhotoElement(fileData);
+
         setIsOpenModalAddFeedbackPhoto(true);
       }
       if (mode === "textFeedback") {

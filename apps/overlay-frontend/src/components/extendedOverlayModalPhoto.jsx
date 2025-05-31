@@ -28,18 +28,6 @@ export default function extendedOverlayModalPhoto({
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
-  const handleFileChange = async (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-
-    const arrayBuffer = await file.arrayBuffer();
-    const uint8Array = new Uint8Array(arrayBuffer);
-
-    const fileData = Array.from(uint8Array);
-
-    setForm({ ...form, feedback_File: fileData });
-  };
-
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -121,18 +109,18 @@ export default function extendedOverlayModalPhoto({
                   required
                 ></textarea>
               </div>
-              <div className="mt-5 sm:mt-6 flex justify-between ">
-                <div className="flex gap-4">
+              <div className="mt-5 sm:mt-6 flex justify-end ">
+                <div className="flex gap-4 ">
                   <button
                     type="button"
-                    className="inline-flex py-2 px-6  justify-center rounded-md bg-white  text-sm font-semibold text-black shadow-xs border-[1px] border-black"
-                    onClose={close}
+                    className="inline-flex py-2 px-6 cursor-pointer justify-center rounded-md bg-white  text-sm font-semibold text-black shadow-xs border-[1px] border-black"
+                    onClick={close}
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
-                    className="inline-flex py-2 px-6  justify-center rounded-md bg-teal  text-sm font-semibold text-white shadow-xs "
+                    className="inline-flex py-2 px-6 cursor-pointer justify-center rounded-md bg-teal  text-sm font-semibold text-white shadow-xs "
                   >
                     Submit Feedback
                   </button>

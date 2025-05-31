@@ -141,14 +141,14 @@ export default function extendedOverlayModal({ open, close, htmlElement }) {
                 <div className="flex gap-4">
                   <button
                     type="button"
-                    className="inline-flex py-2 px-6  justify-center rounded-md bg-white  text-sm font-semibold text-black shadow-xs border-[1px] border-black"
-                    onClose={close}
+                    className="inline-flex py-2 px-6 cursor-pointer justify-center rounded-md bg-white  text-sm font-semibold text-black shadow-xs border-[1px] border-black"
+                    onClick={close}
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
-                    className="inline-flex py-2 px-6  justify-center rounded-md bg-teal  text-sm font-semibold text-white shadow-xs "
+                    className="inline-flex py-2 px-6 cursor-pointer justify-center rounded-md bg-teal  text-sm font-semibold text-white shadow-xs "
                   >
                     Submit Feedback
                   </button>

@@ -37,7 +37,7 @@ export const findMatchingDomElements = (feedbacks) => {
       circle.style.left = `${elRect.right}px`;
       circle.style.width = "16px";
       circle.style.height = "16px";
-      circle.style.background = "red";
+      circle.style.background = " #ff913a";
       circle.style.borderRadius = "50%";
       circle.style.zIndex = "10000";
       circle.style.border = "2px solid white";
@@ -79,7 +79,7 @@ export const findMatchingDomElements = (feedbacks) => {
 
       borderDiv.style.height = `${elRect.height + 4}px`;
       borderDiv.style.pointerEvents = "none";
-      borderDiv.style.border = "0.5px solid red";
+      borderDiv.style.border = "0.5px solid  #ff913a";
       borderDiv.style.zIndex = "9999";
       borderDiv.style.boxSizing = "border-box";
 
