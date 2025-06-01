@@ -2,6 +2,7 @@
 commands = [
   "corepack enable",
   "corepack prepare pnpm@latest --activate"
+  "export NIXPACKS_PATH=/app/node_modules/.bin:${NIXPACKS_PATH:-}"
 ]
 
 [phases.install]
