@@ -1,9 +1,25 @@
-[phases.setup]
-nixPkgs = [
-  "nodejs_20",
-  "pnpm",
- 
-  
+# nixpacks.toml
 
-  
+# Install these packages globally using nix-env
+nixPkgs = [
+  "nodejs_20"
+  "pnpm"
+]
+
+[phases.setup]
+commands = [
+  # Enable corepack and prepare pnpm globally
+  "corepack enable",
+  "corepack prepare pnpm@latest --activate"
+]
+
+[phases.install]
+package_manager = "pnpm"
+
+[phases.build]
+commands = [
+  # Install dependencies only for overlay-frontend workspace
+  "pnpm install --filter=overlay-frontend...",
+  # Build the overlay-frontend project
+  "pnpm run build --filter=overlay-frontend..."
 ]
