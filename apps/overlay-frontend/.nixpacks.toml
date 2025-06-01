@@ -1,6 +1,14 @@
 [phases.setup]
-nixPkgs = [
-  "nodejs_20",
-  "pnpm",
+commands = [
+  "corepack enable",
+  "corepack prepare pnpm@latest --activate"
+]
 
+[phases.install]
+package_manager = "pnpm"
+
+[phases.build]
+commands = [
+  "pnpm install --filter=overlay-frontend...",
+  "pnpm run build --filter=overlay-frontend..."
 ]
