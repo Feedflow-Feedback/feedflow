@@ -1,15 +1,17 @@
 [phases.setup]
 commands = [
   "corepack enable",
-  "corepack prepare pnpm@latest --activate"
-  "export NIXPACKS_PATH=/app/node_modules/.bin:${NIXPACKS_PATH:-}"
+  "corepack prepare pnpm@latest --activate",
+  "pnpm -v"  # to check pnpm is available
 ]
 
 [phases.install]
 package_manager = "pnpm"
+commands = [
+  "pnpm install --filter=overlay-frontend..."
+]
 
 [phases.build]
 commands = [
-  "pnpm install --filter=overlay-frontend...",
   "pnpm run build --filter=overlay-frontend..."
 ]
