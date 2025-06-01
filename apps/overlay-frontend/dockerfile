@@ -1,34 +1,19 @@
-# Build stage
-FROM node:20-alpine AS build
+FROM node:20-alpine
 
+# Enable pnpm
 RUN corepack enable && corepack prepare pnpm@latest --activate
 
 WORKDIR /app
 
-# Copy monorepo files
-COPY pnpm-workspace.yaml ./
-COPY package.json pnpm-lock.yaml ./
+# Copy everything
+COPY . .
 
-# Copy required packages
-COPY apps/overlay-frontend ./apps/overlay-frontend
-COPY packages/ui ./packages/ui
-COPY packages/utils ./packages/utils
-COPY packages/eslint-config ./packages/eslint-config
-COPY packages/typescript-config ./packages/typescript-config
-
-# ✅ Install all dependencies
+# Install all dependencies from root
 RUN pnpm install
 
-# 🔨 Build the app
-RUN pnpm --filter ./apps/overlay-frontend... run build
+# Build the overlay-frontend app only
+RUN pnpm --filter=overlay-frontend... run build
 
-# Serve stage
-FROM node:20-alpine
-
-RUN npm install -g serve
-
-WORKDIR /app
-COPY --from=build /app/apps/overlay-frontend/dist ./dist
-
-EXPOSE 4173
-CMD ["serve", "dist", "-l", "4173"]
+# Serve the built app
+RUN pnpm add -g serve
+CMD ["serve", "apps/overlay-frontend/dist", "-l", "4173"]
