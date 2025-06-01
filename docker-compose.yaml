@@ -1,0 +1,8 @@
+version: "3.8"
+services:
+  overlay-frontend:
+    build:
+      context: .
+      dockerfile: /apps/overlay-frontend/Dockerfile
+    ports:
+      - "5174:4173"
