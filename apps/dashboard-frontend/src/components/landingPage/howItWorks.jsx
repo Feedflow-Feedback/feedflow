@@ -34,15 +34,15 @@ export default function howItWorks({}) {
           </p>
         </div>
         <div>
-          <img
+          {/* <img
             src="https://www.feedflow.io/static/media/how-it-works.0c4f3a2b.png"
             alt="How it works"
             className="mb-8 w-full"
-          />
+          /> */}
           {/* mobile */}
-          <div className="md:hidden">
+          <div className="md:hidden bg-white p-4 rounded-lg shadow-md border-[0.5px] border-lightGray">
             {howItWorks.map((howItWork, index) => (
-              <div key={index} className="mb-4 flex">
+              <div key={index} className="mb-4 flex ">
                 <div className="flex flex-col items-center mr-4">
                   <img
                     src={howItWork.icon}
@@ -62,10 +62,13 @@ export default function howItWorks({}) {
             ))}
           </div>
           {/* desktop */}
-          <div className="hidden md:flex">
+          <div className="hidden md:flex gap-4">
             {howItWorks.map((howItWork, index) => (
-              <div key={index} className="mb-4 p-4">
-                <div className="flex  items-center mr-4">
+              <div
+                key={index}
+                className="mb-4 p-4 bg-white rounded-lg shadow-md border-[0.5px] border-lightGray"
+              >
+                <div className="flex  items-center mr-4 ">
                   <img
                     src={howItWork.icon}
                     alt={howItWork.title}
