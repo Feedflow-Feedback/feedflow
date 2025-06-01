@@ -1,4 +1,5 @@
 "use client";
+import crossIcon from "../assets/icons/cross_icon.svg";
 import uploadIcon from "../assets/icons/upload_icon.svg";
 import { useState } from "preact/hooks";
 import {
@@ -83,7 +84,7 @@ export default function extendedOverlayModalPhoto({
                   placeholder="Your Name"
                   onChange={handleChange}
                   value={form.Author}
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-black outline-1 -outline-offset-1 outline-black placeholder:text-black focus:outline-2 focus:-outline-offset-2"
                 />
                 <input
                   id="feedback_AuthorEmail"
@@ -93,7 +94,7 @@ export default function extendedOverlayModalPhoto({
                   placeholder="Your Email"
                   onChange={handleChange}
                   value={form.feedback_AuthorEmail}
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-black outline-1 -outline-offset-1 outline-black placeholder:text-black focus:outline-2 focus:-outline-offset-2"
                 />
                 <input
                   id="feedback_Title"
@@ -103,7 +104,7 @@ export default function extendedOverlayModalPhoto({
                   placeholder="Feedback Title"
                   onChange={handleChange}
                   value={form.feedback_Title}
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-black outline-1 -outline-offset-1 outline-black placeholder:text-black focus:outline-2 focus:-outline-offset-2"
                 />
 
                 <textarea

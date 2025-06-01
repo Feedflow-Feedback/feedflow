@@ -12,6 +12,7 @@ import { Modes } from "./constants/modes";
 import { highlightDomElement } from "./utils/highlightDomElement.js";
 import { takeScreenshot } from "./utils/takeScreenshot.js";
 import { unHighlightDomElement } from "./utils/unHighlightDomElement";
+import "./index.css";
 
 export function App() {
   window.PROJECT_ID = "bc40efbc-c042-4c4d-9685-ae1a2348849d";
@@ -157,8 +158,7 @@ export function App() {
 
   return (
     <>
-      <div>
-        <p>Example Text</p>
+      {/* <p>Example Text</p>
         <div>
           <img src="./src/assets/preact.svg" alt="Placeholder" />
           <img src="./src/assets/preact.svg" alt="Placeholder" />
@@ -188,36 +188,35 @@ export function App() {
           <img src="./src/assets/preact.svg" alt="Placeholder" />
           <img src="./src/assets/preact.svg" alt="Placeholder" />
           <img src="./src/assets/preact.svg" alt="Placeholder" />
-        </div>
+        </div> */}
 
-        <BasicOverlay mode={mode} setMode={setMode} />
-        {(mode === "addFeedback" ||
-          mode === "textFeedback" ||
-          mode === "photoFeedback") && (
-          <>
-            <ExtendedOverlay
-              returnToRegularMode={returnToRegularMode}
-              setMode={handleModeChange}
-              mode={mode}
-            />
+      <BasicOverlay mode={mode} setMode={setMode} />
+      {(mode === "addFeedback" ||
+        mode === "textFeedback" ||
+        mode === "photoFeedback") && (
+        <>
+          <ExtendedOverlay
+            returnToRegularMode={returnToRegularMode}
+            setMode={handleModeChange}
+            mode={mode}
+          />
 
-            <ExtendedOverlayModal
-              open={isOpenModalAddFeedback}
-              close={() => closeAndModeSwitch()}
-              htmlElement={htmlElement}
-            />
+          <ExtendedOverlayModal
+            open={isOpenModalAddFeedback}
+            close={() => closeAndModeSwitch()}
+            htmlElement={htmlElement}
+          />
 
-            <ExtendedOverlayModalPhoto
-              open={isOpenModalAddFeedbackPhoto}
-              close={() => closeAndModeSwitchPhoto()}
-              htmlElement={htmlElement}
-              photoElement={photoElement}
-            />
-          </>
-        )}
+          <ExtendedOverlayModalPhoto
+            open={isOpenModalAddFeedbackPhoto}
+            close={() => closeAndModeSwitchPhoto()}
+            htmlElement={htmlElement}
+            photoElement={photoElement}
+          />
+        </>
+      )}
 
-        {renderOverlay()}
-      </div>
+      {renderOverlay()}
     </>
   );
 }

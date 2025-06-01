@@ -10,7 +10,10 @@ export default function ExtendedOverlay({
 }) {
   return (
     <>
-      <div className="absolute top-1/2 right-0 -translate-y-1/2 bg-white shadow-2xl border-[0.5px] border-lightGray rounded-bl-2xl rounded-tl-2xl no-click">
+      <div
+        className="fixed top-1/2 right-0  bg-white shadow-2xl border-[0.5px] border-lightGray rounded-bl-2xl rounded-tl-2xl no-click"
+        style={{ transform: "translate(0, -50%)" }}
+      >
         <div className="grid grid-cols-1 gap-4 p-4" id="extendedOverlay">
           <div className="aspect-square w-12 cursor-pointer">
             <img

@@ -33,7 +33,7 @@ export default function FeedbackOverlay({
   return (
     <div
       id="feedbackOverlay"
-      className="absolute top-0 right-0 overflow-y-scroll h-[calc(100vh-60px)] mt-[30px] w-xl bg-white shadow-2xl border-[0.5px] border-lightGray rounded-bl-2xl rounded-tl-2xl"
+      className="fixed top-0 right-0 overflow-y-scroll h-[calc(100vh-60px)] mt-[30px] w-xl bg-white text-black shadow-2xl border-[0.5px] border-lightGray rounded-bl-2xl rounded-tl-2xl"
     >
       <div className="relative">
         <div className="pt-6  px-8">

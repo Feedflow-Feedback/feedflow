@@ -1,2 +1,2 @@
 @import "tailwindcss";
-@import "@feedflow/ui/styles/default.css";
+@import "../../../packages/ui/src/styles/default.css";

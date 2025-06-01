@@ -36,19 +36,19 @@ export default function FeedbacksTable({ feedbacks, update }) {
                 <tr>
                   <th
                     scope="col"
-                    className="py-3.5 pr-3 pl-4 text-left text-sm font-bold text-gray-900 sm:pl-6 w-full"
+                    className="py-3.5 pr-3 pl-4 text-left text-sm font-bold text-black sm:pl-6 w-full"
                   >
                     Feedback Name
                   </th>
                   <th
                     scope="col"
-                    className="px-3 py-3.5 text-left text-sm font-bold text-gray-900 whitespace-nowrap "
+                    className="px-3 py-3.5 text-left text-sm font-bold text-black whitespace-nowrap "
                   >
                     Latest Update
                   </th>
                   <th
                     scope="col"
-                    className=" py-3.5 text-left text-sm font-bold text-gray-900 px-6"
+                    className=" py-3.5 text-left text-sm font-bold text-black px-6"
                   >
                     Status
                   </th>
@@ -61,7 +61,7 @@ export default function FeedbacksTable({ feedbacks, update }) {
                     className="cursor-pointer"
                     onClick={() => handleOpen(index)}
                   >
-                    <td className="py-4 pr-3 pl-4 text-sm font-medium whitespace-nowrap text-gray-900 sm:pl-6 w-full">
+                    <td className="py-4 pr-3 pl-4 text-sm font-medium whitespace-nowrap text-black sm:pl-6 w-full">
                       {feedback.title}
                     </td>
                     <td className="px-3 py-4 text-sm whitespace-nowrap ">
