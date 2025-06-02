@@ -15,9 +15,8 @@ import { unHighlightDomElement } from "./utils/unHighlightDomElement";
 import "./index.css";
 
 export function App() {
-  window.PROJECT_ID = "bc40efbc-c042-4c4d-9685-ae1a2348849d";
   const projectId = window.PROJECT_ID;
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const backendUrl = "http://localhost:3000";
 
   const [mode, setMode] = useState("regular");
   const [isOpenModalAddFeedback, setIsOpenModalAddFeedback] = useState(false);

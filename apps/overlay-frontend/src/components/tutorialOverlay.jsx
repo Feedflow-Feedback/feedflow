@@ -30,7 +30,7 @@ export default function TutorialOverlay({ returnToRegularMode }) {
     <>
       <div
         id="tutorialOverlay"
-        className="fixed top-1/2 right-0 overflow-y-scroll h-[calc(100vh-60px)]  w-xl bg-white shadow-2xl border-[0.5px] border-lightGray rounded-bl-2xl rounded-tl-2xl"
+        className="fixed top-1/2 right-0 overflow-y-scroll h-[calc(100vh-60px)]  w-xl bg-white shadow-2xl border-[0.5px] border-lightGray rounded-bl-2xl rounded-tl-2xl z-50"
         style={{ transform: "translate(0, -50%)" }}
       >
         <img

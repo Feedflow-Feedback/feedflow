@@ -10,7 +10,7 @@ export default function ExtendedOverlayModalPhoto({
   htmlElement,
   photoElement,
 }) {
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const backendUrl = "http://localhost:3000";
   const projectId = window.PROJECT_ID;
 
   const [form, setForm] = useState({
@@ -123,7 +123,7 @@ export default function ExtendedOverlayModalPhoto({
               id="feedback_Description"
               name="feedback_Description"
               rows="4"
-              className="block p-2.5 w-full text-p-sm rounded-lg border border-black/60 resize-none"
+              className="block p-2.5 w-full text-p-sm rounded-lg border border-black/60 placeholder:text-black/60 resize-none"
               placeholder="Write your thoughts here..."
               value={form.feedback_Description}
               onChange={handleChange}

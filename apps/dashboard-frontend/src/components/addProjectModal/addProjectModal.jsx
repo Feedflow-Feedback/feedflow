@@ -15,7 +15,7 @@ export default function addProjectModal({
   onClose,
   onRefresh,
 }) {
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const backendUrl = "http://localhost:3000";
   const token = useAuthStore((state) => state.token);
   const userId = useAuthStore((state) => state.userId);
 

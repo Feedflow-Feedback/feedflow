@@ -5,7 +5,7 @@ import { useState, useEffect } from "preact/hooks";
 import axios from "axios";
 
 export default function ExtendedOverlayModal({ open, close, htmlElement }) {
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const backendUrl = "http://localhost:3000";
   const projectId = window.PROJECT_ID;
 
   const [form, setForm] = useState({
@@ -130,7 +130,7 @@ export default function ExtendedOverlayModal({ open, close, htmlElement }) {
               id="feedback_Description"
               name="feedback_Description"
               rows="4"
-              className="block p-2.5 w-full text-p-sm rounded-lg border border-black/60 resize-none"
+              className="block p-2.5 w-full text-p-sm rounded-lg border border-black/60 resize-none placeholder:text-black/60"
               placeholder="Write your thoughts here..."
               value={form.feedback_Description}
               onChange={handleChange}

@@ -18,6 +18,8 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   @Post('login')
   login(@Body() input: { email: string; password: string }) {
+    console.log('Login hit:', input); // 👈 make sure this logs
+
     const result = this.authService.authenticate(input);
 
     if (!result) {

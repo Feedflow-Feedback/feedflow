@@ -6,7 +6,7 @@ export default function Overlay({ setMode }) {
   return (
     <>
       <div
-        className="fixed top-1/2 right-0 bg-white shadow-2xl border-[0.5px] border-lightGray rounded-bl-2xl rounded-tl-2xl"
+        className="fixed top-1/2 right-0 bg-white shadow-2xl border-[0.5px] border-lightGray rounded-bl-2xl rounded-tl-2xl z-50"
         style={{ transform: "translate(0, -50%)" }}
       >
         <div className="grid grid-cols-1 gap-4 p-4" id="basicOverlay">

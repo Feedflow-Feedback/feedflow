@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import { useAuthStore } from "@/stores/authStore";
 
 export default function Dashboard() {
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const backendUrl = "http://localhost:3000";
   const [isAddProjectModalOpen, setIsAddProjectModalOpen] = useState(false);
   const [projects, setProjects] = useState([]);
 

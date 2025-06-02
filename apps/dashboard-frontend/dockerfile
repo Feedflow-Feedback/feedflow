@@ -9,26 +9,29 @@ WORKDIR /app
 COPY pnpm-workspace.yaml ./
 COPY package.json pnpm-lock.yaml ./
 
-# Copy required packages
-COPY apps/overlay-frontend ./apps/overlay-frontend
+# Copy required packages and apps for the dashboard frontend
+COPY apps/dashboard-frontend ./apps/dashboard-frontend
 COPY packages/ui ./packages/ui
 COPY packages/utils ./packages/utils
 COPY packages/eslint-config ./packages/eslint-config
 COPY packages/typescript-config ./packages/typescript-config
 
-# ✅ Install all dependencies
+# Install all dependencies
 RUN pnpm install
 
-# 🔨 Build the app
-RUN pnpm --filter ./apps/overlay-frontend... run build
+# Build the dashboard frontend app
+RUN pnpm --filter ./apps/dashboard-frontend... run build
 
 # Serve stage
-FROM  node:23-alpine
+FROM node:23-alpine
 
 RUN npm install -g serve
 
 WORKDIR /app
-COPY --from=build /app/apps/overlay-frontend/dist ./dist
 
-EXPOSE 4173
-CMD ["serve", "dist", "-l", "4173"]
+# Copy the built dashboard frontend files from build stage
+COPY --from=build /app/apps/dashboard-frontend/dist ./dist
+
+EXPOSE 80
+
+CMD ["serve", "dist","-s", "-l", "80"]

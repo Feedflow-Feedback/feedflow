@@ -4,7 +4,7 @@ import { useAuthStore } from "@/stores/authStore";
 import axios from "axios";
 
 export default function Settings({ id, name, description, url }) {
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const backendUrl = "http://localhost:3000";
   const token = useAuthStore((state) => state.token);
   const [openModalDelete, setOpenModalDelete] = useState(false);
   const [form, setForm] = useState({ name: "", description: "", url: "" });
