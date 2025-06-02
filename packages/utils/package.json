@@ -4,10 +4,12 @@
   "main": "src/index.js",
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "dev": "tsc -p tsconfig.json --watch"
+    "dev": "tsc -p tsconfig.json --watch",
+    "test": "jest"
   },
-  "dependencies": {},
   "devDependencies": {
+    "@babel/preset-env": "^7.27.2",
+    "jest": "^29.7.0",
     "typescript": "^5.0.0"
   }
 }

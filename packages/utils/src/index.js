@@ -1,2 +1,2 @@
-export * from "./dateFromatter";
+export * from "./dateFormatter";
 export * from "./blobImage";
