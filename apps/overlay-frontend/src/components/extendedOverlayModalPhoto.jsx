@@ -70,7 +70,8 @@ export default function ExtendedOverlayModalPhoto({
       onClick={close} // close modal on backdrop click
     >
       <div
-        className="relative w-full max-w-xl rounded-lg bg-white p-10 shadow-xl"
+        className="relative w-full max-w-xl rounded-lg bg-white p-10 shadow-xl "
+        style={{ zIndex: 9999 }}
         onClick={(e) => e.stopPropagation()} // prevent closing modal on inside click
       >
         <button

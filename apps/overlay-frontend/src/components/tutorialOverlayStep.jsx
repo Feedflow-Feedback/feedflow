@@ -8,7 +8,7 @@ export default function TutorialOverlayStep({ text, title, step }) {
         <p>{step}. </p>
         <p className="ml-1">{title}</p>
       </div>
-      <p>{text}</p>
+      <p className="text-black">{text}</p>
     </>
   );
 }

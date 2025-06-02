@@ -39,7 +39,7 @@ export const findMatchingDomElements = (feedbacks) => {
       circle.style.height = "16px";
       circle.style.background = " #ff913a";
       circle.style.borderRadius = "50%";
-      circle.style.zIndex = "10000";
+
       circle.style.border = "2px solid white";
       circle.style.transform = "translate(-50%, 50%)";
 
@@ -80,7 +80,7 @@ export const findMatchingDomElements = (feedbacks) => {
       borderDiv.style.height = `${elRect.height + 4}px`;
       borderDiv.style.pointerEvents = "none";
       borderDiv.style.border = "0.5px solid  #ff913a";
-      borderDiv.style.zIndex = "9999";
+
       borderDiv.style.boxSizing = "border-box";
 
       document.body.appendChild(borderDiv);

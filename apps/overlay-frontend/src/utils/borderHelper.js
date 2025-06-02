@@ -7,7 +7,7 @@ export const createBorder = () => {
   border.style.height = "100vh";
   border.style.pointerEvents = "none";
   border.style.border = "5px solid #ff913a";
-  border.style.zIndex = "9999";
+
   border.id = "orange-screen-border";
 
   document.body.appendChild(border);
