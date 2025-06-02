@@ -51,11 +51,10 @@ export class FeedbackController {
   @HttpCode(HttpStatus.OK)
   @Patch('updateFeedback')
   async updateFeedback(@Body() data: any) {
-    if (!data.feedbackId) {
-      throw new BadRequestException('feedbackId is required');
+    if (!data.feedbackId || !data.status) {
+      throw new BadRequestException('feedbackId & status is required');
     }
 
     return this.feedbackService.updateStatus(data.feedbackId, data.status);
   }
-  $;
 }

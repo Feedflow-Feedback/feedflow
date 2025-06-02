@@ -59,7 +59,7 @@ describe('UsersController', () => {
   it('should return projectIds when user is found', async () => {
     mockUsersService.findUserByUserId.mockResolvedValueOnce({
       userId: '1',
-      projectIds: ['proj1', 'proj2'],
+      projects: ['proj1', 'proj2'], // <-- change here to match controller
     });
 
     const result = await controller.getProjectIds({ userId: '1' });

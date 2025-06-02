@@ -19,10 +19,11 @@ export class CommentController {
   @HttpCode(HttpStatus.OK)
   @Post('create')
   async create(@Body() dto: any): Promise<Comment> {
-    if (!dto.comment || !dto.author || !dto.authorEmail || !dto.feedbackId) {
-      throw new BadRequestException(
-        'author, comment, autherEmail, Feedbackid are required',
-      );
+    const requiredFields = ['comment', 'author', 'authorEmail', 'feedbackId'];
+    for (const field of requiredFields) {
+      if (!dto[field]) {
+        throw new BadRequestException(`${field} is required`);
+      }
     }
 
     return this.commentService.create(dto);

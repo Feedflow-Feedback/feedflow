@@ -21,28 +21,9 @@ export class UsersController {
     if (!data.email || !data.password) {
       throw new BadRequestException('Email is required & password is required');
     }
-    console.log('Creating user with data:', data);
+
     return this.usersService.createUser(data);
   }
-
-  /* @Get()
-  async findUserByEmail(@Query('email') email: string): Promise<User | null> {
-    if (!email) {
-      throw new BadRequestException('Email query param is required');
-    }
-    return this.usersService.findUserByEMail(email);
-  }*/
-
-  /* // ⚠️ For internal use only — avoid exposing passwords in public APIs
-  @Get('with-password')
-  async findUserWithPassword(
-    @Query('email') email: string,
-  ): Promise<User | null> {
-    if (!email) {
-      throw new BadRequestException('Email query param is required');
-    }
-    return this.usersService.findUserByEMailwithPassword(email);
-  }*/
 
   @HttpCode(HttpStatus.OK)
   @Post('getProjectIds')

@@ -40,19 +40,16 @@ export class AuthService {
   }
 
   async register(input: AuthInput): Promise<Partial<User>> {
-    // Check if user already exists
     const existingUser = await this.usersService.findUserByEMail(input.email);
     if (existingUser) {
       throw new BadRequestException('User with this email already exists');
     }
 
-    // Create new user with hashed password
     const newUser = await this.usersService.createUser({
       email: input.email,
       password: await this.hashPassword(input.password),
     });
 
-    // Sign in the new user
     return newUser;
   }
 
@@ -78,7 +75,6 @@ export class AuthService {
     } else {
       throw new BadRequestException('User not found');
     }
-    return null;
   }
   async signIn(user: SignInData): Promise<AuthResult> {
     const tokenPayload = { userId: user.userId, email: user.email };
