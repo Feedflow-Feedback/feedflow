@@ -3,7 +3,7 @@ import { App } from "./app.jsx";
 import "./index.css"; // still useful for dev
 import styles from "./index.css?inline"; // gets CSS as a string for Shadow DOM
 
-const local = false;
+const local = true;
 
 if (local) {
   render(<App />, document.getElementById("app"));

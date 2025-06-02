@@ -8,7 +8,7 @@ async function bootstrap() {
   // Body parser middleware
 
   app.enableCors({
-    origin: 'http://localhost:5173',
+    origin: '*',
     methods: 'GET,POST,PUT,DELETE',
     credentials: true,
     allowedHeaders: 'Content-Type, Authorization',

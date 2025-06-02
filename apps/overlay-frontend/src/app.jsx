@@ -15,6 +15,7 @@ import { unHighlightDomElement } from "./utils/unHighlightDomElement";
 import "./index.css";
 
 export function App() {
+  window.PROJECT_ID = "bc40efbc-c042-4c4d-9685-ae1a2348849d";
   const projectId = window.PROJECT_ID;
   const backendUrl = "http://localhost:3000";
 
@@ -188,6 +189,7 @@ export function App() {
           <img src="./src/assets/preact.svg" alt="Placeholder" />
           <img src="./src/assets/preact.svg" alt="Placeholder" />
         </div> */}
+      <p id="exampleElement">asd</p>
 
       <BasicOverlay mode={mode} setMode={setMode} />
       {(mode === "addFeedback" ||
