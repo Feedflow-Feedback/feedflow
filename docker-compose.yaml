@@ -1,6 +1,7 @@
 version: "3.8"
 services:
   overlay-frontend:
+    image: yannicreust/overlay-frontend:latest
     build:
       context: .
       dockerfile: /apps/overlay-frontend/Dockerfile

@@ -1,16 +1,10 @@
 "use client";
 import crossIcon from "../assets/icons/cross_icon.svg";
 import uploadIcon from "../assets/icons/upload_icon.svg";
-import { useState } from "preact/hooks";
-import {
-  Dialog,
-  DialogBackdrop,
-  DialogPanel,
-  DialogTitle,
-} from "@headlessui/react";
+import { useState, useEffect } from "preact/hooks";
 import axios from "axios";
 
-export default function extendedOverlayModalPhoto({
+export default function ExtendedOverlayModalPhoto({
   open,
   close,
   htmlElement,
@@ -18,12 +12,24 @@ export default function extendedOverlayModalPhoto({
 }) {
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const projectId = window.PROJECT_ID;
+
   const [form, setForm] = useState({
     feedback_Title: "",
     feedback_Description: "",
     feedback_AuthorEmail: "",
     feedback_Author: "",
   });
+
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -53,92 +59,94 @@ export default function extendedOverlayModalPhoto({
     }
     close();
   }
+
+  if (!open) return null;
+
   return (
-    <Dialog open={open} onClose={close} className="relative z-10">
-      <DialogBackdrop
-        transition
-        className="fixed inset-0 bg-black/20 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in"
-      />
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/20"
+      role="dialog"
+      aria-modal="true"
+      onClick={close} // close modal on backdrop click
+    >
+      <div
+        className="relative w-full max-w-xl rounded-lg bg-white p-10 shadow-xl"
+        onClick={(e) => e.stopPropagation()} // prevent closing modal on inside click
+      >
+        <button
+          onClick={close}
+          aria-label="Close modal"
+          className="absolute top-2 right-2 p-1"
+        >
+          <img
+            src={crossIcon}
+            alt="Close Icon"
+            className="w-6 h-6 cursor-pointer"
+          />
+        </button>
 
-      <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-        <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0 ">
-          <DialogPanel
-            transition
-            className="relative transform overflow-hidden min-w-lg rounded-lg bg-white p-10 text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in  sm:w-full  data-closed:sm:translate-y-0 data-closed:sm:scale-95"
-          >
-            <div className="absolute top-2 right-2">
-              <img
-                src={crossIcon}
-                alt="Close Icon"
-                className="w-6 h-6 cursor-pointer"
-                onClick={() => close()}
-              />
-            </div>
-            <form onSubmit={handleSubmit}>
-              <div className="space-y-4">
-                <input
-                  id="feedback_Author"
-                  name="feedback_Author"
-                  type="text"
-                  required
-                  placeholder="Your Name"
-                  onChange={handleChange}
-                  value={form.Author}
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-black outline-1 -outline-offset-1 outline-black placeholder:text-black focus:outline-2 focus:-outline-offset-2"
-                />
-                <input
-                  id="feedback_AuthorEmail"
-                  name="feedback_AuthorEmail"
-                  type="text"
-                  required
-                  placeholder="Your Email"
-                  onChange={handleChange}
-                  value={form.feedback_AuthorEmail}
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-black outline-1 -outline-offset-1 outline-black placeholder:text-black focus:outline-2 focus:-outline-offset-2"
-                />
-                <input
-                  id="feedback_Title"
-                  name="feedback_Title"
-                  type="text"
-                  required
-                  placeholder="Feedback Title"
-                  onChange={handleChange}
-                  value={form.feedback_Title}
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-black outline-1 -outline-offset-1 outline-black placeholder:text-black focus:outline-2 focus:-outline-offset-2"
-                />
+        <form onSubmit={handleSubmit}>
+          <div className="space-y-4">
+            <input
+              id="feedback_Author"
+              name="feedback_Author"
+              type="text"
+              required
+              placeholder="Your Name"
+              onChange={handleChange}
+              value={form.feedback_Author}
+              className="block w-full rounded-md bg-white px-3 py-1.5 text-black outline-1 -outline-offset-1 outline-black text-p-sm placeholder:text-black/60 focus:outline-2 focus:-outline-offset-2"
+            />
+            <input
+              id="feedback_AuthorEmail"
+              name="feedback_AuthorEmail"
+              type="email"
+              required
+              placeholder="Your Email"
+              onChange={handleChange}
+              value={form.feedback_AuthorEmail}
+              className="block w-full rounded-md bg-white px-3 py-1.5 text-black outline-1 -outline-offset-1 outline-black text-p-sm placeholder:text-black/60 focus:outline-2 focus:-outline-offset-2"
+            />
+            <input
+              id="feedback_Title"
+              name="feedback_Title"
+              type="text"
+              required
+              placeholder="Feedback Title"
+              onChange={handleChange}
+              value={form.feedback_Title}
+              className="block w-full rounded-md bg-white px-3 py-1.5 text-black outline-1 -outline-offset-1 outline-black text-p-sm placeholder:text-black/60 focus:outline-2 focus:-outline-offset-2"
+            />
 
-                <textarea
-                  id="feedback_Description"
-                  name="feedback_Description"
-                  rows="4"
-                  className="block p-2.5 w-full text-sm rounded-lg border border-black/60 resize-none"
-                  placeholder="Write your thoughts here..."
-                  value={form.feedback_Description}
-                  onChange={handleChange}
-                  required
-                ></textarea>
-              </div>
-              <div className="mt-5 sm:mt-6 flex justify-end ">
-                <div className="flex gap-4 ">
-                  <button
-                    type="button"
-                    className="inline-flex py-2 px-6 cursor-pointer justify-center rounded-md bg-white  text-sm font-semibold text-black shadow-xs border-[1px] border-black"
-                    onClick={close}
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    type="submit"
-                    className="inline-flex py-2 px-6 cursor-pointer justify-center rounded-md bg-teal  text-sm font-semibold text-white shadow-xs "
-                  >
-                    Submit Feedback
-                  </button>
-                </div>
-              </div>
-            </form>
-          </DialogPanel>
-        </div>
+            <textarea
+              id="feedback_Description"
+              name="feedback_Description"
+              rows="4"
+              className="block p-2.5 w-full text-p-sm rounded-lg border border-black/60 resize-none"
+              placeholder="Write your thoughts here..."
+              value={form.feedback_Description}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="mt-5 flex justify-end gap-4">
+            <button
+              type="button"
+              className="inline-flex py-2 px-6 cursor-pointer justify-center rounded-md bg-white text-p-sm font-semibold text-black shadow-xs border border-black"
+              onClick={close}
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="inline-flex py-2 px-6 cursor-pointer justify-center rounded-md bg-teal text-p-sm font-semibold text-white shadow-xs"
+            >
+              Submit Feedback
+            </button>
+          </div>
+        </form>
       </div>
-    </Dialog>
+    </div>
   );
 }

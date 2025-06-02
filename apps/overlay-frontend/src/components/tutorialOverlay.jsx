@@ -5,23 +5,23 @@ import TutorialOverlayStep from "./tutorialOverlayStep";
 const content = [
   {
     title: "Click the screenshot or Textfeedback button",
-    text: "In the Feedbucket toolbar to your right click the icon.",
+    text: "In the Feedflow toolbar to your right click the icon.",
   },
   {
     title: "Place the marker",
-    text: "Place the marker over the area that you want to leave feedback about. Click the to enable marker mode and then click on the screen where you want to place the marker. The marker can be moved by dragging it to the place you want to.",
+    text: "Place the marker over the area that you want to leave feedback about. Click the to enable marker mode and then click on the screen where you want to place the marker.",
   },
   {
     title: "Write your feedback",
-    text: "Together with the screenshot you should write in text form what the feedback is about.",
+    text: "Together with the element you clicked, write in text form what the feedback is about.",
   },
   {
     title: "Enter your name & Email",
-    text: " Before you submit the feedback we need to know who is reporting. This is something that you only have to do once. We will ask for your email as well and that is the be able to send you notifications when actions are taken on your feedback. ",
+    text: " Before you submit the feedback we need to know who is reporting. ",
   },
   {
-    title: "Submit the screenshot feedback",
-    text: "  Click on the submit button and your screenshot feedback will get posted. All done! ",
+    title: "Submit the feedback",
+    text: "Click on the submit button and your feedback will get posted. All done! ",
   },
 ];
 
@@ -30,7 +30,7 @@ export default function TutorialOverlay({ returnToRegularMode }) {
     <>
       <div
         id="tutorialOverlay"
-        className="fixed top-0 right-0 overflow-y-scroll h-[calc(100vh-60px)] mt-[30px] w-xl bg-white shadow-2xl border-[0.5px] border-lightGray rounded-bl-2xl rounded-tl-2xl"
+        className="fixed top-1/2 right-0 overflow-y-scroll h-[calc(100vh-60px)]  w-xl bg-white shadow-2xl border-[0.5px] border-lightGray rounded-bl-2xl rounded-tl-2xl"
         style={{ transform: "translate(0, -50%)" }}
       >
         <img
@@ -57,12 +57,6 @@ export default function TutorialOverlay({ returnToRegularMode }) {
                 />
               </div>
             ))}
-          </div>
-
-          <p>View all submitted feedback</p>
-          <div>
-            1 <p>Click the screenshot or Textfeedback button</p>
-            <p>In the Feedbucket toolbar to your right click the icon</p>
           </div>
         </div>
       </div>

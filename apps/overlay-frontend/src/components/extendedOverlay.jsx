@@ -56,13 +56,13 @@ export default function ExtendedOverlay({
               className=" w-full no-click"
             />
           </div>
-          <div className="aspect-square w-12 cursor-pointer">
+          {/* <div className="aspect-square w-12 cursor-pointer">
             <img
               src={videoIcon}
               alt="Question Icon"
               className=" w-full no-click"
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </>
