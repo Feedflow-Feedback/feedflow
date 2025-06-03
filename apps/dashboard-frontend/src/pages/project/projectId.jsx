@@ -1,11 +1,8 @@
-import React, { useState } from "react";
-
+import { useState, useEffect } from "react";
 import Navbar from "@/components/navbar/navbar";
 import TabsNavigation from "@/components/tabsNavigation/tabsNavigation";
 import FeedbacksTable from "@/components/detailsProject/feedbacksOverview/feedbacksTable/feedbacksTable";
-import SearchBar from "@/components/detailsProject/feedbacksOverview/searchBar/searchBar";
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
 import { useAuthStore } from "@/stores/authStore";
 import axios from "axios";
 import Installation from "../../components/detailsProject/installation/installation";
@@ -14,6 +11,12 @@ import Settings from "../../components/detailsProject/settings/settings";
 export default function Project() {
   const backendUrl = "http://localhost:3000";
   const token = useAuthStore((state) => state.token);
+
+  const tabs = [
+    { label: "Feedbacks" },
+    { label: "Installation" },
+    { label: "Settings" },
+  ];
 
   const { id } = useParams();
 
@@ -85,6 +88,7 @@ export default function Project() {
               <TabsNavigation
                 activeTab={activeTab}
                 setActiveTab={setActiveTab}
+                tabs={tabs}
               />
             </div>
           </div>

@@ -1,10 +1,4 @@
-export default function TabsNavigation({ activeTab, setActiveTab }) {
-  const tabs = [
-    { label: "Feedbacks" },
-    { label: "Installation" },
-    { label: "Settings" },
-  ];
-
+export default function TabsNavigation({ activeTab, setActiveTab, tabs }) {
   return (
     <div className="border-b-[1.75px] border-black/60 px-2">
       <div className="flex space-x-6">

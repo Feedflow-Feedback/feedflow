@@ -10,8 +10,18 @@ async function bootstrap() {
   // Body parser middleware
 
   app.enableCors({
-    origin: '*',
-    methods: 'GET,POST,PUT,DELETE',
+    origin: [
+      'http://localhost:5173',
+      'http://localhost:5174',
+      'http://localhost:5175',
+      'http://localhost:5176',
+      'http://localhost:5177',
+      'http://localhost:5178',
+      'http://localhost:5179',
+      'http://localhost:5180',
+      'http://localhost:5181',
+    ],
+    methods: 'GET,POST,PUT,DELETE,PATCH',
     credentials: true,
     allowedHeaders: 'Content-Type, Authorization',
   });
