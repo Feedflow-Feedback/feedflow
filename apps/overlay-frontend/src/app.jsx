@@ -15,7 +15,7 @@ import { unHighlightDomElement } from "./utils/unHighlightDomElement";
 import "./index.css";
 
 export function App() {
-  window.PROJECT_ID = "bc40efbc-c042-4c4d-9685-ae1a2348849d";
+  window.PROJECT_ID = "119cf9ca-0a31-403f-8bb2-6af7d1b8e13d";
   const projectId = window.PROJECT_ID;
   const backendUrl = "http://localhost:3000";
 

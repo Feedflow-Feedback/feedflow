@@ -1,11 +1,5 @@
 // user.entity.ts
-import {
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
-  ManyToMany,
-  JoinTable,
-} from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { Project } from './project'; // Adjust the import path as necessary
 
 @Entity('user')
@@ -19,7 +13,6 @@ export class User {
   @Column({ select: false })
   password: string;
 
-  @ManyToMany(() => Project, { nullable: true })
-  @JoinTable()
+  @OneToMany(() => Project, (project) => project.user)
   projects: Project[];
 }

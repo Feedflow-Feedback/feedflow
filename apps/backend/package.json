@@ -7,6 +7,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "start:dev": "nest start --env-file .env --watch",
+    "start-mac:dev": "nest build  --webpack --webpackPath webpack-hmr.config.js --watch",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",

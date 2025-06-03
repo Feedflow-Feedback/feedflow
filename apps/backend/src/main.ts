@@ -1,6 +1,8 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import * as bodyParser from 'body-parser';
+//mac only
+declare const module: any;
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -19,6 +21,11 @@ async function bootstrap() {
 
   await app.listen(3000);
   console.log(`Application running on http://localhost:3000`);
+  //mac only
+  if (module.hot) {
+    module.hot.accept();
+    module.hot.dispose(() => app.close());
+  }
 }
 
 bootstrap();
