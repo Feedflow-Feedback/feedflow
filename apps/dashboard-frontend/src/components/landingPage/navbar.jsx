@@ -39,12 +39,18 @@ export default function Navbar() {
         </div>
         <div className="flex items-center gap-4 ml-8">
           <a href="/register">
-            <button className="inline-flex justify-center rounded-md  px-4 py-1.5 text-sm font-semibold bg-white w-min border-1 border-orange text-orange shadow-xs cursor-pointer text-nowrap">
+            <button
+              id="register"
+              className="inline-flex justify-center rounded-md  px-4 py-1.5 text-sm font-semibold bg-white w-min border-1 border-orange text-orange shadow-xs cursor-pointer text-nowrap"
+            >
               Register
             </button>
           </a>
           <a href="/login">
-            <button className="inline-flex justify-center rounded-md  px-4 py-1.5 text-sm font-semibold bg-orange w-min border-1 border-orange text-white shadow-xs cursor-pointer text-nowrap">
+            <button
+              id="login"
+              className="inline-flex justify-center rounded-md  px-4 py-1.5 text-sm font-semibold bg-orange w-min border-1 border-orange text-white shadow-xs cursor-pointer text-nowrap"
+            >
               Login
             </button>
           </a>
