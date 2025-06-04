@@ -122,9 +122,9 @@ export default function signIn() {
                 <div />
 
                 <div className="text-sm/6">
-                  <a href="#" className="font-semibold text-black">
+                  {/* <a href="#" className="font-semibold text-black">
                     Forgot password?
-                  </a>
+                  </a> */}
                 </div>
               </div>
               <div className="h-8 mb-0">

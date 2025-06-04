@@ -18,7 +18,7 @@ export default function Navbar() {
         className=" flex items-center justify-between p-4 lg:px-8 border-b border-black/20 border-2 shadow-md"
       >
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
+          <a href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Feedflow</span>
             <p className="font-bold">Feedflow</p>
           </a>

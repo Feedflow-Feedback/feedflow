@@ -28,9 +28,9 @@ export default function feedbackStatusDropdown({ status, setStatus }) {
       >
         <div className="py-1">
           {statusOptions.map((option, index) => (
-            <MenuItem key={index}>
+            <MenuItem>
               <a
-                href="#"
+                key={index}
                 className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-black data-focus:outline-hidden"
                 onClick={() => handleSelectChange(option.value)}
               >

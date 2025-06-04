@@ -145,6 +145,7 @@ export default function feedbackDetailsModal({
                     <button
                       className="bg-blue text-nowrap py-1 px-6 text-white rounded-md cursor-pointer"
                       onClick={() => setOpenComment(!openComment)}
+                      id="addCommentButton"
                     >
                       Add Comment
                     </button>

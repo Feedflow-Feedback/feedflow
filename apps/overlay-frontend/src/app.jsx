@@ -15,7 +15,7 @@ import { unHighlightDomElement } from "./utils/unHighlightDomElement";
 import "./index.css";
 
 export function App() {
-  window.PROJECT_ID = "119cf9ca-0a31-403f-8bb2-6af7d1b8e13d";
+  window.PROJECT_ID = "ffb4793d-1e5c-45f2-8ec9-47a44afa4db5";
   const projectId = window.PROJECT_ID;
   const backendUrl = "http://localhost:3000";
 
@@ -158,39 +158,6 @@ export function App() {
 
   return (
     <>
-      {/* <p>Example Text</p>
-        <div>
-          <img src="./src/assets/preact.svg" alt="Placeholder" />
-          <img src="./src/assets/preact.svg" alt="Placeholder" />
-          <img src="./src/assets/preact.svg" alt="Placeholder" />
-          <img src="./src/assets/preact.svg" alt="Placeholder" />
-          <img src="./src/assets/preact.svg" alt="Placeholder" />
-          <img src="./src/assets/preact.svg" alt="Placeholder" />
-          <img src="./src/assets/preact.svg" alt="Placeholder" />
-          <img src="./src/assets/preact.svg" alt="Placeholder" />
-          <img src="./src/assets/preact.svg" alt="Placeholder" />
-          <img src="./src/assets/preact.svg" alt="Placeholder" />
-          <img src="./src/assets/preact.svg" alt="Placeholder" />
-          <img src="./src/assets/preact.svg" alt="Placeholder" />
-          <img src="./src/assets/preact.svg" alt="Placeholder" />
-          <img src="./src/assets/preact.svg" alt="Placeholder" />
-          <img src="./src/assets/preact.svg" alt="Placeholder" />
-          <img src="./src/assets/preact.svg" alt="Placeholder" />
-          <img src="./src/assets/preact.svg" alt="Placeholder" />
-          <img src="./src/assets/preact.svg" alt="Placeholder" />
-          <img src="./src/assets/preact.svg" alt="Placeholder" />
-          <img src="./src/assets/preact.svg" alt="Placeholder" />
-          <img src="./src/assets/preact.svg" alt="Placeholder" />
-          <img src="./src/assets/preact.svg" alt="Placeholder" />
-          <img src="./src/assets/preact.svg" alt="Placeholder" />
-          <img src="./src/assets/preact.svg" alt="Placeholder" />
-          <img src="./src/assets/preact.svg" alt="Placeholder" />
-          <img src="./src/assets/preact.svg" alt="Placeholder" />
-          <img src="./src/assets/preact.svg" alt="Placeholder" />
-          <img src="./src/assets/preact.svg" alt="Placeholder" />
-        </div> */}
-      <p id="exampleElement">asd</p>
-
       <BasicOverlay mode={mode} setMode={setMode} />
       {(mode === "addFeedback" ||
         mode === "textFeedback" ||
