@@ -4,18 +4,47 @@ import { useState } from "react";
 
 import TabsNavigation from "@/components/tabsNavigation/tabsNavigation";
 export default function Installation() {
-  const codeStringHTML = "(num) => num + 1";
+  const codeStringHTML =
+    "<script src='YOUR_FEEDBACK_DOMAIN/feedback-widget.iife.js'></script>";
+  const codeStringHTML2 = `<script>
+    window.PROJECT_ID = 'YOUR_PROJECT_ID';
+    FeedbackWidget?.init?.({container: 'feedback-widget-container'});
+</script>`;
 
-  const codeStringVue = "(num) => num + 1";
-  const codeStringVue2 = "(num) => num + 1";
+  const codeStringVue = `onMounted(() => {
+  if (window.FeedbackWidget) {
+    window.PROJECT_ID = "YOUR_PROJECT_ID";
+    window.FeedbackWidget.init();
+  }
+});`;
+  const codeStringVue2 = `script: [{
+      src: "YOUR_FEEDBACK_DOMAIN/feedback-widget.iife.js",
+      defer: true,
+      type: "text/javascript",
+    },
+  ],`;
 
-  const codeStringReact = "(num) => num + 1";
-  const codeStringReact2 = "(num) => num + 1";
+  const codeStringReact = `useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "YOUR_FEEDBACK_DOMAIN/feedback-widget.iife.js";
+    script.async = true;
+
+    script.onload = () => {
+      window.PROJECT_ID = "YOUR_PROJECT_ID";
+      window.FeedbackWidget?.init?.({ container: "feedback-widget-container" });
+    };
+
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);`;
 
   const tabs = [
     { label: "Plain HTMl" },
     { label: "Vue/Nuxt" },
-    { label: "React/Next" },
+    { label: "React" },
   ];
 
   const [activeTab, setActiveTab] = useState("Plain HTMl");
@@ -32,7 +61,7 @@ export default function Installation() {
           Add this code to your Project so you can start collection Feedback
         </p>
         {activeTab === "Plain HTMl" && (
-          <div>
+          <div className="space-y-2">
             <SyntaxHighlighter
               language="javascript"
               style={docco}
@@ -40,11 +69,18 @@ export default function Installation() {
             >
               {codeStringHTML}
             </SyntaxHighlighter>
+            <SyntaxHighlighter
+              language="javascript"
+              style={docco}
+              className=" rounded-md"
+            >
+              {codeStringHTML2}
+            </SyntaxHighlighter>
           </div>
         )}
 
         {activeTab === "Vue/Nuxt" && (
-          <div>
+          <div className="space-y-2">
             <SyntaxHighlighter
               language="javascript"
               style={docco}
@@ -61,7 +97,7 @@ export default function Installation() {
             </SyntaxHighlighter>
           </div>
         )}
-        {activeTab === "React/Next" && (
+        {activeTab === "React" && (
           <div>
             <SyntaxHighlighter
               language="javascript"
@@ -69,13 +105,6 @@ export default function Installation() {
               className=" rounded-md"
             >
               {codeStringReact}
-            </SyntaxHighlighter>
-            <SyntaxHighlighter
-              language="javascript"
-              style={docco}
-              className=" rounded-md"
-            >
-              {codeStringReact2}
             </SyntaxHighlighter>
           </div>
         )}
