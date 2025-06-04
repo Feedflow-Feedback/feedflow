@@ -7,13 +7,18 @@ export default function Settings({ id, name, description, url }) {
   const backendUrl = "http://localhost:3000";
   const token = useAuthStore((state) => state.token);
   const [openModalDelete, setOpenModalDelete] = useState(false);
-  const [form, setForm] = useState({ name: "", description: "", url: "" });
+  const [form, setForm] = useState({
+    name: name,
+    description: description,
+    url: url,
+  });
 
   const closeModal = () => {
     setOpenModalDelete(false);
   };
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
+    console.log("Form updated:", form);
   }
 
   const handleDeleteProject = async () => {
