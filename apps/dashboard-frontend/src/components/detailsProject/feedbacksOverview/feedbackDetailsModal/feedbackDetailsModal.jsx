@@ -8,7 +8,7 @@ import { useState } from "react";
 import { useAuthStore } from "@/stores/authStore";
 import { blobToImageUrl, formatDateReadable } from "@feedflow/utils";
 import FeedbackStatusDropdown from "../feedbackStatusDropdown/feedbackStatusDropdown";
-import crossIcon from "../../../../assets/icons/cross_icon.svg";
+
 import axios from "axios";
 
 import { useUserStore } from "@/stores/userStore";
@@ -92,12 +92,23 @@ export default function feedbackDetailsModal({
           >
             <div className="flex items-start justify-between">
               <div className="absolute top-2 right-2">
-                <img
-                  src={crossIcon}
-                  alt="Close Icon"
-                  className="w-6 h-6 cursor-pointer"
+                <svg
                   onClick={() => close()}
-                />
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  className="w-6 h-6 cursor-pointer"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="#666666"
+                  role="img"
+                  aria-label="Close Icon"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6 18 18 6M6 6l12 12"
+                  />
+                </svg>
               </div>
               <div className="">
                 <DialogTitle as="h3" className=" font-semibold  text-h-xs">
@@ -156,12 +167,23 @@ export default function feedbackDetailsModal({
             {openComment && (
               <form onSubmit={createComment} className="relative mt-4 w-full">
                 <div className="aspect-square w-4 cursor-pointer absolute top-0 right-0 ">
-                  <img
-                    src={crossIcon}
-                    alt="Close Icon"
-                    className=" w-full"
+                  <svg
                     onClick={() => setOpenComment(!openComment)}
-                  />
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    className="w-full"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="#666666"
+                    role="img"
+                    aria-label="Close Icon"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M6 18 18 6M6 6l12 12"
+                    />
+                  </svg>
                 </div>
                 <label
                   htmlFor="name"

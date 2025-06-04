@@ -1,6 +1,4 @@
 "use client";
-import uploadIcon from "../assets/icons/upload_icon.svg";
-import crossIcon from "../assets/icons/cross_icon.svg";
 import { useState, useEffect } from "preact/hooks";
 import axios from "axios";
 
@@ -90,7 +88,22 @@ export default function ExtendedOverlayModal({ open, close, htmlElement }) {
           aria-label="Close modal"
           className="absolute top-3 right-3 p-1"
         >
-          <img src={crossIcon} alt="Close" className="w-6 h-6 cursor-pointer" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            className="w-6 h-6 cursor-pointer"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="#666666"
+            role="img"
+            aria-label="Close"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18 18 6M6 6l12 12"
+            />
+          </svg>
         </button>
 
         <form onSubmit={handleSubmit}>
@@ -151,11 +164,22 @@ export default function ExtendedOverlayModal({ open, close, htmlElement }) {
                 htmlFor="file-upload"
                 className="cursor-pointer flex items-center"
               >
-                <img
-                  src={uploadIcon}
-                  alt="Upload"
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="#666666"
                   className="w-6 h-6 inline-block mr-2"
-                />
+                  role="img"
+                  aria-label="Upload"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5"
+                  />
+                </svg>
                 Upload Image
               </label>
             </div>

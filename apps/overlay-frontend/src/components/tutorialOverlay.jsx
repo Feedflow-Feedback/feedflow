@@ -1,5 +1,3 @@
-import crossIcon from "../assets/icons/cross_icon.svg";
-import addFeedbackIcon from "../assets/icons/add_feedback_icon_white.svg";
 import TutorialOverlayStep from "./tutorialOverlayStep";
 
 const content = [
@@ -33,15 +31,42 @@ export default function TutorialOverlay({ returnToRegularMode }) {
         className="fixed top-1/2 right-0 overflow-y-scroll h-[calc(100vh-60px)]  w-xl bg-white shadow-2xl border-[0.5px] border-lightGray rounded-bl-2xl rounded-tl-2xl z-50"
         style={{ transform: "translate(0, -50%)" }}
       >
-        <img
-          src={crossIcon}
-          alt="Close"
-          className="w-8 cursor-pointer absolute top-4 right-4"
+        <svg
           onClick={returnToRegularMode}
-        />
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          className="w-8 cursor-pointer absolute top-4 right-4"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="#666666"
+          role="img"
+          aria-label="Close"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 18 18 6M6 6l12 12"
+          />
+        </svg>
         <div className="mt-12 px-8 ">
           <div className="px-4 py-2 bg-teal rounded-md w-fit flex items-center">
-            <img src={addFeedbackIcon} alt="Close" className="w-8" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              className="w-10"
+              strokeWidth="1.5"
+              stroke="#fff"
+              role="img"
+              aria-label="Close"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                scale="2"
+                d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+              />
+            </svg>
             <p className="ml-2 text-p-lg font-bold text-white">
               Adding Feedback
             </p>

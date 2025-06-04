@@ -1,6 +1,3 @@
-import crossIcon from "../assets/icons/cross_icon.svg";
-import addFeedbackIcon from "../assets/icons/add_feedback_icon_white.svg";
-
 export default function TutorialOverlayStep({ text, title, step }) {
   return (
     <>

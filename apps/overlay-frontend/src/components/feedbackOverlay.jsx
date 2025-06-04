@@ -1,8 +1,5 @@
 import { useState, useEffect } from "preact/hooks";
-import crossIcon from "../assets/icons/cross_icon.svg";
 import TabsNavigation from "./feedbackOverlay/tabsNavigation.jsx";
-import SortOptions from "./feedbackOverlay/sortOptions.jsx";
-import IndividualFeedback from "./feedbackOverlay/individualFeedback.jsx";
 import Feedbacks from "./feedbackOverlay/feedbacks.jsx";
 
 export default function FeedbackOverlay({
@@ -11,7 +8,6 @@ export default function FeedbackOverlay({
   update,
 }) {
   const [activeTab, setActiveTab] = useState("Unresolved");
-  const projectId = window.PROJECT_ID;
 
   const [openFeedbacks, setOpenFeedbacks] = useState([]);
   const [resolvedFeedbacks, setResolvedFeedbacks] = useState([]);
@@ -48,12 +44,23 @@ export default function FeedbackOverlay({
           </div>
         </div>
 
-        <img
-          src={crossIcon}
-          alt="Close"
-          className="w-8 cursor-pointer absolute top-4 right-4"
+        <svg
           onClick={returnToRegularMode}
-        />
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          className="w-8 cursor-pointer absolute top-4 right-4"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="#666666"
+          role="img"
+          aria-label="Close"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 18 18 6M6 6l12 12"
+          />
+        </svg>
       </div>
 
       <div className="mt-4">

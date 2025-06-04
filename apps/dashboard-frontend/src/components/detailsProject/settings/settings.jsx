@@ -18,7 +18,6 @@ export default function Settings({ id, name, description, url }) {
   };
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
-    console.log("Form updated:", form);
   }
 
   const handleDeleteProject = async () => {
@@ -50,7 +49,6 @@ export default function Settings({ id, name, description, url }) {
           },
         }
       );
-      console.log("Project updated successfully");
     } catch (err) {
       console.error("Create Project failed, error:", err);
     }

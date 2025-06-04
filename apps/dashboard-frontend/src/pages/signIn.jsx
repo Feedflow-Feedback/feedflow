@@ -36,7 +36,6 @@ export default function signIn() {
       });
 
       if (response.status === 200) {
-        console.log("Login successful, response:", response);
         setToken(response.data.accessToken);
         setUserId(response.data.userId);
         setEmail(response.data.email);

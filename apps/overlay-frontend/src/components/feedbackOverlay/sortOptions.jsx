@@ -1,5 +1,3 @@
-import chevron from "../../assets/icons/chevron_icon.svg";
-
 export default function SortOptions() {
   return (
     <div className="">
@@ -15,7 +13,22 @@ export default function SortOptions() {
 
         <button className="border-[1.75px] border-black font-semibold rounded-md px-3 py-1  text-sm flex items-center space-x-1 ">
           <span className="mt-0.5">Typ</span>
-          <img src={chevron} alt="Chevron" className="w-4 h-4" />
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-4"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15.75 19.5 8.25 12l7.5-7.5"
+            />
+          </svg>
+
           {/* <ChevronLeft size={14} /> */}
         </button>
       </div>

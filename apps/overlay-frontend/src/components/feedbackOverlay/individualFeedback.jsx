@@ -1,5 +1,5 @@
 import { useState } from "preact/hooks";
-import crossIcon from "../../assets/icons/cross_icon.svg";
+
 import { formatDateReadable, blobToImageUrl } from "@feedflow/utils";
 import axios from "axios";
 
@@ -95,12 +95,23 @@ export default function IndividualFeedback({ feedback, update }) {
           className="relative mt-4 w-full"
         >
           <div className="aspect-square w-4 cursor-pointer absolute top-0 right-0 ">
-            <img
-              src={crossIcon}
-              alt="Close Icon"
-              className=" w-full"
+            <svg
               onClick={() => setOpenComment(!openComment)}
-            />
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              className="w-full"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="#666666"
+              role="img"
+              aria-label="   Close Icon"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 18 18 6M6 6l12 12"
+              />
+            </svg>
           </div>
           <label
             htmlFor="name"

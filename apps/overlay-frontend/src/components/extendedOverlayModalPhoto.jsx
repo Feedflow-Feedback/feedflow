@@ -1,6 +1,5 @@
 "use client";
-import crossIcon from "../assets/icons/cross_icon.svg";
-import uploadIcon from "../assets/icons/upload_icon.svg";
+
 import { useState, useEffect } from "preact/hooks";
 import axios from "axios";
 
@@ -79,11 +78,22 @@ export default function ExtendedOverlayModalPhoto({
           aria-label="Close modal"
           className="absolute top-2 right-2 p-1"
         >
-          <img
-            src={crossIcon}
-            alt="Close Icon"
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
             className="w-6 h-6 cursor-pointer"
-          />
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="#666666"
+            role="img"
+            aria-label="Close"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18 18 6M6 6l12 12"
+            />
+          </svg>
         </button>
 
         <form onSubmit={handleSubmit}>

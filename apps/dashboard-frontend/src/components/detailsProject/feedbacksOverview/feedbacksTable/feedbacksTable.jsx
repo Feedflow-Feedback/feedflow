@@ -22,7 +22,6 @@ export default function FeedbacksTable({ feedbacks, update }) {
   };
 
   const updateData = () => {
-    console.log("Update Data called");
     update();
   };
 
