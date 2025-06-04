@@ -30,7 +30,9 @@ export const findMatchingDomElements = (feedbacks) => {
       const elRect = el.getBoundingClientRect();
 
       const circle = document.createElement("div");
+
       circle.className = "feedback-red-circle";
+
       circle.setAttribute("data-feedback-id", feedback.id);
       circle.style.position = "absolute";
       circle.style.top = `${elRect.top - 16}px`;

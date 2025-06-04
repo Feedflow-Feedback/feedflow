@@ -22,10 +22,10 @@ async function bootstrap() {
   await app.listen(3000);
   console.log(`Application running on http://localhost:3000`);
   //mac only
-  if (module.hot) {
+  /*if (module.hot) {
     module.hot.accept();
     module.hot.dispose(() => app.close());
-  }
+  }*/
 }
 
 bootstrap();

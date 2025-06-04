@@ -102,6 +102,7 @@ export default function feedbackDetailsModal({
                   stroke="#666666"
                   role="img"
                   aria-label="Close Icon"
+                  data-cy="Close Icon"
                 >
                   <path
                     stroke-linecap="round"
@@ -177,6 +178,7 @@ export default function feedbackDetailsModal({
                     stroke="#666666"
                     role="img"
                     aria-label="Close Icon"
+                    data-cy="Close Icon"
                   >
                     <path
                       stroke-linecap="round"
@@ -194,6 +196,7 @@ export default function feedbackDetailsModal({
                 <div className="mt-1">
                   <input
                     id="name"
+                    data-cy="name"
                     name="name"
                     type="name"
                     placeholder="your Name"

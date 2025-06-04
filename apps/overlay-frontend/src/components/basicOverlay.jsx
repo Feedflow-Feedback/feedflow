@@ -5,7 +5,11 @@ export default function Overlay({ setMode }) {
         className="fixed top-1/2 right-0 bg-white shadow-2xl border-[0.5px] border-lightGray rounded-bl-2xl rounded-tl-2xl z-50"
         style={{ transform: "translate(0, -50%)" }}
       >
-        <div className="grid grid-cols-1 gap-4 p-4" id="basicOverlay">
+        <div
+          className="grid grid-cols-1 gap-4 p-4"
+          id="basicOverlay"
+          data-cy="basicOverlay"
+        >
           <div
             className="aspect-square w-12 cursor-pointer"
             onClick={() => setMode("addFeedback")}
@@ -19,6 +23,7 @@ export default function Overlay({ setMode }) {
               stroke="#666666"
               role="img"
               aria-label="Add Icon"
+              data-cy="Add Icon"
             >
               <path
                 strokeLinecap="round"
@@ -40,6 +45,7 @@ export default function Overlay({ setMode }) {
               stroke="#666666"
               role="img"
               aria-label="Feedback List Icon"
+              data-cy="Feedback List Icon"
             >
               <path
                 stroke-linecap="round"
@@ -60,6 +66,7 @@ export default function Overlay({ setMode }) {
               stroke="#666666"
               role="img"
               aria-label="Question Icon"
+              data-cy="Question Icon"
             >
               <path
                 stroke-linecap="round"

@@ -70,6 +70,7 @@ export default function Settings({ id, name, description, url }) {
               <div className="mt-1">
                 <input
                   id="name"
+                  data-cy="name"
                   name="name"
                   type="name"
                   defaultValue={name}

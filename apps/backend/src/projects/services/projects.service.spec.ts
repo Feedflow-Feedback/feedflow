@@ -37,7 +37,7 @@ describe('ProjectsService (simple)', () => {
     expect(result).toBe('project1');
   });
 
-  it('create creates and saves a project and associates with user', async () => {
+  it('creates and saves a project', async () => {
     const input = { name: 'p', userId: 'u' };
     userRepo.findOne.mockResolvedValue({ userId: 'u', projects: [] });
     projectRepo.create.mockReturnValue('newProject');

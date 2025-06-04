@@ -1,9 +1,9 @@
 import { render } from "preact";
 import { App } from "./app.jsx";
-import "./index.css"; // still useful for dev
-import styles from "./index.css?inline"; // gets CSS as a string for Shadow DOM
+import "./index.css";
+import styles from "./index.css?inline";
 
-const local = false;
+const local = true;
 
 if (local) {
   render(<App />, document.getElementById("app"));

@@ -86,6 +86,7 @@ export default function ExtendedOverlayModal({ open, close, htmlElement }) {
         <button
           onClick={close}
           aria-label="Close modal"
+          data-cy="Close modal"
           className="absolute top-3 right-3 p-1"
         >
           <svg
@@ -97,6 +98,7 @@ export default function ExtendedOverlayModal({ open, close, htmlElement }) {
             stroke="#666666"
             role="img"
             aria-label="Close"
+            data-cy="Close"
           >
             <path
               stroke-linecap="round"
@@ -111,6 +113,7 @@ export default function ExtendedOverlayModal({ open, close, htmlElement }) {
             <input
               id="feedback_Author"
               name="feedback_Author"
+              data-cy="feedback_Author"
               type="text"
               required
               placeholder="Your Name"
@@ -121,6 +124,7 @@ export default function ExtendedOverlayModal({ open, close, htmlElement }) {
             <input
               id="feedback_AuthorEmail"
               name="feedback_AuthorEmail"
+              data-cy="feedback_AuthorEmail"
               type="email"
               required
               placeholder="Your Email"
@@ -131,6 +135,7 @@ export default function ExtendedOverlayModal({ open, close, htmlElement }) {
             <input
               id="feedback_Title"
               name="feedback_Title"
+              data-cy="feedback_Title"
               type="text"
               required
               placeholder="Feedback Title"
@@ -142,6 +147,7 @@ export default function ExtendedOverlayModal({ open, close, htmlElement }) {
             <textarea
               id="feedback_Description"
               name="feedback_Description"
+              data-cy="feedback_Description"
               rows="4"
               className="block p-2.5 w-full text-p-sm rounded-lg border border-black/60 resize-none placeholder:text-black/60"
               placeholder="Write your thoughts here..."
@@ -155,6 +161,7 @@ export default function ExtendedOverlayModal({ open, close, htmlElement }) {
             <div className="flex items-center">
               <input
                 id="file-upload"
+                data-cy="file-upload"
                 type="file"
                 accept="image/*"
                 onChange={handleFileChange}
@@ -173,6 +180,7 @@ export default function ExtendedOverlayModal({ open, close, htmlElement }) {
                   className="w-6 h-6 inline-block mr-2"
                   role="img"
                   aria-label="Upload"
+                  data-cy="Upload"
                 >
                   <path
                     stroke-linecap="round"
@@ -194,6 +202,7 @@ export default function ExtendedOverlayModal({ open, close, htmlElement }) {
               </button>
               <button
                 type="submit"
+                data-cy="submit"
                 className="inline-flex py-2 px-6 cursor-pointer justify-center rounded-md bg-teal text-p-sm font-semibold text-white shadow-xs"
               >
                 Submit Feedback

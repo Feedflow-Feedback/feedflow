@@ -9,7 +9,11 @@ export default function ExtendedOverlay({
         className="fixed top-1/2 right-0  bg-white shadow-2xl border-[0.5px] border-lightGray rounded-bl-2xl rounded-tl-2xl no-click z-50"
         style={{ transform: "translate(0, -50%)" }}
       >
-        <div className="grid grid-cols-1 gap-4 p-4" id="extendedOverlay">
+        <div
+          className="grid grid-cols-1 gap-4 p-4"
+          id="extendedOverlay"
+          data-cy="extendedOverlay"
+        >
           <div className="aspect-square w-12 cursor-pointer ">
             <svg
               onClick={returnToRegularMode}
@@ -21,6 +25,7 @@ export default function ExtendedOverlay({
               stroke="#666666"
               role="img"
               aria-label="Close Icon"
+              data-cy="Close Icon"
             >
               <path
                 stroke-linecap="round"
@@ -40,6 +45,7 @@ export default function ExtendedOverlay({
               stroke={mode === "textFeedback" ? "#FF913A" : "#666666"}
               role="img"
               aria-label="Feedback Text Icon"
+              data-cy="Feedback Text Icon"
               className="no-click"
             >
               <path

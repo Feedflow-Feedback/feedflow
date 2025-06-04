@@ -1,4 +1,5 @@
 version: "3.8"
+
 services:
   overlay-frontend:
     image: yannicreust/overlay-frontend:latest
@@ -7,39 +8,39 @@ services:
       dockerfile: /apps/overlay-frontend/Dockerfile
     ports:
       - "5174:4173"
+    networks:
+      - feedflow-network
 
   dashboard-frontend:
     image: yannicreust/dashboard-frontend:latest
     build:
       context: .
-      dockerfile: /apps/dashboard-frontend/Dockerfile # Adjust path if your Dockerfile is somewhere else
-
+      dockerfile: /apps/dashboard-frontend/Dockerfile
     ports:
       - "5173:80"
     restart: unless-stopped
+    networks:
+      - feedflow-network
 
   backend:
     image: yannicreust/backend:latest
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
     build:
       context: .
-      dockerfile: ./apps/backend/Dockerfile # Assuming you save the Nest Dockerfile as Dockerfile.nest
+      dockerfile: ./apps/backend/Dockerfile
     ports:
       - "3000:3000"
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
     environment:
-      MYSQL_HOST: mysql
+      MYSQL_HOST: mysql # Uses the MySQL container name
       MYSQL_PORT: 3306
       MYSQL_USER: root
       MYSQL_PASSWORD: hmJZKzJ&&rtYwq#ppB65
       MYSQL_DATABASE: feedflow
-
+    depends_on:
+      mysql:
+        condition: service_healthy
     restart: unless-stopped
+    networks:
+      - feedflow-network
 
   mysql:
     image: mysql:8.0
@@ -50,7 +51,28 @@ services:
       - "3306:3306"
     volumes:
       - mysql-data:/var/lib/mysql
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-h",
+          "localhost",
+          "-u",
+          "root",
+          "-p$$MYSQL_ROOT_PASSWORD",
+        ]
+      interval: 5s
+      timeout: 10s
+      retries: 5
     restart: unless-stopped
+    networks:
+      - feedflow-network
 
 volumes:
   mysql-data:
+
+networks:
+  feedflow-network:
+    driver: bridge

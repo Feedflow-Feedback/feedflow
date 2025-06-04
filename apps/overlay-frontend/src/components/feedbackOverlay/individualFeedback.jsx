@@ -78,6 +78,7 @@ export default function IndividualFeedback({ feedback, update }) {
             <div className="flex justify-end mt-6">
               <button
                 className="bg-blue text-nowrap py-1 px-6 text-white rounded-md cursor-pointer"
+                data-cy="Add Comment Button"
                 onClick={() => setOpenComment(!openComment)}
               >
                 Add Comment
@@ -104,7 +105,8 @@ export default function IndividualFeedback({ feedback, update }) {
               stroke-width="1.5"
               stroke="#666666"
               role="img"
-              aria-label="   Close Icon"
+              aria-label="Close Icon"
+              data-cy="Close Icon"
             >
               <path
                 stroke-linecap="round"
@@ -122,6 +124,7 @@ export default function IndividualFeedback({ feedback, update }) {
           <div className="mt-2">
             <input
               id="name"
+              data-cy="name"
               name="name"
               type="name"
               placeholder="your Name"
@@ -140,6 +143,7 @@ export default function IndividualFeedback({ feedback, update }) {
           <div className="mt-1">
             <input
               id="email"
+              data-cy="email"
               name="email"
               type="email"
               placeholder="your email"
@@ -158,6 +162,7 @@ export default function IndividualFeedback({ feedback, update }) {
           <textarea
             id="comment"
             name="comment"
+            data-cy="comment"
             rows="4"
             className="block p-2.5 w-full text-sm rounded-lg border border-black/60 resize-none"
             value={form.comment}
@@ -166,7 +171,10 @@ export default function IndividualFeedback({ feedback, update }) {
             placeholder="Write your thoughts here..."
           ></textarea>
           <div className="flex justify-end mt-6 space-x-4">
-            <button className="bg-blue text-nowrap py-1 px-6 text-white rounded-md">
+            <button
+              className="bg-blue text-nowrap py-1 px-6 text-white rounded-md"
+              data-cy="Save"
+            >
               Save
             </button>
           </div>
@@ -174,6 +182,7 @@ export default function IndividualFeedback({ feedback, update }) {
       )}
       <p
         className="mt-2 text-p-sm underline cursor-pointer"
+        data-cy="Show Comments"
         onClick={() => setShowComments(!showComments)}
       >
         Show Comments

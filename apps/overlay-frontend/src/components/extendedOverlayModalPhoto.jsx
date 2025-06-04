@@ -76,6 +76,7 @@ export default function ExtendedOverlayModalPhoto({
         <button
           onClick={close}
           aria-label="Close modal"
+          data-cy="Close modal"
           className="absolute top-2 right-2 p-1"
         >
           <svg
@@ -87,6 +88,7 @@ export default function ExtendedOverlayModalPhoto({
             stroke="#666666"
             role="img"
             aria-label="Close"
+            data-cy="Close"
           >
             <path
               stroke-linecap="round"

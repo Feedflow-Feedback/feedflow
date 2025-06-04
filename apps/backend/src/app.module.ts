@@ -20,13 +20,14 @@ import { CommentModule } from './comment/comment.module';
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
+      //host: 'mysql', // Must match Docker service name
+      host: 'localhost', // Must match Docker service name
       port: 3306,
       username: 'root',
-      password: 'hmJZKzJ&&rtYwq#ppB65',
+      password: 'hmJZKzJ&&rtYwq#ppB65', // From your docker-compose.yml
       database: 'feedflow',
       autoLoadEntities: true,
-      synchronize: true, // set to false in production!
+      synchronize: true,
       entities: [Project, Feedback, User, Comment],
     }),
     TypeOrmModule.forFeature([Project, User, Feedback, Comment]),
