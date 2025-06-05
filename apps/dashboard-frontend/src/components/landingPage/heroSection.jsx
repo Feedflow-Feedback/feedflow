@@ -2,8 +2,8 @@ import landingPageImage from "@/assets/images/landingPage.png";
 export default function HeroSection() {
   return (
     <>
-      <div className="container mx-auto  py-40 px-8 lg:px-x">
-        <div className="grid grid-cols-7  ">
+      <div className="container mx-auto  py-16 md:py-40 px-8 lg:px-x">
+        <div className="grid grid-cols-2 md:grid-cols-7  ">
           <div className="flex flex-col justify-center col-span-3">
             <h1 className="text-h-l font-bold mb-4">Welcome to Feedflow</h1>
             <p className="text-p-lg  mb-8">

@@ -29,7 +29,7 @@ export default function TutorialOverlay({ returnToRegularMode }) {
       <div
         id="tutorialOverlay"
         data-cy="tutorialOverlay"
-        className="fixed top-1/2 right-0 overflow-y-scroll h-[calc(100vh-60px)]  w-xl bg-white shadow-2xl border-[0.5px] border-lightGray rounded-bl-2xl rounded-tl-2xl z-50"
+        className="fixed top-1/2 right-0 overflow-y-scroll h-[calc(100vh-60px)] w-full  md:w-xl bg-white shadow-2xl border-[0.5px] border-lightGray rounded-bl-2xl rounded-tl-2xl z-50"
         style={{ transform: "translate(0, -50%)" }}
       >
         <svg
@@ -50,7 +50,7 @@ export default function TutorialOverlay({ returnToRegularMode }) {
             d="M6 18 18 6M6 6l12 12"
           />
         </svg>
-        <div className="mt-12 px-8 ">
+        <div className="mt-12 px-4 md:px-8 ">
           <div className="px-4 py-2 bg-teal rounded-md w-fit flex items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -70,7 +70,7 @@ export default function TutorialOverlay({ returnToRegularMode }) {
                 d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
               />
             </svg>
-            <p className="ml-2 text-p-lg font-bold text-white">
+            <p className="ml-2 text-p-md md:text-p-lg font-bold text-white">
               Adding Feedback
             </p>
           </div>

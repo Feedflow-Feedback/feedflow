@@ -88,7 +88,7 @@ export default function feedbackDetailsModal({
         <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
           <DialogPanel
             transition
-            className="relative min-w-3xl min-h-96 transform overflow-hidden rounded-lg bg-white text-black text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in sm:my-8 sm:w-full sm:max-w-sm sm:p-6 data-closed:sm:translate-y-0 data-closed:sm:scale-95"
+            className="relative md:min-w-3xl p-4 min-h-96 transform overflow-hidden rounded-lg bg-white text-black text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in sm:my-8 sm:w-full sm:max-w-sm sm:p-6 data-closed:sm:translate-y-0 data-closed:sm:scale-95"
           >
             <div className="flex items-start justify-between">
               <div className="absolute top-2 right-2">
@@ -140,8 +140,8 @@ export default function feedbackDetailsModal({
               </div>
             </div>
 
-            <div className="flex justify-between items-end mt-4">
-              <div className="flex items-end space-x-4">
+            <div className="flex flex-col md:flex-row justify-between md:items-end mt-4">
+              <div className="flex  md:items-end space-x-4">
                 <div className="text-p-xs">
                   <p>{feedback.author}</p>
                   <p>{feedback.authorEmail}</p>

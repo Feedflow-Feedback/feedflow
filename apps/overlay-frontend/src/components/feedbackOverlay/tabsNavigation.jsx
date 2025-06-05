@@ -18,7 +18,7 @@ export default function TabsNavigation({
 
   return (
     <div className="border-b-[1.75px] border-black/60 px-2">
-      <div className="flex space-x-6">
+      <div className="flex md:space-x-6 space-x-2">
         {tabs.map((tab) => {
           const isActive = activeTab === tab.label;
           return (

@@ -30,11 +30,13 @@ export default function FeedbackOverlay({
     <div
       id="feedbackOverlay"
       data-cy="feedbackOverlay"
-      className="fixed top-0 right-0 overflow-y-scroll h-[calc(100vh-60px)] mt-[30px] w-xl bg-white text-black shadow-2xl border-[0.5px] border-lightGray rounded-bl-2xl rounded-tl-2xl z-50"
+      className="fixed top-0 right-0 overflow-y-scroll h-[calc(100vh-60px)] mt-[30px] md:w-xl bg-white text-black shadow-2xl border-[0.5px] border-lightGray rounded-bl-2xl rounded-tl-2xl z-50"
     >
       <div className="relative">
         <div className="pt-6  px-8">
-          <p className="text-h-xs font-bold font-inter">Feedbacks</p>
+          <p className="md:text-h-xs text-p-lg font-bold font-inter">
+            Feedbacks
+          </p>
           <div className="mt-8">
             <TabsNavigation
               activeTab={activeTab}

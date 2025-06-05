@@ -158,7 +158,7 @@ export function App() {
 
   return (
     <>
-      <p data-cy="exampleElement">asd</p>
+      {/* <p data-cy="exampleElement">asd</p> */}
       <BasicOverlay mode={mode} setMode={setMode} />
       {(mode === "addFeedback" ||
         mode === "textFeedback" ||

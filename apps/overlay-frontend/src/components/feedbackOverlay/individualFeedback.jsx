@@ -62,7 +62,7 @@ export default function IndividualFeedback({ feedback, update }) {
         </div>
       </div>
 
-      <div className="flex justify-between items-end mt-4">
+      <div className="flex flex-col md:flex-row justify-between md:items-end mt-4">
         <div className="flex items-end space-x-4">
           <div className="text-p-xs">
             <p>{feedback.author}</p>
