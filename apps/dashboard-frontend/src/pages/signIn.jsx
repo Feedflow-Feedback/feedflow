@@ -87,6 +87,7 @@ export default function signIn() {
                     id="email"
                     name="email"
                     type="email"
+                    data-cy="email"
                     required
                     autoComplete="email"
                     value={form.email}
@@ -108,6 +109,7 @@ export default function signIn() {
                     id="password"
                     name="password"
                     type="password"
+                    data-cy="password"
                     required
                     autoComplete="current-password"
                     value={form.password}
@@ -138,6 +140,7 @@ export default function signIn() {
               <div className="flex w-full justify-center">
                 <button
                   type="submit"
+                  data-cy="submit"
                   className="flex cursor-pointer w-min items-center text-base justify-center rounded-md  px-8 py-1.5 text-p-sm font-semibold text-white shadow-xs bg-orange hover:bg-orange/80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange/90"
                 >
                   Login

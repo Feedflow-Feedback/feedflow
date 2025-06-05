@@ -154,6 +154,7 @@ export default function feedbackDetailsModal({
                       className="bg-blue text-nowrap py-1 px-6 text-white rounded-md cursor-pointer"
                       onClick={() => setOpenComment(!openComment)}
                       id="addCommentButton"
+                      data-cy="addCommentButton"
                     >
                       Add Comment
                     </button>
@@ -211,6 +212,7 @@ export default function feedbackDetailsModal({
                 <textarea
                   id="comment"
                   name="comment"
+                  data-cy="comment"
                   rows="4"
                   className="block p-2.5 w-full text-sm rounded-lg border border-black/60 resize-none"
                   defaultValue={form.comment}
@@ -225,6 +227,7 @@ export default function feedbackDetailsModal({
                   <button
                     className="bg-blue text-nowrap py-1 px-6 text-white rounded-md"
                     type="submit"
+                    data-cy="submit"
                   >
                     Save
                   </button>
@@ -244,7 +247,7 @@ export default function feedbackDetailsModal({
                   <div className="flex items-center gap-1">
                     <p className="text-p-xs font-semibold">{comment.author}</p>
                     <p className="mb-1">-</p>
-                    <p className="text-p-xs text-gray-700">
+                    <p className="text-p-xs">
                       {formatDateReadable(comment.submitted_at)}
                     </p>
                   </div>

@@ -18,6 +18,7 @@ export default function projectPreview({ project }) {
       onMouseLeave={() => setIsHovered(false)}
     >
       <div
+        data-cy="projectPreview"
         className={`shadow-xl border-[1px] border-black/10 rounded-lg p-6 aspect-video  transition-all duration-100 bg-white ${isHovered ? "blur-[3px]" : ""}`}
       >
         <div className="flex justify-between flex-col h-full ">

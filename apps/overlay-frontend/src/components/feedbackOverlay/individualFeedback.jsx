@@ -195,7 +195,7 @@ export default function IndividualFeedback({ feedback, update }) {
               <div className="flex items-center gap-1">
                 <p className="text-p-xs font-semibold">{comment.author}</p>
                 <p className="mb-1">-</p>
-                <p className="text-p-xs text-gray-700">
+                <p className="text-p-xs ">
                   {formatDateReadable(comment.submitted_at)}
                 </p>
               </div>

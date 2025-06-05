@@ -92,7 +92,7 @@ export default function Project() {
               />
             </div>
           </div>
-          <div className="mt-4 text-sm text-gray-700">
+          <div className="mt-4 text-sm ">
             {activeTab === "Feedbacks" && (
               <div>
                 {/* <SearchBar /> */}

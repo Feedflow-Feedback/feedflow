@@ -39,6 +39,7 @@ export default function Navbar() {
           <a href="/register">
             <button
               id="register"
+              data-cy="register"
               className="inline-flex justify-center rounded-md  px-4 py-1.5 text-sm font-semibold bg-white w-min border-1 border-orange text-orange shadow-xs cursor-pointer text-nowrap"
             >
               Register
@@ -47,6 +48,7 @@ export default function Navbar() {
           <a href="/login">
             <button
               id="login"
+              data-cy="login"
               className="inline-flex justify-center rounded-md  px-4 py-1.5 text-sm font-semibold bg-orange w-min border-1 border-orange text-white shadow-xs cursor-pointer text-nowrap"
             >
               Login

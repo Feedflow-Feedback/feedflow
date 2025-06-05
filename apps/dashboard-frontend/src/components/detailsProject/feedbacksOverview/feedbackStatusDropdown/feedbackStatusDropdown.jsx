@@ -17,7 +17,7 @@ export default function feedbackStatusDropdown({ status, setStatus }) {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
-        <MenuButton className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-black shadow-xs ring-1 ring-gray-300 ring-inset hover:bg-gray-50">
+        <MenuButton className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-black shadow-xs ring-1 ring-inset ">
           {selectedStatus}
         </MenuButton>
       </div>
@@ -31,7 +31,7 @@ export default function feedbackStatusDropdown({ status, setStatus }) {
             <MenuItem>
               <a
                 key={index}
-                className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-black data-focus:outline-hidden"
+                className="block px-4 py-2 text-sm  data-focus:text-black data-focus:outline-hidden"
                 onClick={() => handleSelectChange(option.value)}
               >
                 {option.label}

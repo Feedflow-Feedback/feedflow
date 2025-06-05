@@ -58,6 +58,7 @@ export default function FeedbacksTable({ feedbacks, update }) {
                   <tr
                     key={feedback.id}
                     className="cursor-pointer"
+                    data-cy="tableRow"
                     onClick={() => handleOpen(index)}
                   >
                     <td className="py-4 pr-3 pl-4 text-sm font-medium whitespace-nowrap text-black sm:pl-6 w-full">

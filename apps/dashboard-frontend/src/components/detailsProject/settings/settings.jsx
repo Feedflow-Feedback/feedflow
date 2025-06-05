@@ -144,7 +144,7 @@ export default function Settings({ id, name, description, url }) {
             </div>
           </div>
 
-          <div className="absolute inset-0 bg-gray-200 opacity-60 pointer-events-none rounded-md"></div>
+          <div className="absolute inset-0  opacity-60 pointer-events-none rounded-md"></div>
         </div>
         <div className="mt-6">
           <ConfirmDeleteModal
