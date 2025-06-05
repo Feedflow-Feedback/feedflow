@@ -1,6 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import * as bodyParser from 'body-parser';
+import { ConfigService } from '@nestjs/config';
 //mac only
 //declare const module: any;
 
@@ -18,7 +19,9 @@ async function bootstrap() {
   app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 
   await app.listen(3000);
+
   console.log(`Application running on http://localhost:3000`);
+
   //mac only
   /*if (module.hot) {
     module.hot.accept();

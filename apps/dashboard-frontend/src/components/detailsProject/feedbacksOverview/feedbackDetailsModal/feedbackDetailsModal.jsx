@@ -19,7 +19,7 @@ export default function feedbackDetailsModal({
 
   update,
 }) {
-  const backendUrl = "http://localhost:3000";
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const token = useAuthStore((state) => state.token);
   const userEmail = useUserStore((state) => state.email);
   const [openComment, setOpenComment] = useState(false);

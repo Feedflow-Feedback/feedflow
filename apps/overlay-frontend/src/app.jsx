@@ -17,7 +17,9 @@ import "./index.css";
 export function App() {
   window.PROJECT_ID = "ffb4793d-1e5c-45f2-8ec9-47a44afa4db5"; // Fallback for local testing
   const projectId = window.PROJECT_ID;
-  const backendUrl = "http://localhost:3000";
+
+  const backendUrl = process.env.BACKEND_URL;
+  console.log("Backend URL:", backendUrl);
 
   const [mode, setMode] = useState("regular");
   const [isOpenModalAddFeedback, setIsOpenModalAddFeedback] = useState(false);

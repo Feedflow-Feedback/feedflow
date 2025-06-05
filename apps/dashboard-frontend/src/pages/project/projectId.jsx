@@ -9,7 +9,7 @@ import Installation from "../../components/detailsProject/installation/installat
 import Settings from "../../components/detailsProject/settings/settings";
 
 export default function Project() {
-  const backendUrl = "http://localhost:3000";
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const token = useAuthStore((state) => state.token);
 
   const tabs = [

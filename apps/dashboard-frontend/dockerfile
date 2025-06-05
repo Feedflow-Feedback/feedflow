@@ -14,11 +14,14 @@ COPY packages/utils ./packages/utils
 COPY packages/eslint-config ./packages/eslint-config
 COPY packages/typescript-config ./packages/typescript-config
 
+
+ARG VITE_BACKEND_URL
+ENV VITE_BACKEND_URL=$VITE_BACKEND_URL
+
 RUN pnpm install
 
 RUN pnpm --filter ./apps/dashboard-frontend... run build
 
-# Serve stage
 FROM node:23-alpine
 
 RUN npm install -g serve

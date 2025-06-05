@@ -9,7 +9,7 @@ export default function ExtendedOverlayModalPhoto({
   htmlElement,
   photoElement,
 }) {
-  const backendUrl = "http://localhost:3000";
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const projectId = window.PROJECT_ID;
 
   const [form, setForm] = useState({

@@ -4,7 +4,7 @@ import { formatDateReadable, blobToImageUrl } from "@feedflow/utils";
 import axios from "axios";
 
 export default function IndividualFeedback({ feedback, update }) {
-  const backendUrl = "http://localhost:3000";
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   const [openComment, setOpenComment] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", comment: "" });

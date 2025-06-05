@@ -14,14 +14,17 @@ import { CommentModule } from './comment/comment.module';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
+    ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'mysql',
-      //host: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'hmJZKzJ&&rtYwq#ppB65',
-      database: 'feedflow',
+      host: process.env.MYSQL_HOST,
+      //host: 'localhost',
+      port: process.env.MYSQL_PORT
+        ? parseInt(process.env.MYSQL_PORT, 10)
+        : 3306,
+      username: process.env.MYSQL_USER,
+      password: process.env.MYSQL_PASSWORD,
+      database: process.env.MYSQL_DATABASE,
       autoLoadEntities: true,
       synchronize: true,
       entities: [Project, Feedback, User, Comment],
