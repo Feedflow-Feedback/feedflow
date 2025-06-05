@@ -3,6 +3,7 @@ import { AuthService } from './auth.service';
 import { UsersService } from '../../users/services/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { BadRequestException } from '@nestjs/common';
+import { UnauthorizedException } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 
 describe('AuthService', () => {
@@ -164,6 +165,15 @@ describe('AuthService', () => {
   });
 
   describe('signIn', () => {
+    it('should throw UnauthorizedException when user is not found during authentication', async () => {
+      const input = { email: 'missing@example.com', password: 'password' };
+
+      jest.spyOn(service, 'validateUser').mockResolvedValue(null);
+
+      await expect(service.authenticate(input)).rejects.toThrow(
+        UnauthorizedException,
+      );
+    });
     it('should return auth result with access token', async () => {
       const userData = { userId: 'uuid', email: 'test@example.com' };
       mockJwtService.sign.mockReturnValue('mockToken');

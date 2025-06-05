@@ -39,22 +39,43 @@ describe('ProjectsService (simple)', () => {
 
   it('creates and saves a project', async () => {
     const input = { name: 'p', userId: 'u' };
-    userRepo.findOne.mockResolvedValue({ userId: 'u', projects: [] });
-    projectRepo.create.mockReturnValue('newProject');
-    projectRepo.save.mockResolvedValue('newProject');
-    userRepo.save.mockResolvedValue(true);
+
+    const mockUser = { userId: 'u' };
+    const mockProject = { name: 'p', user: mockUser };
+
+    userRepo.findOne.mockResolvedValue(mockUser);
+    projectRepo.create.mockReturnValue(mockProject);
+    projectRepo.save.mockResolvedValue(mockProject);
 
     const result = await service.create(input);
 
-    expect(userRepo.findOne).toHaveBeenCalled();
+    expect(userRepo.findOne).toHaveBeenCalledWith({ where: { userId: 'u' } });
+
     expect(projectRepo.create).toHaveBeenCalledWith({
       name: 'p',
       description: undefined,
       url: undefined,
+      user: mockUser,
     });
-    expect(projectRepo.save).toHaveBeenCalledWith('newProject');
-    expect(userRepo.save).toHaveBeenCalled();
-    expect(result).toBe('newProject');
+
+    expect(projectRepo.save).toHaveBeenCalledWith(mockProject);
+    expect(userRepo.save).not.toHaveBeenCalled();
+    expect(result).toBe(mockProject);
+  });
+
+  it('throws an error when user is not found during project creation', async () => {
+    const input = { name: 'p', userId: 'u' };
+    userRepo.findOne.mockResolvedValue(undefined);
+
+    await expect(service.create(input)).rejects.toThrow('User not found');
+
+    expect(userRepo.findOne).toHaveBeenCalledWith({
+      where: { userId: 'u' },
+    });
+
+    expect(projectRepo.create).not.toHaveBeenCalled();
+    expect(projectRepo.save).not.toHaveBeenCalled();
+    expect(userRepo.save).not.toHaveBeenCalled();
   });
 
   it('delete calls projectRepo.delete', async () => {
@@ -70,6 +91,20 @@ describe('ProjectsService (simple)', () => {
     expect(projectRepo.update).toHaveBeenCalledWith('1', { name: 'new' });
     expect(result).toBe('updated');
   });
+  it('should update a project', async () => {
+    const id = '123';
+    const updateData = { name: 'New Name' };
+
+    const mockUpdateResult = { affected: 1 };
+    jest
+      .spyOn(projectRepo, 'update')
+      .mockResolvedValue(mockUpdateResult as any);
+
+    const result = await service.update(id, updateData);
+
+    expect(projectRepo.update).toHaveBeenCalledWith(id, updateData);
+    expect(result).toEqual(mockUpdateResult);
+  });
 
   it('findAllUserProjects returns user projects', async () => {
     userRepo.findOne.mockResolvedValue({ projects: ['proj1'] });
@@ -79,5 +114,16 @@ describe('ProjectsService (simple)', () => {
       relations: ['projects'],
     });
     expect(result).toEqual(['proj1']);
+  });
+
+  it('findAllUserProjects throws error if user not found', async () => {
+    userRepo.findOne.mockResolvedValue(undefined);
+    await expect(service.findAllUserProjects('u')).rejects.toThrow(
+      'User not found',
+    );
+    expect(userRepo.findOne).toHaveBeenCalledWith({
+      where: { userId: 'u' },
+      relations: ['projects'],
+    });
   });
 });

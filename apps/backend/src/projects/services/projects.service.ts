@@ -31,24 +31,20 @@ export class ProjectsService {
   async create(data: ProjectAndUser) {
     const { name, description, url, userId } = data;
 
-    const user = await this.usersRepo.findOne({
-      where: { userId },
-      relations: ['projects'],
-    });
+    const user = await this.usersRepo.findOne({ where: { userId } });
 
     if (!user) {
       throw new Error('User not found');
     }
 
-    const project = this.projectRepo.create({ name, description, url });
+    const project = this.projectRepo.create({
+      name,
+      description,
+      url,
+      user, // Set the relation directly here
+    });
 
-    const savedProject = await this.projectRepo.save(project);
-
-    user.projects = [...(user.projects || []), savedProject];
-
-    await this.usersRepo.save(user);
-
-    return savedProject;
+    return await this.projectRepo.save(project);
   }
 
   async findAllUserProjects(userId: string) {
