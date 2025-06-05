@@ -5,21 +5,17 @@ RUN corepack enable && corepack prepare pnpm@latest --activate
 
 WORKDIR /app
 
-# Copy monorepo files
 COPY pnpm-workspace.yaml ./
 COPY package.json pnpm-lock.yaml ./
 
-# Copy required packages and apps for the dashboard frontend
 COPY apps/dashboard-frontend ./apps/dashboard-frontend
 COPY packages/ui ./packages/ui
 COPY packages/utils ./packages/utils
 COPY packages/eslint-config ./packages/eslint-config
 COPY packages/typescript-config ./packages/typescript-config
 
-# Install all dependencies
 RUN pnpm install
 
-# Build the dashboard frontend app
 RUN pnpm --filter ./apps/dashboard-frontend... run build
 
 # Serve stage
@@ -29,7 +25,6 @@ RUN npm install -g serve
 
 WORKDIR /app
 
-# Copy the built dashboard frontend files from build stage
 COPY --from=build /app/apps/dashboard-frontend/dist ./dist
 
 EXPOSE 80

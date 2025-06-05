@@ -2,12 +2,10 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { FeedbackController } from './feedback.controller';
 import { FeedbackService } from '../services/feedback.service';
 import { BadRequestException } from '@nestjs/common';
-import { Feedback } from '../../typeorm/entities/feedback';
 
 describe('FeedbackController', () => {
   let controller: FeedbackController;
 
-  // Mock FeedbackService
   const mockFeedbackService = {
     create: jest.fn((dto) => {
       return {

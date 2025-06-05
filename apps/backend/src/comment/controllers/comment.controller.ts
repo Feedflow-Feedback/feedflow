@@ -6,9 +6,7 @@ import {
   Post,
   Body,
   HttpCode,
-  UseGuards,
   HttpStatus,
-  Patch,
   BadRequestException,
 } from '@nestjs/common';
 

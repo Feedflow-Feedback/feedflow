@@ -50,8 +50,7 @@ export function App() {
     setIsOpenModalAddFeedbackPhoto(false);
     setMode(Modes.ADD_FEEDBACK);
     deleteBorder();
-    //here
-    //unHighlightDomElement(htmlElement);
+
     unHighlightDomElement();
     fetchAllFeedbacks();
   };
@@ -112,7 +111,6 @@ export function App() {
 
         const imageDataUrl = await takeScreenshot();
 
-        // Convert data URL to Blob
         const res = await fetch(imageDataUrl);
         const arrayBuffer = await res.arrayBuffer();
         const uint8Array = new Uint8Array(arrayBuffer);

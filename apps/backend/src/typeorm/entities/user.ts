@@ -1,6 +1,5 @@
-// user.entity.ts
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
-import { Project } from './project'; // Adjust the import path as necessary
+import { Project } from './project';
 
 @Entity('user')
 export class User {

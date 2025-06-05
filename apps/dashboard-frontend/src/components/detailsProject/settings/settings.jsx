@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import ConfirmDeleteModal from "./confirmDeleteModal";
 import { useAuthStore } from "@/stores/authStore";
 import axios from "axios";
@@ -143,7 +143,7 @@ export default function Settings({ id, name, description, url }) {
               />
             </div>
           </div>
-          {/* Overlay haze */}
+
           <div className="absolute inset-0 bg-gray-200 opacity-60 pointer-events-none rounded-md"></div>
         </div>
         <div className="mt-6">

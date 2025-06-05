@@ -100,7 +100,7 @@ describe('CommentService', () => {
         comment: 'Test comment',
         author: 'Test Author',
         authorEmail: 'test@example.com',
-        feedbackId: 999, // Non-existent feedback ID
+        feedbackId: 999,
       };
 
       await expect(service.create(createDto)).rejects.toThrow(

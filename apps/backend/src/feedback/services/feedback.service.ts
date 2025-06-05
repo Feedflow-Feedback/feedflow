@@ -1,9 +1,7 @@
-// feedback.service.ts
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Feedback } from '../../typeorm/entities/feedback';
 import { Repository } from 'typeorm';
-
 import { Project } from '../../typeorm/entities/project';
 
 @Injectable()
@@ -29,8 +27,8 @@ export class FeedbackService {
       title: createDto.title,
       author: createDto.author,
       authorEmail: createDto.authorEmail,
-      imageData: imageBuffer, // Assuming imageData is a Buffer
-      //metadata: createDto.metadata,
+      imageData: imageBuffer,
+
       status: 'open',
       htmlElement: createDto.htmlElement,
       project,
@@ -42,7 +40,7 @@ export class FeedbackService {
   async findByProjectId(projectId: string): Promise<Feedback[]> {
     return this.feedbackRepo.find({
       where: { project: { id: projectId } },
-      relations: ['project', 'comments'], // Assumes Feedback entity has a 'comments' relation
+      relations: ['project', 'comments'],
     });
   }
 

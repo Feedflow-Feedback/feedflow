@@ -16,18 +16,15 @@ if (local) {
       document.body.appendChild(container);
     }
 
-    // Create Shadow DOM
     const shadowHost = document.createElement("div");
     container.appendChild(shadowHost);
 
     const shadowRoot = shadowHost.attachShadow({ mode: "open" });
 
-    // Inject styles
     const styleEl = document.createElement("style");
     styleEl.textContent = styles;
     shadowRoot.appendChild(styleEl);
 
-    // Mount Preact app
     const rootEl = document.createElement("div");
     shadowRoot.appendChild(rootEl);
 

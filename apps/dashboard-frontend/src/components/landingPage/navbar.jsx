@@ -9,8 +9,6 @@ export default function Navbar() {
     { name: "Docs", href: "/docs" },
   ];
 
-  //const currentRoute = pathname?.split("/")[1] || "";
-
   const pathname = window.location.pathname;
 
   return (

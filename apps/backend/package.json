@@ -1,8 +1,8 @@
 {
   "name": "backend",
-  "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "version": "1.0.0",
+  "description": "Feedflow Backend API using NestJS",
+  "author": "Yannic Reust",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {

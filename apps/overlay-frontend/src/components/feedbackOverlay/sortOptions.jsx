@@ -28,8 +28,6 @@ export default function SortOptions() {
               d="M15.75 19.5 8.25 12l7.5-7.5"
             />
           </svg>
-
-          {/* <ChevronLeft size={14} /> */}
         </button>
       </div>
     </div>

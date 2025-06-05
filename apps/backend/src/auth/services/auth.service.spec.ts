@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { AuthService } from './auth.service';
 import { UsersService } from '../../users/services/users.service';
 import { JwtService } from '@nestjs/jwt';
-import { BadRequestException, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 
 describe('AuthService', () => {
@@ -41,7 +41,6 @@ describe('AuthService', () => {
 
     service = module.get<AuthService>(AuthService);
 
-    // Mock bcrypt
     jest
       .spyOn(bcrypt, 'hash')
       .mockImplementation(() => Promise.resolve('hashedpassword'));

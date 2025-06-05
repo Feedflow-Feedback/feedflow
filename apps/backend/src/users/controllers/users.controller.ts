@@ -1,9 +1,7 @@
 import {
   Controller,
-  Get,
   Post,
   Body,
-  Query,
   BadRequestException,
   HttpCode,
   HttpStatus,

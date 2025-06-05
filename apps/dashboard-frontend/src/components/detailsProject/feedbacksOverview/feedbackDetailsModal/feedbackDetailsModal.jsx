@@ -16,7 +16,7 @@ export default function feedbackDetailsModal({
   open,
   close,
   feedback,
-  closeAndUpdate,
+
   update,
 }) {
   const backendUrl = "http://localhost:3000";
@@ -49,8 +49,8 @@ export default function feedbackDetailsModal({
     e.preventDefault();
 
     if (!form.name || !form.comment) {
-      console.error("Please enter both name and comment.");
-      //setError("Please enter both title and description.");
+      console.log("missing name and comment.");
+
       return;
     }
 
@@ -70,8 +70,6 @@ export default function feedbackDetailsModal({
         setForm({ name: "", comment: "" });
         setOpenComment(false);
         update();
-      } else if (response.status === 400) {
-        //setError("Try again later and Error aqcured");
       }
     } catch (err) {
       console.error("Create Project failed, error:", err);
@@ -116,9 +114,7 @@ export default function feedbackDetailsModal({
                   {feedback.title}
                 </DialogTitle>
                 <div className="mt-2">
-                  <p className="text-sm text-gray-500">
-                    {feedback.description}
-                  </p>
+                  <p className="text-sm ">{feedback.description}</p>
                 </div>
                 <div>
                   {feedback.imageData !== null && (

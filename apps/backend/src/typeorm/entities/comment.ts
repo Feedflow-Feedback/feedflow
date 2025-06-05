@@ -6,7 +6,7 @@ import {
   CreateDateColumn,
   JoinColumn,
 } from 'typeorm';
-import { Feedback } from './feedback'; // Adjust the import path as necessary
+import { Feedback } from './feedback';
 
 @Entity('comment')
 export class Comment {

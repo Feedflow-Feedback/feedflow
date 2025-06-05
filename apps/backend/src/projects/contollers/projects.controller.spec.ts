@@ -2,7 +2,6 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { ProjectsController } from './projects.controller';
 import { ProjectsService } from '../services/projects.service';
 import { AuthGuard } from '../../auth/guards/auth.guard';
-import { HttpStatus } from '@nestjs/common';
 
 describe('ProjectsController', () => {
   let controller: ProjectsController;

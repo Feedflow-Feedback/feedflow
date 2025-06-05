@@ -3,7 +3,6 @@ export const highlightDomElement = (el, feedbackId = "temp") => {
 
   const elRect = el.getBoundingClientRect();
 
-  // Avoid duplicate circles
   if (
     document.querySelector(
       `.feedback-red-circle[data-feedback-id="${feedbackId}"]`
@@ -11,7 +10,6 @@ export const highlightDomElement = (el, feedbackId = "temp") => {
   )
     return;
 
-  // Create red circle
   const circle = document.createElement("div");
   circle.className = "feedback-red-circle";
   circle.setAttribute("data-feedback-id", feedbackId);
@@ -35,7 +33,6 @@ export const highlightDomElement = (el, feedbackId = "temp") => {
 
   document.body.appendChild(circle);
 
-  // Avoid duplicate borders
   if (
     document.querySelector(
       `.feedback-element-border[data-feedback-id="${feedbackId}"]`
@@ -43,7 +40,6 @@ export const highlightDomElement = (el, feedbackId = "temp") => {
   )
     return;
 
-  // Create border
   const borderDiv = document.createElement("div");
   borderDiv.className = "feedback-element-border";
   borderDiv.setAttribute("data-feedback-id", feedbackId);

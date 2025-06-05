@@ -10,7 +10,6 @@ export const takeScreenshot = async () => {
       },
     });
 
-    // Instead of downloading, just return the image data URL
     return dataUrl;
   } catch (err) {
     console.error("Screenshot failed:", err);

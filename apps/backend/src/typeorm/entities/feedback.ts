@@ -1,4 +1,3 @@
-// feedback.entity.ts
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -57,12 +56,6 @@ export class Feedback {
 
   @Column({ type: 'longblob', nullable: true })
   imageData: Buffer;
-  /*
-  @Column({ type: 'varchar', length: 45, nullable: true })
-  created_by_ip: string;*/
-
-  /*@Column({ default: false })
-  integration_sent: boolean;*/
 
   @OneToMany(() => Comment, (comment) => comment.feedback)
   comments: Comment[];

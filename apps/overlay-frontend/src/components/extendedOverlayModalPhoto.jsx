@@ -66,12 +66,12 @@ export default function ExtendedOverlayModalPhoto({
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/20"
       role="dialog"
       aria-modal="true"
-      onClick={close} // close modal on backdrop click
+      onClick={close}
     >
       <div
         className="relative w-full max-w-xl rounded-lg bg-white p-10 shadow-xl "
         style={{ zIndex: 9999 }}
-        onClick={(e) => e.stopPropagation()} // prevent closing modal on inside click
+        onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={close}

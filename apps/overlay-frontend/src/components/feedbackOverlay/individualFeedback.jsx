@@ -37,8 +37,6 @@ export default function IndividualFeedback({ feedback, update }) {
         setOpenComment(false);
 
         update();
-      } else if (response.status === 400) {
-        //setError("Try again later and Error aqcured");
       }
     } catch (err) {
       console.error("Create Project failed, error:", err);

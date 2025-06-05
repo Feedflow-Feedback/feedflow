@@ -29,7 +29,6 @@ describe('UsersController', () => {
     controller = module.get<UsersController>(UsersController);
   });
 
-  /*************** Create User ******************/
   it('should create a user', async () => {
     const result = await controller.createUser({
       email: 'tibo@pino.ch',
@@ -54,12 +53,10 @@ describe('UsersController', () => {
     ).rejects.toThrow(BadRequestException);
   });
 
-  /*************** Get Projects ******************/
-
   it('should return projectIds when user is found', async () => {
     mockUsersService.findUserByUserId.mockResolvedValueOnce({
       userId: '1',
-      projects: ['proj1', 'proj2'], // <-- change here to match controller
+      projects: ['proj1', 'proj2'],
     });
 
     const result = await controller.getProjectIds({ userId: '1' });

@@ -33,7 +33,7 @@ export class ProjectsService {
 
     const user = await this.usersRepo.findOne({
       where: { userId },
-      relations: ['projects'], // Load current projects
+      relations: ['projects'],
     });
 
     if (!user) {
@@ -44,7 +44,6 @@ export class ProjectsService {
 
     const savedProject = await this.projectRepo.save(project);
 
-    // Add the project to the user's projects
     user.projects = [...(user.projects || []), savedProject];
 
     await this.usersRepo.save(user);

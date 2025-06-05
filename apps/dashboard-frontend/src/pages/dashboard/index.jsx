@@ -63,7 +63,7 @@ export default function Dashboard() {
           </div>
           {projects.length === 0 && (
             <div>
-              <p className="text-center text-gray-500">
+              <p className="text-center ">
                 No projects found. Click the button below to create a new
                 project.
               </p>

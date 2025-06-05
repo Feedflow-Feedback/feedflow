@@ -25,12 +25,6 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center">
-          <a className="text-right mr-6" href="/documentation">
-            Docs
-          </a>
-          <p className="rounded-full aspect-square w-8 bg-orange flex justify-center items-center">
-            {/* User initial or avatar could go here */}Y
-          </p>
           <div className="cursor-pointer" onClick={handleLogout}>
             <img
               src={logoutIcon}

@@ -1,4 +1,3 @@
-// services/feedbackService.js
 import axios from "axios";
 
 export const fetchFeedbacksByProject = async (projectId, backendUrl) => {

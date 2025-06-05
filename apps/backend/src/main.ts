@@ -2,12 +2,10 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import * as bodyParser from 'body-parser';
 //mac only
-declare const module: any;
+//declare const module: any;
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-
-  // Body parser middleware
 
   app.enableCors({
     origin: '*',

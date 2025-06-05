@@ -69,7 +69,6 @@ export const findMatchingDomElements = (feedbacks) => {
       borderDiv.style.top = `${elRect.top - 2}px`;
       borderDiv.style.left = `${elRect.left - 2}px`;
 
-      // Check if element width is (almost) the width of the viewport
       const isFullWidth = Math.abs(elRect.width - window.innerWidth) < 2;
 
       if (isFullWidth) {

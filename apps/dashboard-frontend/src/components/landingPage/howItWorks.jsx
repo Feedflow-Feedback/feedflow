@@ -34,11 +34,6 @@ export default function howItWorks({}) {
           </p>
         </div>
         <div>
-          {/* <img
-            src="https://www.feedflow.io/static/media/how-it-works.0c4f3a2b.png"
-            alt="How it works"
-            className="mb-8 w-full"
-          /> */}
           {/* mobile */}
           <div className="md:hidden bg-white p-4 rounded-lg shadow-md border-[0.5px] border-lightGray">
             {howItWorks.map((howItWork, index) => (

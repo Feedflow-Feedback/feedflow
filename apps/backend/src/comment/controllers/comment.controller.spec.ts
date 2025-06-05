@@ -2,7 +2,6 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { CommentController } from './comment.controller';
 import { CommentService } from '../services/comment.service';
 import { BadRequestException } from '@nestjs/common';
-import { Comment } from '../../typeorm/entities/comment';
 
 describe('CommentController', () => {
   let controller: CommentController;

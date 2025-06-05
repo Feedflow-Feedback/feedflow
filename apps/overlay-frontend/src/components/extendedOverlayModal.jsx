@@ -15,7 +15,6 @@ export default function ExtendedOverlayModal({ open, close, htmlElement }) {
   });
 
   useEffect(() => {
-    // Prevent background scroll when modal is open
     if (open) {
       document.body.style.overflow = "hidden";
     } else {
