@@ -1,5 +1,5 @@
 describe("Test Overlay UI", () => {
-  it("Opens Feedback Detial Overlay", () => {
+  it("Opens Feedback Details Overlay", () => {
     cy.visit("http://localhost:5173");
     cy.get('svg[data-cy="Add Icon"]').click();
 
