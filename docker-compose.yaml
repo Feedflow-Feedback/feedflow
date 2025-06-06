@@ -1,3 +1,4 @@
+version: "3.8"
 services:
   overlay-frontend:
     image: feedflow/overlay-frontend:latest
