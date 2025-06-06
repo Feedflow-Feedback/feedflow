@@ -6,19 +6,26 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "e2e-test": "pnpm cypress open"
   },
   "dependencies": {
     "@feedflow/ui": "workspace:*",
-    "@tailwindcss/postcss": "^4",
+    "@feedflow/utils": "workspace:*",
+    "@headlessui/react": "^2.2.3",
+    "@tailwindcss/postcss": "^4.1.7",
+    "axios": "^1.9.0",
+    "html-to-image": "^1.11.13",
     "postcss": "^8.5.3",
-    "preact": "^10.26.2",
-    "tailwindcss": "^4.1.4"
+    "preact": "^10.26.6",
+    "tailwindcss": "^4.1.7"
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "^15.2.1",
+    "@next/eslint-plugin-next": "^15.3.2",
     "@preact/preset-vite": "^2.10.1",
     "autoprefixer": "^10.4.21",
-    "vite": "^6.2.0"
+    "cypress": "^14.3.3",
+    "vite": "^6.3.5",
+    "vite-plugin-css-injected-by-js": "^3.5.2"
   }
 }

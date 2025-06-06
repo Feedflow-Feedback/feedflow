@@ -1,13 +1,65 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
 
 @theme {
-    --text-tiny: 1.625rem;
+    --font-inter: "Inter", sans-serif;
+    --font-nunito: "Nunito", sans-serif;
 }
 
 @theme {
-    --color-mint-500: oklch(0.72 0.11 178);
+    --color-*: initial;
+    --color-white: #fff;
+    --color-black: #000;
+    --color-lightGray: #bfcfd7;
+    --color-yellow: #fcaf3e;
+    --color-orange: #ff913a;
+    --color-teal: #1698ae;
+    --color-lightBlue: #38d1df;
+    --color-blue: #5db9d9;
+
+    --font-sans: "Nunito", sans-serif;
+
     --text-h-lg: 100px;
     --text-h-lg--line-height: 110px;
-
     --text-h-lg--font-weight: 700;
+
+    --text-h-lg: 70px;
+    --text-h-lg--line-height: 86px;
+    --text-h-lg--font-weight: 700;
+
+    --text-h-l: 56px;
+    --text-h-l--line-height: 64px;
+    --text-h-l--font-weight: 700;
+
+    --text-h-md: 35px;
+    --text-h-md--line-height: 45px;
+    --text-h-md--font-weight: 700;
+
+    --text-h-sm: 30px;
+    --text-h-sm--line-height: 35px;
+    --text-h-sm--font-weight: 700;
+
+    --text-h-xs: 25px;
+    --text-h-xs--line-height: 35px;
+    --text-h-xs--font-weight: 400;
+
+    --text-b-md: 25px;
+    --text-b-md--line-height: 45px;
+    --text-b-md--font-weight: 700;
+
+    --text-p-lg: 20px;
+    --text-p-lg--line-height: 28px;
+    --text-p-lg--font-weight: 400;
+
+    --text-p-md: 16px;
+    --text-p-md--line-height: 22px;
+    --text-p-md--font-weight: 400;
+
+    --text-p-sm: 14px;
+    --text-p-sm--line-height: 18px;
+    --text-p-sm--font-weight: 400;
+
+    --text-p-xs: 12px;
+    --text-p-xs--line-height: 16px;
+    --text-p-xs--font-weight: 400;
 }

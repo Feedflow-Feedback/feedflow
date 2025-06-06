@@ -1,21 +1,25 @@
-// project.entity.ts
 import {
   Entity,
-  PrimaryColumn,
   Column,
   CreateDateColumn,
   OneToMany,
+  PrimaryGeneratedColumn,
+  ManyToOne,
 } from 'typeorm';
+
 import { Feedback } from './feedback';
-import { IntegrationConfig } from './integration-config';
+import { User } from './user';
 
 @Entity('projects')
 export class Project {
-  @PrimaryColumn('uuid')
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column({ length: 255 })
   name: string;
+
+  @Column({ length: 255 })
+  url: string;
 
   @Column('text', { nullable: true })
   description?: string;
@@ -26,6 +30,6 @@ export class Project {
   @OneToMany(() => Feedback, (feedback) => feedback.project)
   feedbacks: Feedback[];
 
-  @OneToMany(() => IntegrationConfig, (config) => config.project)
-  integrationConfigs: IntegrationConfig[];
+  @ManyToOne(() => User, (user) => user.projects)
+  user: User;
 }

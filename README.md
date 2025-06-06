@@ -1,84 +1,69 @@
-# Turborepo starter
+# Feedflow
 
-This Turborepo starter is maintained by the Turborepo core team.
+**Feedflow** ist ein webbasiertes Feedback-Tool, das Nutzer:innen ermöglicht, direkt auf einer Webseite Kommentare, Markierungen und Screenshots zu hinterlassen – ohne die Seite zu verlassen. Ziel ist es, den Feedback-Prozess für Entwickler:innen und Teams effizienter, transparenter und kollaborativer zu gestalten.
 
-## Using this example
+## 🔍 Features
 
-Run the following command:
+- ✍️ Direkte Kommentare und Markierungen auf der Webseite
+- 📸 Screenshot-Erstellung mit Anmerkungen
+- 📥 Strukturierte Erfassung des Feedbacks in einem zentralen Dashboard
+- 👥 Kollaboratives Arbeiten an Rückmeldungen
+- 🚀 Einfache Integration in bestehende Webseiten
 
-```sh
-npx create-turbo@latest
-```
+## 🎯 Zielgruppe
 
-## What's inside?
+- Entwickler:innen und Designer:innen
+- Produktmanager:innen
+- QA-Teams
+- Kund:innen oder Testnutzer:innen, die unkompliziert Feedback geben möchten
 
-This Turborepo includes the following packages/apps:
+## 🧩 Funktionsweise
 
-### Apps and Packages
+1. Nutzer:innen öffnen eine Webseite mit integriertem Feedflow.
+2. Per Overlay können Kommentare, Markierungen oder Screenshots erstellt werden.
+3. Das Feedback wird automatisch im Dashboard gesammelt.
+4. Entwickler:innen sehen kontextbezogene Rückmeldungen inklusive URL, und Screenshots.
+5. Aufgaben können priorisiert und abgearbeitet werden.
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+## ⚙️ Tech Stack
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+Feedflow verwendet einen modernen und leistungsstarken Technologie-Stack, der auf Modularität, Skalierbarkeit und Entwicklerfreundlichkeit ausgelegt ist.
 
-### Utilities
+### 🖥️ Frontend
 
-This Turborepo has some additional tools already setup for you:
+#### 📌 Overlay (Feedback-Komponente auf Webseiten)
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+- **Stencil** – Web Components für wiederverwendbare UI-Elemente
+- **Tailwind CSS** – Utility-first CSS für modernes Styling
+- **Vite** – Blitzschneller Build- und Entwicklungsserver
 
-### Build
+#### 📊 Dashboard (Admin-/Entwickler-Ansicht)
 
-To build all apps and packages, run the following command:
+- **React** – Komponentenbasiertes UI-Framework
+- **Tailwind CSS** – Schnelles Styling durch Utility-First-Prinzip
+- **Vite** – Schnelles Frontend-Build-Tool
+- **React Flow** – Visualisierung von Feedback-Flows und Verbindungen
 
-```
-cd my-turborepo
-pnpm build
-```
+### 🔙 Backend
 
-### Develop
+- **Node.js** – JavaScript-Laufzeitumgebung für serverseitige Logik
+- **NestJS** – Modularer, skalierbarer Backend-Framework auf TypeScript-Basis
+- **TypeORM** – ORM zur Datenbankanbindung und Modellierung
 
-To develop all apps and packages, run the following command:
+### 🗄️ Datenbank
 
-```
-cd my-turborepo
-pnpm dev
-```
+- **MySQL** – Relationale Datenbank zur strukturierten Speicherung von Feedback, Nutzer- und Projektinformationen
 
-### Remote Caching
+### 🔄 Kommunikation
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+- **Axios** – HTTP-Client für die Kommunikation zwischen Frontend und Backend
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+### 🧪 Testing
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
+- **Jest** – Unit- und Integrationstests für Logik und Komponenten
+- **Cypress** – End-to-End-Testing für realitätsnahe Testszenarien
 
-```
-cd my-turborepo
-npx turbo login
-```
+### 🚀 Deployment
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/docs/reference/command-line-reference)
+- **Docker** – Containerisierung aller Applikationsbestandteile für konsistente Deployments
+- **Docker Compose** – Orchestrierung von Services (Backend, Frontend, Datenbank etc.)

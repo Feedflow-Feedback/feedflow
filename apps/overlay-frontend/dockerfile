@@ -1,0 +1,36 @@
+
+FROM node:23-alpine AS build
+
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
+WORKDIR /app
+
+
+COPY pnpm-workspace.yaml ./
+COPY package.json pnpm-lock.yaml ./
+
+
+COPY apps/overlay-frontend ./apps/overlay-frontend
+COPY packages/ui ./packages/ui
+COPY packages/utils ./packages/utils
+COPY packages/eslint-config ./packages/eslint-config
+COPY packages/typescript-config ./packages/typescript-config
+
+ARG VITE_BACKEND_URL
+ENV VITE_BACKEND_URL=$VITE_BACKEND_URL
+
+RUN pnpm install
+
+
+RUN pnpm --filter ./apps/overlay-frontend... run build
+
+
+FROM  node:23-alpine
+
+RUN npm install -g serve
+
+WORKDIR /app
+COPY --from=build /app/apps/overlay-frontend/dist ./dist
+
+EXPOSE 4173
+CMD ["serve", "dist", "-l", "4173"]
