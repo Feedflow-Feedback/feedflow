@@ -15,11 +15,10 @@ import { unHighlightDomElement } from "./utils/unHighlightDomElement";
 import "./index.css";
 
 export function App() {
-  window.PROJECT_ID = "1c568c41-f68e-4c18-9c72-f58a6f473087"; // Fallback for local testing
+  //window.PROJECT_ID = "1c568c41-f68e-4c18-9c72-f58a6f473087"; // Fallback for local testing
   const projectId = window.PROJECT_ID;
 
   const backendUrl = process.env.BACKEND_URL;
-  console.log("Backend URL:", backendUrl);
 
   const [mode, setMode] = useState("regular");
   const [isOpenModalAddFeedback, setIsOpenModalAddFeedback] = useState(false);

@@ -88,6 +88,7 @@ export default function addProjectModal({
                           id="title"
                           name="title"
                           type="title"
+                          data-cy="title"
                           placeholder="new Project"
                           value={form.title}
                           onChange={handleChange}
@@ -108,6 +109,7 @@ export default function addProjectModal({
                           id="url"
                           name="url"
                           type="url"
+                          data-cy="url"
                           placeholder="https://example.com"
                           value={form.url}
                           onChange={handleChange}
@@ -127,6 +129,7 @@ export default function addProjectModal({
                         <textarea
                           id="description"
                           name="description"
+                          data-cy="description"
                           value={form.description}
                           onChange={handleChange}
                           rows={4}
@@ -141,6 +144,7 @@ export default function addProjectModal({
               <div className="mt-5 sm:mt-6 flex justify-end">
                 <button
                   type="submit"
+                  data-cy="submit"
                   className="inline-flex justify-center rounded-md  px-8 py-2 text-sm font-semibold bg-orange w-min text-white shadow-xs cursor-pointer "
                 >
                   Create

@@ -3,7 +3,7 @@ import { App } from "./app.jsx";
 import "./index.css";
 import styles from "./index.css?inline";
 
-const local = true;
+const local = false;
 
 if (local) {
   render(<App />, document.getElementById("app"));

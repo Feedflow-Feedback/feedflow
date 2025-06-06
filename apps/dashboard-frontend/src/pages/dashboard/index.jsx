@@ -74,7 +74,10 @@ export default function Dashboard() {
           className="fixed bottom-10 right-10 w-14 h-14 rounded-full bg-orange z-10 hover:scale-105 transition-all duration-100"
           onClick={() => setIsAddProjectModalOpen(true)}
         >
-          <div className="flex items-center justify-center h-full cursor-pointer">
+          <div
+            className="flex items-center justify-center h-full cursor-pointer"
+            data-cy="addProjectButton"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
