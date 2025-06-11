@@ -42,7 +42,6 @@ Feedflow verwendet einen modernen und leistungsstarken Technologie-Stack, der au
 - **React** – Komponentenbasiertes UI-Framework
 - **Tailwind CSS** – Schnelles Styling durch Utility-First-Prinzip
 - **Vite** – Schnelles Frontend-Build-Tool
-- **React Flow** – Visualisierung von Feedback-Flows und Verbindungen
 
 ### 🔙 Backend
 
