@@ -35,6 +35,7 @@ Feedflow verwendet einen modernen und leistungsstarken Technologie-Stack, der au
 
 - **Tailwind CSS** – Utility-first CSS für modernes Styling
 - **Vite** – Blitzschneller Build- und Entwicklungsserver
+- **Preact** – Komponentenbasiertes UI-Framework 
 
 #### 📊 Dashboard (Admin-/Entwickler-Ansicht)
 
