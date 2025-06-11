@@ -33,7 +33,6 @@ Feedflow verwendet einen modernen und leistungsstarken Technologie-Stack, der au
 
 #### 📌 Overlay (Feedback-Komponente auf Webseiten)
 
-- **Stencil** – Web Components für wiederverwendbare UI-Elemente
 - **Tailwind CSS** – Utility-first CSS für modernes Styling
 - **Vite** – Blitzschneller Build- und Entwicklungsserver
 
