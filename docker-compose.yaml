@@ -1,26 +1,27 @@
 version: "3.8"
 services:
   overlay-frontend:
-    image: feedflow/overlay-frontend:latest
+    image: yannicreust/overlay-frontend:latest
     build:
       context: .
       dockerfile: /apps/overlay-frontend/Dockerfile
       # change this to your backedend URL
+      # change this to your backedend URL
       args:
-        - VITE_BACKEND_URL=${VITE_BACKEND_URL:-http://localhost:3000}
+        - VITE_BACKEND_URL=${VITE_BACKEND_URL:-https://backend-feedflow.bbmit-service.ch}
     ports:
       - "5174:4173"
     networks:
       - feedflow-network
 
   dashboard-frontend:
-    image: feedflow/dashboard-frontend:latest
+    image: yannicreust/dashboard-frontend:latest
     build:
       context: .
       dockerfile: /apps/dashboard-frontend/Dockerfile
       # change this to your backedend URL
       args:
-        - VITE_BACKEND_URL=${VITE_BACKEND_URL:-http://localhost:3000}
+        - VITE_BACKEND_URL=${VITE_BACKEND_URL:-https://backend-feedflow.bbmit-service.ch}
     ports:
       - "5173:80"
     restart: unless-stopped
@@ -28,7 +29,7 @@ services:
       - feedflow-network
 
   backend:
-    image: feedflow/backend:latest
+    image: yannicreust/backend:latest
     build:
       context: .
       dockerfile: ./apps/backend/Dockerfile

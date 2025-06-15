@@ -18,12 +18,14 @@ import { CommentModule } from './comment/comment.module';
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: process.env.MYSQL_HOST,
-      //local testing host: 'localhost',
+      //local testing
+      // host: 'localhost',
       port: process.env.MYSQL_PORT
         ? parseInt(process.env.MYSQL_PORT, 10)
         : 3306,
       username: process.env.MYSQL_USER,
-      //local testing password: 'hmJZKzJ&&rtYwq#ppB65',
+      //local testing
+      //password: 'hmJZKzJ&&rtYwq#ppB65',
       password: process.env.MYSQL_PASSWORD,
       database: process.env.MYSQL_DATABASE,
       autoLoadEntities: true,
