@@ -3,7 +3,7 @@ import { useState, useEffect } from "preact/hooks";
 import axios from "axios";
 
 export default function ExtendedOverlayModal({ open, close, htmlElement }) {
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const backendUrl = "https://backend-feedflow.bbmit-service.ch";
   const projectId = window.PROJECT_ID;
 
   const [form, setForm] = useState({

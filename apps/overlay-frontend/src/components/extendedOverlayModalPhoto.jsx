@@ -9,7 +9,7 @@ export default function ExtendedOverlayModalPhoto({
   htmlElement,
   photoElement,
 }) {
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const backendUrl = "https://backend-feedflow.bbmit-service.ch";
   const projectId = window.PROJECT_ID;
 
   const [form, setForm] = useState({
