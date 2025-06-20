@@ -15,8 +15,8 @@ async function bootstrap() {
     allowedHeaders: 'Content-Type, Authorization',
   });
 
-  app.use(bodyParser.json({ limit: '10mb' }));
-  app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
+  app.use(bodyParser.json({ limit: '500mb' }));
+  app.use(bodyParser.urlencoded({ limit: '500mb', extended: true }));
 
   await app.listen(3000);
 
