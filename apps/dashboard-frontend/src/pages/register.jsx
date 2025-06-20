@@ -28,10 +28,10 @@ export default function register() {
         password: form.password,
       });
       console.log("Register response:", response);
-      /*
+
       if (response.status === 200) {
         window.location.href = "/login";
-      }*/
+      }
     } catch (err) {
       if (
         err.response?.data.message === "User with this email already exists"

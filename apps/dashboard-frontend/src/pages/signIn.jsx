@@ -35,13 +35,13 @@ export default function signIn() {
         password: form.password,
       });
       console.log("Login response:", response);
-      /*if (response.status === 200) {
+      if (response.status === 200) {
         setToken(response.data.accessToken);
         setUserId(response.data.userId);
         setEmail(response.data.email);
 
         window.location.href = "/dashboard";
-     } else if (response.status === 400) {
+      } else if (response.status === 400) {
         switch (response.data.message) {
           case "User not found":
             setErrorAndClearPassword("No account found with this email.");
@@ -54,7 +54,7 @@ export default function signIn() {
             break;
         }
         setErrorAndClearPassword("Invalid email or password.");
-      }*/
+      }
     } catch (err) {
       // console.error("Login failed, error:", err);
       setErrorAndClearPassword(
