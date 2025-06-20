@@ -3,7 +3,7 @@ import axios from "axios";
 import logo from "@/assets/logo.svg";
 
 export default function register() {
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const backendUrl = "https://backend-feedflow.bbmit-service.ch";
   const [form, setForm] = useState({ email: "", password: "", password2: "" });
   const [error, setError] = useState("");
 

@@ -10,7 +10,7 @@ export default function addProjectModal({
   onClose,
   onRefresh,
 }) {
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const backendUrl = "https://backend-feedflow.bbmit-service.ch";
   const token = useAuthStore((state) => state.token);
   const userId = useAuthStore((state) => state.userId);
 

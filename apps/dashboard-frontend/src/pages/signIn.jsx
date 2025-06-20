@@ -9,7 +9,7 @@ export default function signIn() {
   const setUserId = useAuthStore((state) => state.setUserId);
   const setEmail = useUserStore((state) => state.setEmail);
 
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const backendUrl = "https://backend-feedflow.bbmit-service.ch";
   const [form, setForm] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
 

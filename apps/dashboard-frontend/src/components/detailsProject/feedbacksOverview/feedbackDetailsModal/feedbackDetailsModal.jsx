@@ -19,7 +19,7 @@ export default function feedbackDetailsModal({
 
   update,
 }) {
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const backendUrl = "https://backend-feedflow.bbmit-service.ch";
   const token = useAuthStore((state) => state.token);
   const userEmail = useUserStore((state) => state.email);
   const [openComment, setOpenComment] = useState(false);
