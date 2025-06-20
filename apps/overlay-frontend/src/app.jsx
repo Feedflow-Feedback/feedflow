@@ -20,6 +20,8 @@ export function App() {
 
   const backendUrl = "https://backend-feedflow.bbmit-service.ch"; // Fallback for local testing
   //const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  console.log("Project ID:", projectId);
+  console.log("backendUrl:", backendUrl);
 
   const [mode, setMode] = useState("regular");
   const [isOpenModalAddFeedback, setIsOpenModalAddFeedback] = useState(false);
